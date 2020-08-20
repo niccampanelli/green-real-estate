@@ -1,0 +1,93 @@
+.simpleButton:hover{
+    background-color: #e4fff7 !important;
+    color: #82e7c9 !important;
+    font-size: 2.7vh !important;
+}
+
+.searchInput:hover{
+    background-color: #f6f6f6;
+}
+
+.searchButton:hover{
+    background-color: #e4fff7 !important;
+    color: #82e7c9 !important;
+    font-size: 2.6vh !important;
+}
+
+.searchButton:hover svg{
+    stroke-width: .8vh;
+}
+
+.loginIllustration{
+    opacity: 0;
+    animation: loginIllustrationIn .5s forwards;
+    animation-delay: .5s;
+}
+
+@keyframes loginIllustrationIn{
+    0%{
+        opacity: 0;
+        transform: translateY(10vh);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0vh);
+    }
+}
+
+.loginIllustrationCharacter{
+    animation: loginIllustrationCharacterFloat 2s infinite;
+    animation-delay: .5s;
+    -webkit-animation: loginIllustrationCharacterFloat 2s infinite;
+    -webkit-animation-delay: .5s;
+}
+
+@keyframes loginIllustrationCharacterFloat{
+    0%, 100%{
+        transform: translateY(1.5vh);
+    }
+    50%{
+        opacity: 1;
+        transform: translateY(0vh);
+    }
+}
+
+.loginIllustrationDogTail{
+    animation: loginIllustrationDogTailMove 2s infinite;
+    animation-delay: .5s;
+    -webkit-animation: loginIllustrationDogTailMove 1s infinite;
+    -webkit-animation-delay: .5s;
+    transform-box: fill-box;
+    transform-origin: left bottom;
+}
+
+@keyframes loginIllustrationDogTailMove{
+    0%, 100%{
+        transform: rotate(-20deg);
+    }
+    30%, 70%{
+        transform: rotate(10deg);
+    }
+}
+
+.loginFormSection{
+    opacity: 0;
+    animation: loginIllustrationIn .5s forwards;
+    animation-delay: .2s;
+}
+
+.loginFormInputs input:hover{
+    background-color: #f0f0f0;
+}
+
+.loginSubmit:hover{
+    background-color: #e4fff7 !important;
+    color: #82e7c9;
+    font-size: 2.5vh;
+}
+
+.notSignedLink:hover{
+    color: #00e6a1;
+    text-decoration: none;
+    font-size: 2.5vh;
+}
