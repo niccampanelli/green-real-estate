@@ -41,7 +41,9 @@
 }
 
 .searchButton svg{
-    transition: all .3s;
+    stroke-width: .6vh;
+    color: #00cc8f;
+    size: 4vh;
 }
 
 .mainContent{
@@ -49,4 +51,65 @@
     background-color: transparent;
     width: 100%;
     height: 100%;
+}
+
+.recentElementsSection{
+    width: 100%;
+    height: 60vh;
+    padding: 5vh 20vh 5vh 20vh;
+    position: relative;
+}
+
+.recentElementsTitle{
+    font-size: 4.5vh;
+    margin-bottom: 2vh;
+}
+
+.recentElementsCaroussel{
+    width: 100%;
+    height: 100%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: 2vh;
+}
+
+.recentElementsCaroussel::-webkit-scrollbar{
+    display: none;
+}
+
+.recentElementsCarousselItems{
+    width: fit-content;
+    justify-content: space-around;
+    display: flex;
+    height: 100%;
+}
+
+.recentElementsCarousselLeftBtn{
+    position: absolute;
+    height: 10vh;
+    width: 10vh;
+    background-color: #c3ffed;
+    border-radius: 100%;
+    left: 5vh;
+    top: 10vh;
+    bottom: 0;
+    margin: auto;
+}
+
+.recentElementsCarousselRightBtn{
+    position: absolute;
+    height: 10vh;
+    width: 10vh;
+    background-color: #c3ffed;
+    border-radius: 100%;
+    right: 5vh;
+    top: 10vh;
+    bottom: 0;
+    margin: auto;
+}
+
+.recentElement{
+    width: 40vh;
+    height: 100%;
+    box-shadow: 0 0 0 1vh black;
 }

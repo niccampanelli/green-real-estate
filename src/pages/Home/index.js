@@ -58,11 +58,57 @@ export default function Home(){
         <section className="searchSection">
             <div className="searchDiv">
                 <input className="searchInput" id="searchInput" placeholder=""/>
-                <button className="searchButton"><FiSearch size={"4vh"} strokeWidth={".6vh"} color={"#00cc8f"}/></button>
+                <button className="searchButton"><FiSearch/></button>
             </div>
         </section>
         <main className="mainContent">
-                
+            <section className="recentElementsSection">
+                <h1 className="recentElementsTitle">
+                    Recém adicionados
+                </h1>
+                    <button className="recentElementsCarousselLeftBtn">L</button>
+                <div className="recentElementsCaroussel">
+                    <div className="recentElementsCarousselItems">
+                    <div className="recentElement">
+                        
+                    </div>
+                    <div className="recentElement">
+                        
+                    </div>
+                    <div className="recentElement">
+                        
+                    </div>
+                    <div className="recentElement">
+                        
+                    </div>
+                    <div className="recentElement">
+                        
+                    </div>
+                    <div className="recentElement">
+                        
+                    </div>
+                    <div className="recentElement">
+                        
+                    </div>
+                    <div className="recentElement">
+                        
+                    </div>
+                    <div className="recentElement">
+                        
+                    </div>
+                    <div className="recentElement">
+                        
+                    </div>
+                    <div className="recentElement">
+                        
+                    </div>
+                    <div className="recentElement">
+                        
+                    </div>
+                    </div>
+                </div>
+                    <button className="recentElementsCarousselRightBtn">R</button>
+            </section>
         </main>
         </div>
     )
