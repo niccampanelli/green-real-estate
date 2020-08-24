@@ -1,5 +1,5 @@
 .simpleButton:hover{
-    background-color: #e4fff7 !important;
+    background-color: #d3fff2 !important;
     color: #82e7c9 !important;
     font-size: 2.7vh !important;
 }
@@ -9,7 +9,7 @@
 }
 
 .searchButton:hover{
-    background-color: #e4fff7 !important;
+    background-color: #d3fff2 !important;
     color: #82e7c9 !important;
     font-size: 2.6vh !important;
 }
@@ -90,4 +90,24 @@
     color: #00e6a1;
     text-decoration: none;
     font-size: 2.5vh;
+}
+
+.recentElementsCarousselLeftBtn:hover{
+    background-color: #d3fff2 !important;
+    color: #82e7c9 !important;
+}
+
+.recentElementsCarousselLeftBtn:hover svg{
+    stroke-width: .8vh;
+    color: #00cc8f;
+}
+
+.recentElementsCarousselRightBtn:hover{
+    background-color: #d3fff2 !important;
+    color: #82e7c9 !important;
+}
+
+.recentElementsCarousselRightBtn:hover svg{
+    stroke-width: .8vh;
+    color: #00cc8f;
 }

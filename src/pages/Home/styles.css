@@ -43,6 +43,7 @@
 .searchButton svg{
     stroke-width: .6vh;
     color: #00cc8f;
+    transition: all .3s;
 }
 
 .mainContent{
@@ -93,6 +94,14 @@
     top: 10vh;
     bottom: 0;
     margin: auto;
+    transition: all .3s;
+    cursor: pointer;
+}
+
+.recentElementsCarousselLeftBtn svg{
+    stroke-width: .6vh;
+    color: #00cc8f;
+    transition: all .3s;
 }
 
 .recentElementsCarousselRightBtn{
@@ -105,10 +114,17 @@
     top: 10vh;
     bottom: 0;
     margin: auto;
+    transition: all .3s;
+    cursor: pointer;
+}
+
+.recentElementsCarousselRightBtn svg{
+    stroke-width: .6vh;
+    color: #00cc8f;
+    transition: all .3s;
 }
 
 .recentElement{
     width: 40vh;
     height: 100%;
-    box-shadow: 0 0 0 1vh black;
 }

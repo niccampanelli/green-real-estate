@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiSearch } from 'react-icons/fi';
+import { FiSearch, FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
 import './styles.css';
 import Logo from '../../logo.jpg';
@@ -66,7 +66,7 @@ export default function Home(){
                 <h1 className="recentElementsTitle">
                     Recém adicionados
                 </h1>
-                    <button className="recentElementsCarousselLeftBtn">L</button>
+                    <button className="recentElementsCarousselLeftBtn"><FiChevronLeft size={"5vh"}/></button>
                 <div className="recentElementsCaroussel">
                     <div className="recentElementsCarousselItems">
                     <div className="recentElement">
@@ -107,7 +107,7 @@ export default function Home(){
                     </div>
                     </div>
                 </div>
-                    <button className="recentElementsCarousselRightBtn">R</button>
+                    <button className="recentElementsCarousselRightBtn"><FiChevronRight size={"5vh"}/></button>
             </section>
         </main>
         </div>
