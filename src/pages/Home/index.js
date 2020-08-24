@@ -58,7 +58,7 @@ export default function Home(){
         <section className="searchSection">
             <div className="searchDiv">
                 <input className="searchInput" id="searchInput" placeholder=""/>
-                <button className="searchButton"><FiSearch/></button>
+                <button className="searchButton"><FiSearch size={"4vh"}/></button>
             </div>
         </section>
         <main className="mainContent">
