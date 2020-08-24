@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { FiSearch, FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 import { useHistory } from 'react-router-dom';
 import './styles.css';
@@ -7,15 +7,33 @@ import Logo from '../../logo.jpg';
 export default function Home(){
 
     const history = useHistory();
-    
+
+    const [recentElemCar, setRecentElemCar] = useState();
+    const [searchPlaceholder, setSearchPlaceholder] = useState();
+
     var textEffectInt = 0;
     const textEffectSpeed = 100;
     var textToDisplay = 0;
-    const texts = ["Casa com dois quartos para alugar em SP","Apartamento com suíte a venda" , "Imóvel com vaga de garagem para locação", "Apartamento mobiliado zona leste"];
+    const texts = ["Casa com dois quartos para alugar em SP", "Apartamento com suíte a venda" , "Imóvel com vaga de garagem para locação", "Apartamento mobiliado zona leste"];
     
-    setTimeout(function typeWriter(){
+    setTimeout( function delayEntry(){ 
+        const carouselElem = document.getElementById("recentElemCar"); 
+        setRecentElemCar(carouselElem);
+        
+        const placeholder = document.getElementById("searchInput"); 
+        setSearchPlaceholder(placeholder)
 
-        const searchPlaceholder = document.getElementById("searchInput"); 
+    }, 1200);
+    
+    const carouselScroll = (operator) => {
+        operator ? (recentElemCar.scroll(recentElemCar.scrollLeft + 810, 0)) : (recentElemCar.scroll(recentElemCar.scrollLeft - 810, 0))
+    }
+    
+    useEffect(() => {
+        typeWriter();
+    }, searchPlaceholder);
+
+    function typeWriter(){
 
         if(searchPlaceholder){
             if(textEffectInt === texts[textToDisplay].length){
@@ -34,8 +52,7 @@ export default function Home(){
                 setTimeout(typeWriter, textEffectSpeed);
             }
         }
-
-    }, 1000);
+    }
 
     return(
         <div>
@@ -66,48 +83,48 @@ export default function Home(){
                 <h1 className="recentElementsTitle">
                     Recém adicionados
                 </h1>
-                    <button className="recentElementsCarousselLeftBtn"><FiChevronLeft size={"5vh"}/></button>
-                <div className="recentElementsCaroussel">
+                    <button onClick={() => carouselScroll(false)} className="recentElementsCarousselLeftBtn"><FiChevronLeft size={"5vh"}/></button>
+                <div className="recentElementsCaroussel" id="recentElemCar">
                     <div className="recentElementsCarousselItems">
                     <div className="recentElement">
-                        
+                        1
                     </div>
                     <div className="recentElement">
-                        
+                        2
                     </div>
                     <div className="recentElement">
-                        
+                        3
                     </div>
                     <div className="recentElement">
-                        
+                        4
                     </div>
                     <div className="recentElement">
-                        
+                        5
                     </div>
                     <div className="recentElement">
-                        
+                        6
                     </div>
                     <div className="recentElement">
-                        
+                        7
                     </div>
                     <div className="recentElement">
-                        
+                        8
                     </div>
                     <div className="recentElement">
-                        
+                        9
                     </div>
                     <div className="recentElement">
-                        
+                        10
                     </div>
                     <div className="recentElement">
-                        
+                        11
                     </div>
                     <div className="recentElement">
-                        
+                        12
                     </div>
                     </div>
                 </div>
-                    <button className="recentElementsCarousselRightBtn"><FiChevronRight size={"5vh"}/></button>
+                    <button onClick={() => carouselScroll(true)} className="recentElementsCarousselRightBtn"><FiChevronRight size={"5vh"}/></button>
             </section>
         </main>
         </div>

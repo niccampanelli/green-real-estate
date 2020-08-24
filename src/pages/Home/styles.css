@@ -127,4 +127,5 @@
 .recentElement{
     width: 40vh;
     height: 100%;
+    border: blue 1vh solid;
 }
