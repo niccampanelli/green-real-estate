@@ -92,22 +92,22 @@
     font-size: 2.5vh;
 }
 
-.recentElementsCarousselLeftBtn:hover{
+.elementsCarousselLeftBtn:hover{
     background-color: #d3fff2 !important;
     color: #82e7c9 !important;
 }
 
-.recentElementsCarousselLeftBtn:hover svg{
+.elementsCarousselLeftBtn:hover svg{
     stroke-width: .8vh;
     color: #00cc8f;
 }
 
-.recentElementsCarousselRightBtn:hover{
+.elementsCarousselRightBtn:hover{
     background-color: #d3fff2 !important;
     color: #82e7c9 !important;
 }
 
-.recentElementsCarousselRightBtn:hover svg{
+.elementsCarousselRightBtn:hover svg{
     stroke-width: .8vh;
     color: #00cc8f;
 }
