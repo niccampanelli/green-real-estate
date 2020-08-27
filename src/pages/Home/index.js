@@ -9,7 +9,6 @@ export default function Home(){
 
     const history = useHistory();
 
-    const [elemCar, setElemCar] = useState();
     const [searchPlaceholder, setSearchPlaceholder] = useState();
 
     var textEffectInt = 0;
@@ -17,16 +16,13 @@ export default function Home(){
     var textToDisplay = 0;
     const texts = ["Casa com dois quartos para alugar em SP", "Apartamento com suíte a venda" , "Imóvel com vaga de garagem para locação", "Apartamento mobiliado zona leste"];
     
-    setTimeout( function delayEntry(){ 
-        const carouselElem = document.getElementById("elemCar"); 
-        setElemCar(carouselElem);
-        
+    setTimeout( function delayEntry(){
         const placeholder = document.getElementById("searchInput"); 
         setSearchPlaceholder(placeholder)
 
     }, 200);
     
-    const carouselScroll = (operator) => {
+    const carouselScroll = (operator, elemCar) => {
         var currentScrollPos = 0;
 
         const anim = setInterval(function(){
@@ -43,7 +39,7 @@ export default function Home(){
             else{
                 clearInterval(anim);
             }
-        }, .5)
+        }, 10)
     }
     
     useEffect(() => {
@@ -100,8 +96,8 @@ export default function Home(){
                 <h1 className="recentElementsTitle">
                     Recém adicionados
                 </h1>
-                    <button onClick={() => carouselScroll(false)} className="elementsCarousselLeftBtn"><FiChevronLeft size={"5vh"}/></button>
                 <div className="elementsCaroussel" id="elemCar">
+                    <button onClick={e => carouselScroll(false, e.target.parentElement)} className="elementsCarousselLeftBtn"><FiChevronLeft size={"5vh"} onClick={e => carouselScroll(false, e.target.parentElement.parentElement.parentElement)}/></button>
                     <div className="elementsCarousselItems">
                         <div className="carousselElement">
                             <div className="carousselElementCard">
@@ -390,8 +386,304 @@ export default function Home(){
                             </div>
                         </div>
                     </div>
+                    <button onClick={e => carouselScroll(true, e.target.parentElement)} className="elementsCarousselRightBtn"><FiChevronRight size={"5vh"} onClick={e => carouselScroll(true, e.target.parentElement.parentElement.parentElement)}/></button>
                 </div>
-                    <button onClick={() => carouselScroll(true)} className="elementsCarousselRightBtn"><FiChevronRight size={"5vh"}/></button>
+            </section><section className="recentElementsSection">
+                <h1 className="recentElementsTitle">
+                    Recém adicionados
+                </h1>
+                <div className="elementsCaroussel" id="elemCar">
+                    <button onClick={e => carouselScroll(false, e.target.parentElement)} className="elementsCarousselLeftBtn"><FiChevronLeft size={"5vh"} onClick={e => carouselScroll(false, e.target.parentElement.parentElement.parentElement)}/></button>
+                    <div className="elementsCarousselItems">
+                        <div className="carousselElement">
+                            <div className="carousselElementCard">
+                                <div className="carousselElementImage">
+                                    <HouseDefault className="carousselElementImageImg"/>
+                                </div>
+                                <h2 className="carousselElementTitle">Imóvel de exemplo</h2>
+                                <h2 className="carousselElementDesc">Descrição do imóvel de exemplo</h2>
+                                <h2 className="carousselElementPrice">R$260.000</h2>
+                                <h2 className="carousselElementType">Venda</h2>
+                            </div>
+                        </div>
+                        <div className="carousselElement">
+                            <div className="carousselElementCard">
+                                <div className="carousselElementImage">
+                                    <HouseDefault className="carousselElementImageImg"/>
+                                </div>
+                                <h2 className="carousselElementTitle">Imóvel de exemplo</h2>
+                                <h2 className="carousselElementDesc">Descrição do imóvel de exemplo</h2>
+                                <h2 className="carousselElementPrice">R$260.000</h2>
+                                <h2 className="carousselElementType">Venda</h2>
+                            </div>
+                        </div>
+                        <div className="carousselElement">
+                            <div className="carousselElementCard">
+                                <div className="carousselElementImage">
+                                    <HouseDefault className="carousselElementImageImg"/>
+                                </div>
+                                <h2 className="carousselElementTitle">Imóvel de exemplo</h2>
+                                <h2 className="carousselElementDesc">Descrição do imóvel de exemplo</h2>
+                                <h2 className="carousselElementPrice">R$260.000</h2>
+                                <h2 className="carousselElementType">Venda</h2>
+                            </div>
+                        </div>
+                        <div className="carousselElement">
+                            <div className="carousselElementCard">
+                                <div className="carousselElementImage">
+                                    <HouseDefault className="carousselElementImageImg"/>
+                                </div>
+                                <h2 className="carousselElementTitle">Imóvel de exemplo</h2>
+                                <h2 className="carousselElementDesc">Descrição do imóvel de exemplo</h2>
+                                <h2 className="carousselElementPrice">R$260.000</h2>
+                                <h2 className="carousselElementType">Venda</h2>
+                            </div>
+                        </div>
+                        <div className="carousselElement">
+                            <div className="carousselElementCard">
+                                <div className="carousselElementImage">
+                                    <HouseDefault className="carousselElementImageImg"/>
+                                </div>
+                                <h2 className="carousselElementTitle">Imóvel de exemplo</h2>
+                                <h2 className="carousselElementDesc">Descrição do imóvel de exemplo</h2>
+                                <h2 className="carousselElementPrice">R$260.000</h2>
+                                <h2 className="carousselElementType">Venda</h2>
+                            </div>
+                        </div>
+                        <div className="carousselElement">
+                            <div className="carousselElementCard">
+                                <div className="carousselElementImage">
+                                    <HouseDefault className="carousselElementImageImg"/>
+                                </div>
+                                <h2 className="carousselElementTitle">Imóvel de exemplo</h2>
+                                <h2 className="carousselElementDesc">Descrição do imóvel de exemplo</h2>
+                                <h2 className="carousselElementPrice">R$260.000</h2>
+                                <h2 className="carousselElementType">Venda</h2>
+                            </div>
+                        </div>
+                        <div className="carousselElement">
+                            <div className="carousselElementCard">
+                                <div className="carousselElementImage">
+                                    <HouseDefault className="carousselElementImageImg"/>
+                                </div>
+                                <h2 className="carousselElementTitle">Imóvel de exemplo</h2>
+                                <h2 className="carousselElementDesc">Descrição do imóvel de exemplo</h2>
+                                <h2 className="carousselElementPrice">R$260.000</h2>
+                                <h2 className="carousselElementType">Venda</h2>
+                            </div>
+                        </div>
+                        <div className="carousselElement">
+                            <div className="carousselElementCard">
+                                <div className="carousselElementImage">
+                                    <HouseDefault className="carousselElementImageImg"/>
+                                </div>
+                                <h2 className="carousselElementTitle">Imóvel de exemplo</h2>
+                                <h2 className="carousselElementDesc">Descrição do imóvel de exemplo</h2>
+                                <h2 className="carousselElementPrice">R$260.000</h2>
+                                <h2 className="carousselElementType">Venda</h2>
+                            </div>
+                        </div>
+                        <div className="carousselElement">
+                            <div className="carousselElementCard">
+                                <div className="carousselElementImage">
+                                    <HouseDefault className="carousselElementImageImg"/>
+                                </div>
+                                <h2 className="carousselElementTitle">Imóvel de exemplo</h2>
+                                <h2 className="carousselElementDesc">Descrição do imóvel de exemplo</h2>
+                                <h2 className="carousselElementPrice">R$260.000</h2>
+                                <h2 className="carousselElementType">Venda</h2>
+                            </div>
+                        </div>
+                        <div className="carousselElement">
+                            <div className="carousselElementCard">
+                                <div className="carousselElementImage">
+                                    <HouseDefault className="carousselElementImageImg"/>
+                                </div>
+                                <h2 className="carousselElementTitle">Imóvel de exemplo</h2>
+                                <h2 className="carousselElementDesc">Descrição do imóvel de exemplo</h2>
+                                <h2 className="carousselElementPrice">R$260.000</h2>
+                                <h2 className="carousselElementType">Venda</h2>
+                            </div>
+                        </div>
+                        <div className="carousselElement">
+                            <div className="carousselElementCard">
+                                <div className="carousselElementImage">
+                                    <HouseDefault className="carousselElementImageImg"/>
+                                </div>
+                                <h2 className="carousselElementTitle">Imóvel de exemplo</h2>
+                                <h2 className="carousselElementDesc">Descrição do imóvel de exemplo</h2>
+                                <h2 className="carousselElementPrice">R$260.000</h2>
+                                <h2 className="carousselElementType">Venda</h2>
+                            </div>
+                        </div>
+                        <div className="carousselElement">
+                            <div className="carousselElementCard">
+                                <div className="carousselElementImage">
+                                    <HouseDefault className="carousselElementImageImg"/>
+                                </div>
+                                <h2 className="carousselElementTitle">Imóvel de exemplo</h2>
+                                <h2 className="carousselElementDesc">Descrição do imóvel de exemplo</h2>
+                                <h2 className="carousselElementPrice">R$260.000</h2>
+                                <h2 className="carousselElementType">Venda</h2>
+                            </div>
+                        </div>
+                        <div className="carousselElement">
+                            <div className="carousselElementCard">
+                                <div className="carousselElementImage">
+                                    <HouseDefault className="carousselElementImageImg"/>
+                                </div>
+                                <h2 className="carousselElementTitle">Imóvel de exemplo</h2>
+                                <h2 className="carousselElementDesc">Descrição do imóvel de exemplo</h2>
+                                <h2 className="carousselElementPrice">R$260.000</h2>
+                                <h2 className="carousselElementType">Venda</h2>
+                            </div>
+                        </div>
+                        <div className="carousselElement">
+                            <div className="carousselElementCard">
+                                <div className="carousselElementImage">
+                                    <HouseDefault className="carousselElementImageImg"/>
+                                </div>
+                                <h2 className="carousselElementTitle">Imóvel de exemplo</h2>
+                                <h2 className="carousselElementDesc">Descrição do imóvel de exemplo</h2>
+                                <h2 className="carousselElementPrice">R$260.000</h2>
+                                <h2 className="carousselElementType">Venda</h2>
+                            </div>
+                        </div>
+                        <div className="carousselElement">
+                            <div className="carousselElementCard">
+                                <div className="carousselElementImage">
+                                    <HouseDefault className="carousselElementImageImg"/>
+                                </div>
+                                <h2 className="carousselElementTitle">Imóvel de exemplo</h2>
+                                <h2 className="carousselElementDesc">Descrição do imóvel de exemplo</h2>
+                                <h2 className="carousselElementPrice">R$260.000</h2>
+                                <h2 className="carousselElementType">Venda</h2>
+                            </div>
+                        </div>
+                        <div className="carousselElement">
+                            <div className="carousselElementCard">
+                                <div className="carousselElementImage">
+                                    <HouseDefault className="carousselElementImageImg"/>
+                                </div>
+                                <h2 className="carousselElementTitle">Imóvel de exemplo</h2>
+                                <h2 className="carousselElementDesc">Descrição do imóvel de exemplo</h2>
+                                <h2 className="carousselElementPrice">R$260.000</h2>
+                                <h2 className="carousselElementType">Venda</h2>
+                            </div>
+                        </div>
+                        <div className="carousselElement">
+                            <div className="carousselElementCard">
+                                <div className="carousselElementImage">
+                                    <HouseDefault className="carousselElementImageImg"/>
+                                </div>
+                                <h2 className="carousselElementTitle">Imóvel de exemplo</h2>
+                                <h2 className="carousselElementDesc">Descrição do imóvel de exemplo</h2>
+                                <h2 className="carousselElementPrice">R$260.000</h2>
+                                <h2 className="carousselElementType">Venda</h2>
+                            </div>
+                        </div>
+                        <div className="carousselElement">
+                            <div className="carousselElementCard">
+                                <div className="carousselElementImage">
+                                    <HouseDefault className="carousselElementImageImg"/>
+                                </div>
+                                <h2 className="carousselElementTitle">Imóvel de exemplo</h2>
+                                <h2 className="carousselElementDesc">Descrição do imóvel de exemplo</h2>
+                                <h2 className="carousselElementPrice">R$260.000</h2>
+                                <h2 className="carousselElementType">Venda</h2>
+                            </div>
+                        </div>
+                        <div className="carousselElement">
+                            <div className="carousselElementCard">
+                                <div className="carousselElementImage">
+                                    <HouseDefault className="carousselElementImageImg"/>
+                                </div>
+                                <h2 className="carousselElementTitle">Imóvel de exemplo</h2>
+                                <h2 className="carousselElementDesc">Descrição do imóvel de exemplo</h2>
+                                <h2 className="carousselElementPrice">R$260.000</h2>
+                                <h2 className="carousselElementType">Venda</h2>
+                            </div>
+                        </div>
+                        <div className="carousselElement">
+                            <div className="carousselElementCard">
+                                <div className="carousselElementImage">
+                                    <HouseDefault className="carousselElementImageImg"/>
+                                </div>
+                                <h2 className="carousselElementTitle">Imóvel de exemplo</h2>
+                                <h2 className="carousselElementDesc">Descrição do imóvel de exemplo</h2>
+                                <h2 className="carousselElementPrice">R$260.000</h2>
+                                <h2 className="carousselElementType">Venda</h2>
+                            </div>
+                        </div>
+                        <div className="carousselElement">
+                            <div className="carousselElementCard">
+                                <div className="carousselElementImage">
+                                    <HouseDefault className="carousselElementImageImg"/>
+                                </div>
+                                <h2 className="carousselElementTitle">Imóvel de exemplo</h2>
+                                <h2 className="carousselElementDesc">Descrição do imóvel de exemplo</h2>
+                                <h2 className="carousselElementPrice">R$260.000</h2>
+                                <h2 className="carousselElementType">Venda</h2>
+                            </div>
+                        </div>
+                        <div className="carousselElement">
+                            <div className="carousselElementCard">
+                                <div className="carousselElementImage">
+                                    <HouseDefault className="carousselElementImageImg"/>
+                                </div>
+                                <h2 className="carousselElementTitle">Imóvel de exemplo</h2>
+                                <h2 className="carousselElementDesc">Descrição do imóvel de exemplo</h2>
+                                <h2 className="carousselElementPrice">R$260.000</h2>
+                                <h2 className="carousselElementType">Venda</h2>
+                            </div>
+                        </div>
+                        <div className="carousselElement">
+                            <div className="carousselElementCard">
+                                <div className="carousselElementImage">
+                                    <HouseDefault className="carousselElementImageImg"/>
+                                </div>
+                                <h2 className="carousselElementTitle">Imóvel de exemplo</h2>
+                                <h2 className="carousselElementDesc">Descrição do imóvel de exemplo</h2>
+                                <h2 className="carousselElementPrice">R$260.000</h2>
+                                <h2 className="carousselElementType">Venda</h2>
+                            </div>
+                        </div>
+                        <div className="carousselElement">
+                            <div className="carousselElementCard">
+                                <div className="carousselElementImage">
+                                    <HouseDefault className="carousselElementImageImg"/>
+                                </div>
+                                <h2 className="carousselElementTitle">Imóvel de exemplo</h2>
+                                <h2 className="carousselElementDesc">Descrição do imóvel de exemplo</h2>
+                                <h2 className="carousselElementPrice">R$260.000</h2>
+                                <h2 className="carousselElementType">Venda</h2>
+                            </div>
+                        </div>
+                        <div className="carousselElement">
+                            <div className="carousselElementCard">
+                                <div className="carousselElementImage">
+                                    <HouseDefault className="carousselElementImageImg"/>
+                                </div>
+                                <h2 className="carousselElementTitle">Imóvel de exemplo</h2>
+                                <h2 className="carousselElementDesc">Descrição do imóvel de exemplo</h2>
+                                <h2 className="carousselElementPrice">R$260.000</h2>
+                                <h2 className="carousselElementType">Venda</h2>
+                            </div>
+                        </div>
+                        <div className="carousselElement">
+                            <div className="carousselElementCard">
+                                <div className="carousselElementImage">
+                                    <HouseDefault className="carousselElementImageImg"/>
+                                </div>
+                                <h2 className="carousselElementTitle">Imóvel de exemplo</h2>
+                                <h2 className="carousselElementDesc">Descrição do imóvel de exemplo</h2>
+                                <h2 className="carousselElementPrice">R$260.000</h2>
+                                <h2 className="carousselElementType">Venda</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <button onClick={e => carouselScroll(true, e.target.parentElement)} className="elementsCarousselRightBtn"><FiChevronRight size={"5vh"} onClick={e => carouselScroll(true, e.target.parentElement.parentElement.parentElement)}/></button>
+                </div>
             </section>
         </main>
         </div>
