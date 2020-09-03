@@ -88,7 +88,12 @@ export default function Home(){
         </header>
         <main className="mainContent">
             <section className="infoSection">
-            
+                <div className="infoImage">
+                    <HouseDefault className="infoDefaultImage"/>
+                </div>
+                <section className="infoSectionDiv">
+                    <h1 className="infoName">Casa com dois quartos</h1>
+                </section>
             </section>
             <section className="recentElementsSection">
                 <h1 className="recentElementsTitle">
