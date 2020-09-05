@@ -16,6 +16,35 @@
     height: 100%;
 }
 
+.infoSectionDiv{
+    padding: 0 0 0 5vh;
+}
+
 .infoName{
-    font-size: 5vh;
+    font-size: 4.5vh;
+    margin-bottom: 2vh;
+}
+
+.infoAdress{
+    margin-bottom: 1vh;
+    font-size: 2.5vh;
+    font-weight: 700;
+    color: #bbb;
+}
+
+.infoSpecs{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 100%));
+    gap: 2vh;
+}
+
+.infoSpec{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: #c3ffed;
+    border-radius: 100vh;
+    padding-right: 2vh;
+    font-size: 1.8vh;
 }

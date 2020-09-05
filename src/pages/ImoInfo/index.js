@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { FiSearch, FiChevronRight, FiChevronLeft } from 'react-icons/fi';
+import { FiMaximize2, FiChevronRight, FiChevronLeft } from 'react-icons/fi';
+import { FaBed, FaShower, FaCarSide } from "react-icons/fa";
 import { useHistory } from 'react-router-dom';
 import './styles.css';
 import Logo from '../../logo.jpg';
@@ -93,6 +94,14 @@ export default function Home(){
                 </div>
                 <section className="infoSectionDiv">
                     <h1 className="infoName">Casa com dois quartos</h1>
+                    <h2 className="infoAdress">Avenida Águia de Haia, 150, Artur Alvim, São Paulo - SP</h2>
+                    <div className="infoSpecs">
+                        <div className="infoSpec"><FiMaximize2/> 57m²</div>
+                        <div className="infoSpec"><FaBed/> 2 Quartos</div>
+                        <div className="infoSpec"><FaShower/> 1 Banheiro</div>
+                        <div className="infoSpec"><FaCarSide/> Sem Vaga</div>
+                        <div className="infoSpec"></div>
+                    </div>
                 </section>
             </section>
             <section className="recentElementsSection">
