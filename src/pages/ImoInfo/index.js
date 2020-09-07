@@ -96,12 +96,25 @@ export default function Home(){
                     <h1 className="infoName">Casa com dois quartos</h1>
                     <h2 className="infoAdress">Avenida Águia de Haia, 150, Artur Alvim, São Paulo - SP</h2>
                     <div className="infoSpecs">
-                        <div className="infoSpec"><FiMaximize2/> 57m²</div>
-                        <div className="infoSpec"><FaBed/> 2 Quartos</div>
-                        <div className="infoSpec"><FaShower/> 1 Banheiro</div>
-                        <div className="infoSpec"><FaCarSide/> Sem Vaga</div>
-                        <div className="infoSpec"></div>
+                        <div className="infoSpec"><FiMaximize2 className="infoSpecIcon" size={"2.5vh"}/> 57m²</div>
+                        <div className="infoSpec"><FaBed className="infoSpecIcon" size={"2.5vh"}/> 2 Quartos</div>
+                        <div className="infoSpec"><FaShower className="infoSpecIcon" size={"2.5vh"}/> 1 Banheiro</div>
+                        <div className="infoSpec"><FaCarSide className="infoSpecIcon" size={"2.5vh"}/> Sem Vaga</div>
                     </div>
+                    <h1 className="infoType">Venda</h1>
+                    <h1 className="infoPrice">R$ 250.000</h1>
+                    <h1 className="infoCon">Condomínio</h1>
+                    <h1 className="infoConPrice">R$ 0</h1>
+                    <h1 className="infoIPTU">IPTU</h1>
+                    <h1 className="infoIPTUPrice">R$ 58</h1>
+                    <h1 className="infoDescTitle">Detalhes do Imóvel</h1>
+                    <h2 className="infoDesc">
+                        Velit pariatur exercitation aliqua mollit ut id consectetur est aute. Culpa fugiat occaecat adipisicing velit dolore deserunt elit labore consectetur culpa eu consequat commodo. In pariatur sunt qui duis quis eiusmod est anim qui magna nulla. Lorem sint nisi esse nostrud excepteur. Cupidatat qui ipsum ad Lorem sint culpa ipsum commodo in. Aliqua excepteur enim sunt occaecat elit ut occaecat sint. Consequat occaecat anim laborum occaecat ex eiusmod sunt amet culpa.
+
+Deserunt tempor magna sunt deserunt cupidatat nulla nisi exercitation. Ad magna mollit duis laborum est esse eiusmod velit officia. Veniam quis in ea ipsum labore nostrud laboris mollit culpa esse incididunt qui non culpa. Eu qui laboris occaecat do exercitation labore in fugiat enim. Veniam incididunt veniam elit nulla.
+
+Commodo reprehenderit sit pariatur aute enim esse ut exercitation aliquip aliqua fugiat anim adipisicing velit. Irure sint non dolor incididunt reprehenderit esse veniam quis ad ullamco eu deserunt. Quis labore Lorem elit eiusmod magna velit ea adipisicing laborum quis voluptate do. Labore nulla est ex eiusmod duis labore laborum laborum velit fugiat eu. Sint anim excepteur eu elit aute commodo non.
+                    </h2>
                 </section>
             </section>
             <section className="recentElementsSection">
