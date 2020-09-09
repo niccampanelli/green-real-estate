@@ -90,7 +90,27 @@ export default function Home(){
         <main className="mainContent">
             <section className="infoSection">
                 <div className="infoImage">
-                    <HouseDefault className="infoDefaultImage"/>
+                    <div className="imagesCaroussel" id="elemCar">
+                        <button onClick={e => carouselScroll(false, e.target.parentElement)} className="imagesCarousselLeftBtn"><FiChevronLeft size={"5vh"} onClick={e => carouselScroll(false, e.target.parentElement.parentElement.parentElement)}/></button>
+                        <div className="imagesCarousselItems">
+                            <div className="imageElement">
+                                <HouseDefault className="imageElementImage"/>
+                            </div>
+                            <div className="imageElement">
+                                <HouseDefault className="imageElementImage"/>
+                            </div>
+                            <div className="imageElement">
+                                <HouseDefault className="imageElementImage"/>
+                            </div>
+                            <div className="imageElement">
+                                <HouseDefault className="imageElementImage"/>
+                            </div>
+                            <div className="imageElement">
+                                <HouseDefault className="imageElementImage"/>
+                            </div>
+                        </div>
+                        <button onClick={e => carouselScroll(true, e.target.parentElement)} className="imagesCarousselRightBtn"><FiChevronRight size={"5vh"} onClick={e => carouselScroll(true, e.target.parentElement.parentElement.parentElement)}/></button>
+                    </div>
                 </div>
                 <section className="infoSectionDiv">
                     <h1 className="infoName">Casa com dois quartos</h1>
