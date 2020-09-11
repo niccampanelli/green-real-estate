@@ -16,6 +16,15 @@
     top: 10vh;
 }
 
+.searchSectionSign{
+    position: absolute;
+    z-index: 0;
+    width: 80vh;
+    height: auto;
+    left: 80vh;
+    top: 23vh;
+}
+
 .searchDiv{
     position: relative;
     height: 10vh;

@@ -5,6 +5,7 @@ import './styles.css';
 import Logo from '../../logo.jpg';
 import {ReactComponent as HouseDefault} from '../../assets/houseDefault.svg';
 import {ReactComponent as BannerHouse} from '../../assets/bannerHouse.svg';
+import {ReactComponent as SaleSignIllustration} from '../../assets/saleSignIllustration.svg';
 
 export default function Home(){
 
@@ -90,6 +91,7 @@ export default function Home(){
         </header>
         <section className="searchSection">
             <BannerHouse className="searchSectionHouse"/>
+            <SaleSignIllustration className="searchSectionSign"/>
             <div className="searchDiv">
                 <input className="searchInput" id="searchInput" placeholder=""/>
                 <button className="searchButton"><FiSearch size={"4vh"}/></button>
