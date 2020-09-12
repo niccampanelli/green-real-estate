@@ -28,14 +28,16 @@ export default function Home(){
         var currentScrollPos = 0;
 
         const anim = setInterval(function(){
-            if(currentScrollPos < 108){
+            if(currentScrollPos < elemCar.offsetWidth){
+                console.log(currentScrollPos + "<" + elemCar.offsetWidth);
+
                 if(operator){
                     elemCar.scroll(elemCar.scrollLeft + 10, 0);
-                    currentScrollPos ++;
+                    currentScrollPos += 10;
                 }
                 else{
                     elemCar.scroll(elemCar.scrollLeft - 10, 0);
-                    currentScrollPos ++;
+                    currentScrollPos += 10;
                 }
             }
             else{

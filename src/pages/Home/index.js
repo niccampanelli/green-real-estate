@@ -28,16 +28,16 @@ export default function Home(){
         var currentScrollPos = 0;
 
         const anim = setInterval(function(){
-            if(currentScrollPos < elemCar.offsetWidth/8){
-                console.log(elemCar.offsetWidth);
+            if(currentScrollPos < elemCar.offsetWidth){
+                console.log(currentScrollPos + "<" + elemCar.offsetWidth);
 
                 if(operator){
                     elemCar.scroll(elemCar.scrollLeft + 10, 0);
-                    currentScrollPos ++;
+                    currentScrollPos += 10;
                 }
                 else{
                     elemCar.scroll(elemCar.scrollLeft - 10, 0);
-                    currentScrollPos ++;
+                    currentScrollPos += 10;
                 }
             }
             else{
@@ -396,7 +396,7 @@ export default function Home(){
                 </div>
             </section><section className="recentElementsSection">
                 <h1 className="recentElementsTitle">
-                    Recém adicionados
+                    Recomendados Para Você
                 </h1>
                 <div className="elementsCaroussel" id="elemCar">
                     <button onClick={e => carouselScroll(false, e.target.parentElement)} className="elementsCarousselLeftBtn"><FiChevronLeft size={"5vh"} onClick={e => carouselScroll(false, e.target.parentElement.parentElement.parentElement)}/></button>
