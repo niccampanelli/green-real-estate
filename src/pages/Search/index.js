@@ -39,6 +39,31 @@ export default function Home(){
             }
         }, 10)
     }
+    
+    useEffect(() => {
+        typeWriter();
+    }, searchPlaceholder);
+
+    function typeWriter(){
+
+        if(searchPlaceholder){
+            if(textEffectInt === texts[textToDisplay].length){
+                textEffectInt = 0
+                searchPlaceholder.placeholder = "";
+                if(textToDisplay < texts.length - 1){
+                    textToDisplay ++;
+                }
+                else{
+                    textToDisplay = 0;
+                }
+            }
+            if(textEffectInt < texts[textToDisplay].length){
+                searchPlaceholder.placeholder += texts[textToDisplay].charAt(textEffectInt);
+                textEffectInt += 1;
+                setTimeout(typeWriter, textEffectSpeed);
+            }
+        }
+    }
 
     return(
         <div>
