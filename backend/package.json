@@ -1,0 +1,19 @@
+{
+  "name": "green-real-estate",
+  "version": "1.0.0",
+  "description": "Green Real Estate API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/niccampanelli/green-real-estate.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/niccampanelli/green-real-estate/issues"
+  },
+  "homepage": "https://github.com/niccampanelli/green-real-estate#readme"
+}
