@@ -2,7 +2,6 @@ import React from "react";
 
 export default function Footer() {
     return(
-        <>
         <footer>
             <nav>
                 <h2>Páginas</h2>
@@ -13,6 +12,5 @@ export default function Footer() {
                 </ul>
             </nav>
         </footer>
-        </>
     );
 }
