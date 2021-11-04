@@ -13,9 +13,9 @@
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
     header{
-        background-color: #3fcc81;
+        background-color: var(--primary-color);
         height: 53px;
-        color: #fafafa;
+        color: #ffffff;
     }
 
     .navigation{

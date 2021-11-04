@@ -1,0 +1,23 @@
+footer{
+    padding: 20px 80px;
+    background-color: var(--primary-color);
+    color: #ffffff;
+}
+
+footer p{
+    text-align: center;
+}
+
+.footerNav{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    margin-bottom: 20px;
+}
+
+.footerNavColumn{
+    padding: 0 20px;
+}
+
+.footerNavColumn h2{
+    margin-bottom: 10px;
+}
