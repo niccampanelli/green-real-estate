@@ -5,7 +5,7 @@ export default function Routes(){
     return(
         <BrowserRouter>
             <Switch>
-                <Route />
+                <Route path='/' />
             </Switch>
         </BrowserRouter>
     );
