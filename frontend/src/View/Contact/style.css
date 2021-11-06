@@ -47,6 +47,10 @@
         font-weight: 400;
     }
 
+    .aboutParagraph{
+        font-size: var(--paragraph-size);
+    }
+
     .historySection{
         padding: 50px 80px 50px 80px;
     }
@@ -54,6 +58,10 @@
     .historySubtitle{
         font-size: var(--subtitle-size);
         margin-bottom: 12px;
+    }
+
+    .historyParagraph{
+        font-size: var(--paragraph-size);
     }
 
     .purposeSection{
@@ -65,6 +73,10 @@
     .purposeSubtitle{
         font-size: var(--subtitle-size);
         margin-bottom: 12px;
+    }
+    
+    .purposeParagraph{
+        font-size: var(--paragraph-size);
     }
 
     .purposeLeft{
@@ -110,6 +122,10 @@
         margin-bottom: 12px;
     }
 
+    .contactParagraph{
+        font-size: var(--paragraph-size);
+    }
+
     .contactLeft{
         float: left;
         width: 60%;
@@ -130,5 +146,6 @@
 
     .contactItem{
         color: var(--primary-color);
+        font-weight: 700;
     }
 }
