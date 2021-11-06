@@ -105,6 +105,13 @@
     .opinionSubtitleContainer{
         display: flex;
         justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .opinionDescriptionContainer{
+        text-align: justify;
+        width: 60%;
     }
 
     .opinionDescription{
