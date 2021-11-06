@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useRef } from "react";
-import Footer from '../Footer';
-import Header from '../Header';
+import Header from "../Header";
+import Footer from "../Footer";
+import Carousel from "../Components/Carousel";
 import {  } from "react-icons/"
 import "./style.css";
 
@@ -39,20 +40,21 @@ export default function Home() {
     return(
         <Fragment>
             <Header/>
-                <main>
-                    <section className="landing">
-                        <form className="landingSearch">
-                            <input type="search" className="searchInput" ref={searchInput}/>
-                            <button type="submit" className="searchInputButton">enviar</button>
-                        </form>
-                        <button className="searchSwitch">Procurar por Características</button>
+            <main>
+                <section className="landing">
+                    <form className="landingSearch">
+                        <input type="search" className="searchInput" ref={searchInput}/>
+                        <button type="submit" className="searchInputButton">enviar</button>
+                    </form>
+                    <button className="searchSwitch">Procurar por Características</button>
+                </section>
+                <section className="listing">
+                    <section className="listingSection">
+                        <h2 className="listingSectionTitle">Recentes</h2>
+                        <Carousel/>
                     </section>
-                    <section className="listing">
-                        <section className="listingSection">
-                            <h2 className="listingSectionTitle">Recentes</h2>
-                        </section>
-                    </section>
-                </main>
+                </section>
+            </main>
             <Footer/>
         </Fragment>
     );

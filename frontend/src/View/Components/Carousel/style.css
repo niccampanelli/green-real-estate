@@ -1,0 +1,46 @@
+.carouselWrap{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.carouselDirection{
+    width: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carouselDirectionButton{
+    width: 50px;
+    height: 50px;
+    background-color: var(--terciary-color);
+    border-radius: 1000px;
+}
+
+.carouselViewport{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: scroll;
+}
+
+.carouselContent{
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.carouselItem{
+    margin-left: 20px;
+    width: 250px;
+    height: 300px;
+    box-shadow: 0 0 15px -2px #aaaaaa;
+    border-radius: 10px;
+}
+
+.carouselItem:first-child{
+    margin-left: 0;
+}
