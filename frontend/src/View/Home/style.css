@@ -1,6 +1,6 @@
 .landing{
     height: 600px;
-    background-color: aquamarine;
+    background-color: var(--secondary-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,17 +12,24 @@
     background-color: var(--background-default);
     display: flex;
     flex-direction: row;
+    border-radius: 10px;
 }
 
 .searchInput{
     padding: 0 20px;
     width: 550px;
+    background-color: transparent;
+    color: var(--text-dark-primary);
+    font-weight: 700;
+    font-size: 20px;
 }
 
 .searchInputButton{
-    width: 40px;
+    width: 50px;
+    background-color: var(--terciary-color);
+    color: var(--primary-color);
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 5px;
+    border-radius: 0 10px 10px 0;
 }

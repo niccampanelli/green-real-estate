@@ -2,9 +2,14 @@
 
 html{
   --primary-color: #00d982;
-  --secondary-color: #66e8b4;
-  --terciary-color: #e5fbf2;
+  --secondary-color: #19dc8e;
+  --terciary-color: #ccf7e6;
   --background-default: #fafafa;
+  --text-light-primary: #ffffff;
+  --text-dark-primary: #888888;
+  --title-size: 38px;
+  --subtitle-size: 24px;
+  --paragraph-size: 12px;
 }
 
 *{
