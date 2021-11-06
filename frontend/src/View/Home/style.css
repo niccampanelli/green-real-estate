@@ -1,0 +1,28 @@
+.landing{
+    height: 600px;
+    background-color: aquamarine;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.landingSearch{
+    width: 600px;
+    height: 50px;
+    background-color: var(--background-default);
+    display: flex;
+    flex-direction: row;
+}
+
+.searchInput{
+    padding: 0 20px;
+    width: 550px;
+}
+
+.searchInputButton{
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 5px;
+}
