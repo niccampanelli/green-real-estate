@@ -5,7 +5,7 @@ export default function Header(){
     return(
             
             <header>
-                <img />
+                <img alt="Green Real State"/>
 
                 <nav className="navigation">
                     <ul className="navList">

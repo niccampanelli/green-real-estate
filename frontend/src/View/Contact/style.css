@@ -14,7 +14,9 @@
 @media only screen and (min-width: 1200px) {
     article{
         padding-top: 53px;
+        padding-bottom: 53px;
     }
+
     .presentationSection{
         background-color: var(--secondary-color);
         height: 500px;
@@ -29,12 +31,13 @@
     .rightPresentation{
         float: right;
         width: 50%;
+        padding-right: 80px;
     }
 
     .aboutTitle{
         color: white;
         font-size: var(--title-size);
-        margin-top: 50px;
+        margin-top: 120px;
         font-weight: 600;
     }
 
@@ -46,5 +49,86 @@
 
     .historySection{
         padding: 50px 80px 50px 80px;
+    }
+
+    .historySubtitle{
+        font-size: var(--subtitle-size);
+        margin-bottom: 12px;
+    }
+
+    .purposeSection{
+        padding: 50px 80px 50px 80px;
+        width: 100%;
+        height: 500px;
+    }
+
+    .purposeSubtitle{
+        font-size: var(--subtitle-size);
+        margin-bottom: 12px;
+    }
+
+    .purposeLeft{
+        float: left;
+        width: 50%;
+    }
+
+    .purposeRight{
+        float: right;
+        width: 50%;
+    }
+
+    .opinionSection{
+        padding: 50px 80px 50px 80px;
+        width: 100%;
+        height: 600px;
+        background-color: var(--secondary-color);
+    }
+
+    .opinionSubtitle{
+        color: white;
+        font-size: var(--subtitle-size);
+        margin-bottom: 12px;
+    }
+
+    .opinionSubtitleContainer{
+        display: flex;
+        justify-content: center;
+    }
+
+    .opinionDescription{
+        color: white;
+    }
+
+    .contactSection{
+        padding: 50px 80px 50px 80px;
+        width: 100%;
+        height: 450px;
+    }
+
+    .contactSubtitle{
+        font-size: var(--subtitle-size);
+        margin-bottom: 12px;
+    }
+
+    .contactLeft{
+        float: left;
+        width: 60%;
+    }
+
+    .contactRight{
+        float: right;
+        width: 40%;
+    }
+
+    .contactContainer{
+        margin-top: 50px;
+    }
+
+    .contactList{
+        list-style: none;
+    }
+
+    .contactItem{
+        color: var(--primary-color);
     }
 }
