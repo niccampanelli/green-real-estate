@@ -16,18 +16,18 @@ export default function Footer() {
                 <div className="footerNavColumn">
                     <h2>Endereço</h2>
                     <ul>
-                        <li>Rua Patativa, 176 - Cidade Antônio Estêvão de Carvalho, São Paulo - SP, 08220-010</li>
+                        <li>Consectetur non aliquip sunt nulla officia ad sunt exercitation quis laboris dolore.</li>
                     </ul>
                 </div>
                 <div className="footerNavColumn">
                     <h2>Redes Sociais</h2>
                     <ul>
-                        <li><a href="https://www.facebook.com/gleusaimoveis/">Facebook</a></li>
-                        <li><a href="https://www.instagram.com/gleusaimoveis/">Instagram</a></li>
+                        <li><a href="">Facebook</a></li>
+                        <li><a href="">Instagram</a></li>
                     </ul>
                 </div>
             </nav>
-            <p>© 2021 Gleusa Imóveis - CRECI: 25395-J | CNPJ: 09.008.578/0001-69</p>
+            <p>© 2021 In adipisicing tempor nostrud occaecat ipsum commodo</p>
             <p>Desenvolvido por <a href="https://mkstudio.herokuapp.com/"><img alt="MK STUDIO"/></a></p>
         </footer>
     );

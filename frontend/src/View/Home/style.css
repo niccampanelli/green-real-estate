@@ -16,12 +16,16 @@
 }
 
 .searchInput{
-    padding: 0 20px;
+    padding: 0 10px 0 20px;
     width: 550px;
     background-color: transparent;
     color: var(--text-dark-primary);
     font-weight: 700;
-    font-size: 20px;
+    font-size: var(--subtitle-size);
+}
+
+.searchInput::placeholder{
+    color: var(--text-dark-secondary);
 }
 
 .searchInputButton{
