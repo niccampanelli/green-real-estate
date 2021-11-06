@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import {  } from "react-icons/"
 import "./style.css";
 
 export default function Home() {
@@ -40,6 +41,10 @@ export default function Home() {
                     <input type="search" className="searchInput" ref={searchInput}/>
                     <button type="submit" className="searchInputButton">enviar</button>
                 </form>
+                <button className="searchSwitch">Procurar por Características</button>
+            </section>
+            <section className="listing">
+                
             </section>
         </main>
     );
