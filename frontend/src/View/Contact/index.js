@@ -37,8 +37,10 @@ export default function Contact() {
                 <section className="opinionSection">
                     <div className="opinionSubtitleContainer">
                         <h2 className="opinionSubtitle">Opiniões dos clientes</h2>
+                        <div className="opinionDescriptionContainer">
+                            <p className="opinionDescription">Eiusmod irure cupidatat quis est ipsum in id. Cupidatat non proident tempor velit culpa est anim labore dolore sunt ea cillum cillum eu. Reprehenderit deserunt reprehenderit dolore ad velit duis aliquip enim elit dolor. Officia laborum cupidatat reprehenderit velit magna aliquip consequat sint.</p>
+                        </div>
                     </div>
-                    <p className="opinionDescription">Eiusmod irure cupidatat quis est ipsum in id. Cupidatat non proident tempor velit culpa est anim labore dolore sunt ea cillum cillum eu. Reprehenderit deserunt reprehenderit dolore ad velit duis aliquip enim elit dolor. Officia laborum cupidatat reprehenderit velit magna aliquip consequat sint.</p>
                     
                 </section>
                 <section className="contactSection">
