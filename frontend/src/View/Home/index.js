@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import Carousel from "../Components/Carousel";
 import {  } from "react-icons/"
 import "./style.css";
 
@@ -46,6 +47,7 @@ export default function Home() {
             <section className="listing">
                 <section className="listingSection">
                     <h2 className="listingSectionTitle">Recentes</h2>
+                    <Carousel/>
                 </section>
             </section>
         </main>
