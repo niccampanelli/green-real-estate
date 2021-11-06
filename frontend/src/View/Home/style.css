@@ -49,3 +49,12 @@
     font-size: var(--paragraph-size);
     border-radius: 0 0 10px 10px;
 }
+
+.listing{
+    padding: 50px 80px;
+}
+
+.listingSectionTitle{
+    font-size: var(--subtitle-size);
+    color: var(--text-dark-primary);
+}

@@ -44,7 +44,9 @@ export default function Home() {
                 <button className="searchSwitch">Procurar por Características</button>
             </section>
             <section className="listing">
-                
+                <section className="listingSection">
+                    <h2 className="listingSectionTitle">Recentes</h2>
+                </section>
             </section>
         </main>
     );
