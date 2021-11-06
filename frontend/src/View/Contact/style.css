@@ -12,10 +12,38 @@
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-    .presentationSection{
-        background-color: #00d9828a;
-        height: 100vh;
+    article{
+        padding-top: 53px;
     }
+    .presentationSection{
+        background-color: var(--secondary-color);
+        height: 500px;
+        width: 100%;
+    }
+
+    .leftPresentation{
+        float: left;
+        width: 50%;
+    }
+
+    .rightPresentation{
+        float: right;
+        width: 50%;
+    }
+
+    .aboutTitle{
+        color: white;
+        font-size: var(--title-size);
+        margin-top: 50px;
+        font-weight: 600;
+    }
+
+    .aboutSubtitle{
+        font-size: var(--subtitle-size);
+        color: white;
+        font-weight: 400;
+    }
+
     .historySection{
         padding: 50px 80px 50px 80px;
     }
