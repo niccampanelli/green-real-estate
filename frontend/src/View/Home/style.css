@@ -51,10 +51,12 @@
 }
 
 .listing{
-    padding: 50px 80px;
+    padding: 50px 0;
 }
 
 .listingSectionTitle{
+    padding: 0 80px;
+    margin-bottom: 20px;
     font-size: var(--subtitle-size);
     color: var(--text-dark-primary);
 }
