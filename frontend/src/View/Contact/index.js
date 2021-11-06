@@ -6,7 +6,14 @@ export default function Contact() {
         <main>
             <article>
                 <section className="presentationSection">
-                    <h1>Sobre nós</h1>
+                    <div className="leftPresentation">
+
+                    </div>
+
+                    <div className="rightPresentation">
+                        <h1 className="aboutTitle">Sobre nós</h1>
+                        <p className="aboutSubtitle">Voluptate non nostrud aute commodo nisi Lorem proident nisi reprehenderit voluptate.</p>
+                    </div>
                 </section>
                 <section className="historySection">
                     <h2>Nossa história</h2>
