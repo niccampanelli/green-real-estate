@@ -28,7 +28,7 @@ export default function Footer() {
                 </div>
             </nav>
             <p>© 2021 In adipisicing tempor nostrud occaecat ipsum commodo</p>
-            <p>Desenvolvido por <a href="https://mkstudio.herokuapp.com/"><img alt="MK STUDIO"/></a></p>
+            <p>Desenvolvido por <a href="https://mkstudio.herokuapp.com/"><img className="mkLogo" src="https://raw.githubusercontent.com/niccampanelli/onixautosocorro/main/public/images/mk_logo1.svg?token=ALQGFQD4QIE7MIDUML5U73TBQYUGA" alt="MK STUDIO"/></a></p>
         </footer>
     );
 }

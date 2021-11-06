@@ -6,12 +6,10 @@ export default function Header(){
 
     const history = useHistory();
 
-    
-
     return(
             
             <header>
-                <img alt="Green Real State"/>
+                <img className="logoHeader" alt="Green Real State" onClick={() => history.push('/')}/>
 
                 <nav className="navigation">
                     <ul className="navList">

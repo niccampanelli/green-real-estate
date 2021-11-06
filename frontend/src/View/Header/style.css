@@ -21,6 +21,10 @@
         padding-top: 17px;
     }
 
+    .logoHeader{
+        cursor: pointer;
+    }
+
     .navigation{
         display: initial;
         width: 100%;

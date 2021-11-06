@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import Footer from '../Footer';
 import Header from '../Header';
+import Imagem1 from '../../Assets/img1-small.jpg'
 import './style.css';
 
 export default function Contact() {
@@ -29,7 +30,7 @@ export default function Contact() {
                         </section>
                         <section className="purposeSection">
                             <div className="purposeLeft">
-                                <img alt="Ilustração"/>
+                                <img src={Imagem1} className="purposeImg" alt="Ilustração"/>
                             </div>
                             <div className="purposeRight">
                                 <h2 className="purposeSubtitle">Nosso propósito</h2>

@@ -15,6 +15,7 @@
     article{
         padding-top: 53px;
         padding-bottom: 53px;
+        color: var(--text-dark-primary);
     }
 
     .presentationSection{
@@ -87,6 +88,11 @@
     .purposeRight{
         float: right;
         width: 50%;
+    }
+
+    .purposeImg{
+        width: 90%;
+        border-radius: 10px 10px 10px 0px;
     }
 
     .opinionSection{
