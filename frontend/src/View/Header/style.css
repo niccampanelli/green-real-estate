@@ -16,6 +16,7 @@
         background-color: var(--primary-color);
         height: 53px;
         color: #ffffff;
+        padding-top: 17px;
     }
 
     .navigation{
