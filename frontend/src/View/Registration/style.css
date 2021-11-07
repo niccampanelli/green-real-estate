@@ -1,0 +1,161 @@
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .registrationArticle{
+        padding-top: 53px;
+        padding-bottom: 53px;
+        color: var(--text-dark-primary);
+        background-color: var(--secondary-color);
+    }
+
+    .registrationSection{
+        
+        height: 500px;
+        width: 100%;
+    }
+
+    .registrationTitle{
+        color: var(--text-light-primary);
+        font-size: var(--title-size);
+        font-weight: 600;
+    }
+
+    .leftRegistration{
+        padding-top: 120px;
+        width: 50%;
+        float: left;
+        padding-left: 80px;
+    }
+
+    .rightRegistration{
+        width: 50%;
+        float: right;
+    }
+
+    .registrationSubtitle{
+        font-size: var(--subtitle-size);
+        color: white;
+        font-weight: 400;
+    }
+
+    .formSection{
+        border-radius: 50px 50px 0 0;
+        background-color: var(--background-default);
+        height: 1200px;
+        padding: 50px 80px 50px 80px;
+    }
+
+    .formSubtitle{
+        font-size: var(--subtitle-size);
+        margin-bottom: 12px;
+    }
+
+    .formDescription{
+        font-size: var(--paragraph-size);
+    }
+
+    .formLeft{
+        float: left;
+        width: 50%;
+    }
+
+    .formRight{
+        float: right;
+        width: 50%;
+    }
+
+    .registrationForm{
+        margin: 50px 0 0 0;
+        
+    }
+
+    .registrationInput{
+        display: block;
+        color: var(--text-dark-primary);
+        background-color: var(--background-default);
+        border-color: var(--quaternary-color);
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 10px;
+        width: 400px;
+        height: 45px;
+        font-size: var(--paragraph-size);
+        padding: 0 15px;
+    }
+
+    .registrationInputNumber{
+        display: block;
+        color: var(--text-dark-primary);
+        background-color: var(--background-default);
+        border-color: var(--quaternary-color);
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 10px;
+        width: 86px;
+        height: 45px;
+        font-size: var(--paragraph-size);
+        padding: 0 15px;
+    }
+
+    .registrationDropdown{
+        display: block;
+        color: var(--text-dark-primary);
+        background-color: var(--background-default);
+        border-color: var(--quaternary-color);
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 10px;
+        width: 400px;
+        height: 45px;
+        font-size: var(--paragraph-size);
+        padding: 0 15px;
+    }
+
+    .registrationOptionDropdown:checked{
+        background-color: var(--primary-color);
+    }
+
+    .registrationOptionDropdown:hover{
+        background-color: var(--quaternary-color);
+    }
+
+    .registrationTextArea{
+        display: block;
+        color: var(--text-dark-primary);
+        background-color: var(--background-default);
+        border-color: var(--quaternary-color);
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 10px;
+        width: 400px;
+        height: 200px;
+        font-size: var(--paragraph-size);
+        padding: 15px 15px;
+    }
+    .formAddress{
+        display: block;
+    }
+
+    .formArea{
+        display: block;
+    }
+
+    .formType{
+        display: block;
+    }
+
+    .formObservation{
+        display: block;
+    }
+}
