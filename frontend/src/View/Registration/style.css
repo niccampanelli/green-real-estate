@@ -14,13 +14,11 @@
 @media only screen and (min-width: 1200px) {
     .registrationArticle{
         padding-top: 53px;
-        padding-bottom: 53px;
         color: var(--text-dark-primary);
         background-color: var(--secondary-color);
     }
 
     .registrationSection{
-        
         height: 500px;
         width: 100%;
     }
@@ -52,7 +50,9 @@
     .formSection{
         border-radius: 50px 50px 0 0;
         background-color: var(--background-default);
-        height: 1200px;
+        clear: both;
+        display: table;
+        width: 100%;
         padding: 50px 80px 50px 80px;
     }
 
@@ -76,8 +76,11 @@
     }
 
     .registrationForm{
+        padding: 50px;
         margin: 50px 0 0 0;
-        
+        border-radius: 10px;
+        -webkit-box-shadow: 0 0 12px 0 rgb(0 0 0 / 10%);
+        box-shadow: 0 0 12px 0 rgb(0 0 0 / 10%);
     }
 
     .registrationInput{
@@ -92,6 +95,20 @@
         height: 45px;
         font-size: var(--paragraph-size);
         padding: 0 15px;
+        margin-top: 3px;
+        margin-bottom: 12px;
+    }
+
+    .registrationInput::placeholder{
+        color: #b7b7b7;
+    }
+
+    .registrationInput:-ms-input-placeholder{
+        color: #b7b7b7;
+    }
+
+    .registrationInput::-ms-input-placeholder{
+        color: #b7b7b7;
     }
 
     .registrationInputNumber{
@@ -106,6 +123,20 @@
         height: 45px;
         font-size: var(--paragraph-size);
         padding: 0 15px;
+        margin-top: 3px;
+        margin-bottom: 12px;
+    }
+
+    .registrationInputNumber::placeholder{
+        color: #b7b7b7;
+    }
+
+    .registrationInputNumber:-ms-input-placeholder{
+        color: #b7b7b7;
+    }
+
+    .registrationInputNumber::-ms-input-placeholder{
+        color: #b7b7b7;
     }
 
     .registrationDropdown{
@@ -120,6 +151,8 @@
         height: 45px;
         font-size: var(--paragraph-size);
         padding: 0 15px;
+        margin-top: 3px;
+        margin-bottom: 12px;
     }
 
     .registrationOptionDropdown:checked{
@@ -142,20 +175,166 @@
         height: 200px;
         font-size: var(--paragraph-size);
         padding: 15px 15px;
+        margin-top: 3px;
+        margin-bottom: 12px;
+        resize: none;
     }
+
+    .registrationTextArea::placeholder{
+        color: #b7b7b7;
+    }
+
+    .registrationTextArea:-ms-input-placeholder{
+        color: #b7b7b7;
+    }
+
+    .registrationTextArea::-ms-input-placeholder{
+        color: #b7b7b7;
+    }
+
+    .registrationInputCurrency{
+        display: block;
+        color: var(--text-dark-primary);
+        background-color: var(--background-default);
+        border-color: var(--quaternary-color);
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 10px;
+        width: 170px;
+        height: 45px;
+        font-size: var(--paragraph-size);
+        padding: 0 15px;
+        margin-top: 3px;
+        margin-bottom: 12px;
+    }
+
+    .registrationInputCurrency::placeholder{
+        color: #b7b7b7;
+    }
+
+    .registrationInputCurrency:-ms-input-placeholder{
+        color: #b7b7b7;
+    }
+
+    .registrationInputCurrency::-ms-input-placeholder{
+        color: #b7b7b7;
+    }
+
     .formAddress{
         display: block;
+        margin-bottom: 50px;
     }
 
     .formArea{
         display: block;
+        margin-bottom: 170px;
+        width: 100%;
+    }
+
+    .formAreaInputContainer{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .formAreaInputContainerMeasure{
+        margin-bottom: 8px;
+        margin-left: 3px;
+    }
+
+    .formAreaLeft{
+        width: 50%;
+        float: left;
+    }
+
+    .formAreaRight{
+        width: 50%;
+        float: right;
     }
 
     .formType{
         display: block;
+        margin-bottom: 50px;
+    }
+
+    .formValue{
+        display: block;
+        margin-bottom: 50px;
+    }
+
+    .formValueInputContainer{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    .formValueInputContainerMeasure{
+        margin-bottom: 8px;
+        margin-left: 3px;
+    }
+
+    .formInfos{
+        display: block;
+        margin-bottom: 50px;
     }
 
     .formObservation{
         display: block;
     }
+
+    .registrationFormBtn{
+        width: 500px;
+        background-color: var(--terciary-color);
+        color: var(--primary-color);
+        height: 40px;
+        font-size: var(--paragraph-size);
+        border-radius: 10px;
+        margin-top: 30px;
+        cursor: pointer;
+    }
+
+    .purposeOptionsContainer{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    .purposeOptionsLeft{
+        float: left;
+        width: 50%;
+    }
+
+    .purposeOptionsRight{
+        float: right;
+        width: 50%;
+    }
+
+    .purposeOptionSale{
+        cursor: pointer;
+    }
+
+    .purposeOptionRent{
+        cursor: pointer;
+    }
+
+    .purposeTitleContainer{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    .purposeTitle{
+        
+    }
+
+    .registrationContactSection{
+        width: 100%;
+        clear: both;
+        display: table;
+        width: 100%;
+        padding: 50px 80px 50px 80px;
+    }
+
 }

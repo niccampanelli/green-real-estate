@@ -9,7 +9,7 @@ export default function Contact() {
         <Fragment>
             <Header/>
                 <main>
-                    <article>
+                    <article className="contactArticle">
                         <section className="presentationSection">
                             <div className="leftPresentation">
                                 <img alt="Ilustração" />

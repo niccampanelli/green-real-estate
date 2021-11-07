@@ -15,7 +15,7 @@ export default function Header(){
                     <ul className="navList">
                         <li className="listItem">Alugar um imóvel</li>
                         <li className="listItem">Comprar um imóvel</li>
-                        <li className="listItem">Cadastrar um imóvel</li>
+                        <li className="listItem" onClick={() => history.push('/registro')}>Cadastrar um imóvel</li>
                         <li className="listItem" onClick={() => history.push('/sobre')}>Sobre nós</li>
                     </ul>
                 </nav>

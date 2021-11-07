@@ -12,7 +12,7 @@
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-    article{
+    .contactArticle{
         padding-top: 53px;
         padding-bottom: 53px;
         color: var(--text-dark-primary);
@@ -36,7 +36,7 @@
     }
 
     .aboutTitle{
-        color: white;
+        color: var(--text-light-primary);
         font-size: var(--title-size);
         margin-top: 120px;
         font-weight: 600;
