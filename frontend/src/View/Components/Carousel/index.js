@@ -1,33 +1,70 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import NoImageDefault from "../../../Assets/NoImageDefault.svg";
 import "./style.css";
 
 export default function Carousel(props) {
+
+    const elementsToDisplay = props.items;
+    const carouselViewport = useRef();
+    const carouselElements = useRef([]);
+    var carouselPosition = 0;
+    var carouselMaxScroll = 0;
+
+    useEffect(() => {
+        carouselMaxScroll = carouselViewport.current.scrollWidth - carouselViewport.current.clientWidth;
+    }, [])
+
+    function slideCarousel(direction){
+        if(direction){
+            if(direction === "right"){
+                if(carouselPosition < elementsToDisplay.length && carouselViewport.current.scrollLeft < carouselMaxScroll){
+                    carouselPosition += 1;
+    
+                    carouselViewport.current.scrollTo({
+                        top: 0, 
+                        left: (carouselElements.current[carouselPosition].offsetLeft) - 90,
+                        behavior: "smooth"});
+                }
+            } else if(direction === "left" && carouselPosition > 0){
+                carouselPosition -= 1;
+
+                carouselViewport.current.scrollTo({
+                    top: 0, 
+                    left: (carouselElements.current[carouselPosition].offsetLeft) - 90, 
+                    behavior: "smooth"})
+            }
+        }
+    }
+
     return(
         <div className="carouselWrap">
             <div className="carouselDirection">
-                <button className="carouselDirectionButton">A</button>
+                <button onClick={() => slideCarousel("left")} className="carouselDirectionButton">
+                    <FaChevronLeft size="50%"/>
+                </button>
             </div>
-            <div className="carouselViewport">
+            <div ref={carouselViewport} className="carouselViewport">
                 <ul className="carouselContent">
-                    <li className="carouselItem">
-                        <span>Imóvel para alugar</span>
-                    </li>
-                    <li className="carouselItem">
-                        <span>Imóvel para alugar</span>
-                    </li>
-                    <li className="carouselItem">
-                        <span>Imóvel para alugar</span>
-                    </li>
-                    <li className="carouselItem">
-                        <span>Imóvel para alugar</span>
-                    </li>
-                    <li className="carouselItem">
-                        <span>Imóvel para alugar</span>
-                    </li>
+                    { elementsToDisplay ? 
+                        ( elementsToDisplay.map((elem, i) => (
+                            <li key={i} ref={thisElem => carouselElements.current.push(thisElem)} className="carouselItem">
+                                <img className="carouselItemImage" alt="Sem Foto" src={NoImageDefault}/>
+                                <h3 className="carouselItemTitle">{elem.district}</h3>
+                                <span className="carouselItemSubtitle">{elem.type} - {elem.purpose}</span>
+                                <h4 className="carouselItemPrice">R$ {elem.totalPrice/100}</h4>
+                                <span className="carouselItemDetail">Clique para Detalhes</span>
+                            </li>
+                        ))) 
+                        :
+                        ""
+                    }
                 </ul>
             </div>
             <div className="carouselDirection">
-                <button className="carouselDirectionButton">B</button>
+                <button onClick={() => slideCarousel("right")} className="carouselDirectionButton">
+                    <FaChevronRight size="50%"/>
+                </button>
             </div>
         </div>
     );
