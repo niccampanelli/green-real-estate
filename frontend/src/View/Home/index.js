@@ -13,6 +13,79 @@ export default function Home() {
     const typewriterSpeed = 100;
     const textList = ["Casa com dois quartos para alugar em SP", "Apartamento com suíte a venda" , "Imóvel com vaga de garagem para locação", "Apartamento mobiliado zona leste"];
 
+    const dummyData = [
+        {
+            reference: 1052,
+            district: "Artur Alvim",
+            type: "Casa",
+            purpose: "Venda",
+            totalPrice: 25000000
+        },
+        {
+            reference: 1053,
+            district: "Vila Ré",
+            type: "Apartamento",
+            purpose: "Venda",
+            totalPrice: 28000000
+        },
+        {
+            reference: 1054,
+            district: "Vila Guilhermina",
+            type: "Apartamento",
+            purpose: "Aluguel",
+            totalPrice: 150000
+        },
+        {
+            reference: 1055,
+            district: "Patriarca",
+            type: "Casa",
+            purpose: "Venda",
+            totalPrice: 23600000
+        },
+        {
+            reference: 1056,
+            district: "Artur Alvim",
+            type: "Casa",
+            purpose: "Venda",
+            totalPrice: 19000000
+        },
+        {
+            reference: 1057,
+            district: "Penha",
+            type: "Apartamento",
+            purpose: "Aluguel",
+            totalPrice: 195000
+        },
+        {
+            reference: 1058,
+            district: "Cangaíba",
+            type: "Apartamento",
+            purpose: "Venda",
+            totalPrice: 22000000
+        },
+        {
+            reference: 1059,
+            district: "Tatuapé",
+            type: "Apartamento",
+            purpose: "Venda",
+            totalPrice: 34500000
+        },
+        {
+            reference: 1060,
+            district: "Vila Matilde",
+            type: "Apartamento",
+            purpose: "Aluguel",
+            totalPrice: 200000
+        },
+        {
+            reference: 1061,
+            district: "Patriarca",
+            type: "Casa",
+            purpose: "Venda",
+            totalPrice: 25000000
+        }
+    ]
+
     useEffect(() => {
         typewriter();
     }, [searchInput]);
@@ -51,7 +124,7 @@ export default function Home() {
                 <section className="listing">
                     <section className="listingSection">
                         <h2 className="listingSectionTitle">Recentes</h2>
-                        <Carousel/>
+                        <Carousel items={dummyData}/>
                     </section>
                 </section>
             </main>
