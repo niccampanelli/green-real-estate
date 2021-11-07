@@ -4,6 +4,7 @@ import Footer from "../Footer";
 import Carousel from "../Components/Carousel";
 import {  } from "react-icons/"
 import "./style.css";
+import { FaSearch } from "react-icons/fa";
 
 export default function Home() {
     
@@ -117,7 +118,7 @@ export default function Home() {
                 <section className="landing">
                     <form className="landingSearch">
                         <input type="search" className="searchInput" ref={searchInput}/>
-                        <button type="submit" className="searchInputButton">enviar</button>
+                        <button type="submit" className="searchInputButton"><FaSearch size="50%"/></button>
                     </form>
                     <button className="searchSwitch">Procurar por Características</button>
                 </section>
