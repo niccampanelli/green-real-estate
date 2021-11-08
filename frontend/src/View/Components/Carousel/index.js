@@ -1,9 +1,12 @@
 import React, { useEffect, useRef } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { useHistory } from "react-router-dom";
 import NoImageDefault from "../../../Assets/NoImageDefault.svg";
 import "./style.css";
 
 export default function Carousel(props) {
+
+    const history = useHistory();
 
     const elementsToDisplay = props.items;
     const carouselViewport = useRef();
@@ -48,7 +51,7 @@ export default function Carousel(props) {
                 <ul className="carouselContent">
                     { elementsToDisplay ? 
                         ( elementsToDisplay.map((elem, i) => (
-                            <li key={i} ref={thisElem => carouselElements.current.push(thisElem)} className="carouselItem">
+                            <li key={i} ref={thisElem => carouselElements.current.push(thisElem)} onClick={() => history.push("/imovel")} className="carouselItem">
                                 <img className="carouselItemImage" alt="Sem Foto" src={NoImageDefault}/>
                                 <h3 className="carouselItemTitle">{elem.district}</h3>
                                 <span className="carouselItemSubtitle">{elem.type} - {elem.purpose}</span>
