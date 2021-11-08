@@ -83,34 +83,6 @@
         box-shadow: 0 0 12px 0 rgb(0 0 0 / 10%);
     }
 
-    .registrationInput{
-        display: block;
-        color: var(--text-dark-primary);
-        background-color: var(--background-default);
-        border-color: var(--quaternary-color);
-        border-style: solid;
-        border-width: 1px;
-        border-radius: 10px;
-        width: 400px;
-        height: 45px;
-        font-size: var(--paragraph-size);
-        padding: 0 15px;
-        margin-top: 3px;
-        margin-bottom: 12px;
-    }
-
-    .registrationInput::placeholder{
-        color: #b7b7b7;
-    }
-
-    .registrationInput:-ms-input-placeholder{
-        color: #b7b7b7;
-    }
-
-    .registrationInput::-ms-input-placeholder{
-        color: #b7b7b7;
-    }
-
     .registrationInputNumber{
         display: block;
         color: var(--text-dark-primary);
@@ -137,30 +109,6 @@
 
     .registrationInputNumber::-ms-input-placeholder{
         color: #b7b7b7;
-    }
-
-    .registrationDropdown{
-        display: block;
-        color: var(--text-dark-primary);
-        background-color: var(--background-default);
-        border-color: var(--quaternary-color);
-        border-style: solid;
-        border-width: 1px;
-        border-radius: 10px;
-        width: 400px;
-        height: 45px;
-        font-size: var(--paragraph-size);
-        padding: 0 15px;
-        margin-top: 3px;
-        margin-bottom: 12px;
-    }
-
-    .registrationOptionDropdown:checked{
-        background-color: var(--primary-color);
-    }
-
-    .registrationOptionDropdown:hover{
-        background-color: var(--quaternary-color);
     }
 
     .registrationTextArea{

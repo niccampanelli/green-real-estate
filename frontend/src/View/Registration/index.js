@@ -36,57 +36,57 @@ export default function Registration() {
                                         <form className="registrationForm">
                                         <div className="formAddress">
                                             <label>Logradouro</label>
-                                            <input className="registrationInput" placeholder="Exemplo: Avenida Brasil" type="text" maxLength="50"/>
+                                            <input className="defaultInput" placeholder="Exemplo: Avenida Brasil" type="text" maxLength="50"/>
                                             <label>Número</label>
-                                            <input className="registrationInputNumber" placeholder="12" type="text" maxLength="5"/>
+                                            <input className="defaultInputNumber" placeholder="12" type="text" maxLength="5"/>
                                             <label>Complemento</label>
-                                            <input className="registrationInput" placeholder="Apto 505" type="text" maxLength="20"/>
+                                            <input className="defaultInput" placeholder="Apto 505" type="text" maxLength="20"/>
                                             <label>CEP</label>
-                                            <input className="registrationInput" placeholder="12345678" type="text" maxLength="20"/>
+                                            <input className="defaultInput" placeholder="12345678" type="text" maxLength="20"/>
                                             <label>Bairro</label>
-                                            <input className="registrationInput" placeholder="Mooca" type="text" maxLength="20"/>
+                                            <input className="defaultInput" placeholder="Mooca" type="text" maxLength="20"/>
                                             <label>Cidade</label>
-                                            <input className="registrationInput" placeholder="São Paulo" type="text" maxLength="20"/>
+                                            <input className="defaultInput" placeholder="São Paulo" type="text" maxLength="20"/>
                                             <label>Estado</label>
-                                            <select className="registrationDropdown">
-                                                <option className="registrationOptionDropdown" value="AC">Acre</option>
-                                                <option className="registrationOptionDropdown" value="AL">Alagoas</option>
-                                                <option className="registrationOptionDropdown" value="AP">Amapá</option>
-                                                <option className="registrationOptionDropdown" value="AM">Amazonas</option>
-                                                <option className="registrationOptionDropdown" value="BA">Bahia</option>
-                                                <option className="registrationOptionDropdown" value="CE">Ceará</option>
-                                                <option className="registrationOptionDropdown" value="DF">Distrito Federal</option>
-                                                <option className="registrationOptionDropdown" value="ES">Espirito Santo</option>
-                                                <option className="registrationOptionDropdown" value="GO">Goiás</option>
-                                                <option className="registrationOptionDropdown" value="MA">Maranhão</option>
-                                                <option className="registrationOptionDropdown" value="MT">Mato Grosso</option>
-                                                <option className="registrationOptionDropdown" value="MS">Mato Grosso do Sul</option>
-                                                <option className="registrationOptionDropdown" value="MG">Minas Gerais</option>
-                                                <option className="registrationOptionDropdown" value="PA">Pará</option>
-                                                <option className="registrationOptionDropdown" value="PB">Paraíba</option>
-                                                <option className="registrationOptionDropdown" value="PR">Paraná</option>
-                                                <option className="registrationOptionDropdown" value="PE">Pernambuco</option>
-                                                <option className="registrationOptionDropdown" value="PI">Piauí</option>
-                                                <option className="registrationOptionDropdown" value="RJ">Rio de Janeiro</option>
-                                                <option className="registrationOptionDropdown" value="RN">Rio Grande do Norte</option>
-                                                <option className="registrationOptionDropdown" value="RS">Rio Grande do Sul</option>
-                                                <option className="registrationOptionDropdown" value="RO">Rondônia</option>
-                                                <option className="registrationOptionDropdown" value="RR">Roraima</option>
-                                                <option className="registrationOptionDropdown" value="SC">Santa Catarina</option>
-                                                <option className="registrationOptionDropdown" value="SP">São Paulo</option>
-                                                <option className="registrationOptionDropdown" value="SE">Sergipe</option>
-                                                <option className="registrationOptionDropdown" value="TO">Tocantins</option>
+                                            <select className="defaultDropdown">
+                                                <option className="defaultDropdownOption" value="AC">Acre</option>
+                                                <option className="defaultDropdownOption" value="AL">Alagoas</option>
+                                                <option className="defaultDropdownOption" value="AP">Amapá</option>
+                                                <option className="defaultDropdownOption" value="AM">Amazonas</option>
+                                                <option className="defaultDropdownOption" value="BA">Bahia</option>
+                                                <option className="defaultDropdownOption" value="CE">Ceará</option>
+                                                <option className="defaultDropdownOption" value="DF">Distrito Federal</option>
+                                                <option className="defaultDropdownOption" value="ES">Espirito Santo</option>
+                                                <option className="defaultDropdownOption" value="GO">Goiás</option>
+                                                <option className="defaultDropdownOption" value="MA">Maranhão</option>
+                                                <option className="defaultDropdownOption" value="MT">Mato Grosso</option>
+                                                <option className="defaultDropdownOption" value="MS">Mato Grosso do Sul</option>
+                                                <option className="defaultDropdownOption" value="MG">Minas Gerais</option>
+                                                <option className="defaultDropdownOption" value="PA">Pará</option>
+                                                <option className="defaultDropdownOption" value="PB">Paraíba</option>
+                                                <option className="defaultDropdownOption" value="PR">Paraná</option>
+                                                <option className="defaultDropdownOption" value="PE">Pernambuco</option>
+                                                <option className="defaultDropdownOption" value="PI">Piauí</option>
+                                                <option className="defaultDropdownOption" value="RJ">Rio de Janeiro</option>
+                                                <option className="defaultDropdownOption" value="RN">Rio Grande do Norte</option>
+                                                <option className="defaultDropdownOption" value="RS">Rio Grande do Sul</option>
+                                                <option className="defaultDropdownOption" value="RO">Rondônia</option>
+                                                <option className="defaultDropdownOption" value="RR">Roraima</option>
+                                                <option className="defaultDropdownOption" value="SC">Santa Catarina</option>
+                                                <option className="defaultDropdownOption" value="SP">São Paulo</option>
+                                                <option className="defaultDropdownOption" value="SE">Sergipe</option>
+                                                <option className="defaultDropdownOption" value="TO">Tocantins</option>
                                             </select>
                                         </div>
 
                                         <div className="formType">
                                             <label>Tipo do imóvel</label>
-                                            <select className="registrationDropdown" onChange={e => setTypeImmobile(e.target.value)}>
-                                                <option className="registrationOptionDropdown" value="casa" checked>Casa</option>
-                                                <option className="registrationOptionDropdown" value="apartamento">Apartamento</option>
-                                                <option className="registrationOptionDropdown" value="terreno">Terreno</option>
-                                                <option className="registrationOptionDropdown" value="comercial">Comercial</option>
-                                                <option className="registrationOptionDropdown" value="galpão">Galpão</option>
+                                            <select className="defaultDropdown" onChange={e => setTypeImmobile(e.target.value)}>
+                                                <option className="defaultDropdownOption" value="casa" checked>Casa</option>
+                                                <option className="defaultDropdownOption" value="apartamento">Apartamento</option>
+                                                <option className="defaultDropdownOption" value="terreno">Terreno</option>
+                                                <option className="defaultDropdownOption" value="comercial">Comercial</option>
+                                                <option className="defaultDropdownOption" value="galpão">Galpão</option>
                                             </select>
                                         </div>
 
@@ -94,13 +94,13 @@ export default function Registration() {
                                             <div className="formAreaLeft">
                                                 <label>Área do terreno</label>
                                                 <div className="formAreaInputContainer">
-                                                    <input className="registrationInputNumber" placeholder="400" type="text" maxLength="70"/><span className="formAreaInputContainerMeasure">m²</span>
+                                                    <input className="defaultInputNumber" placeholder="400" type="text" maxLength="70"/><span className="formAreaInputContainerMeasure">m²</span>
                                                 </div>
                                             </div>
                                             <div className="formAreaRight">
                                                 <label>Área do imóvel</label>
                                                 <div className="formAreaInputContainer">
-                                                    <input className="registrationInputNumber" placeholder="120" type="text" maxLength="70"/><span className="formAreaInputContainerMeasure">m²</span>
+                                                    <input className="defaultInputNumber" placeholder="120" type="text" maxLength="70"/><span className="formAreaInputContainerMeasure">m²</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -110,11 +110,11 @@ export default function Registration() {
                                             (
                                                 <div className="formInfos">
                                                     <label>Número de vagas</label>
-                                                    <input className="registrationInputNumber" placeholder="2" type="text" maxLength="2"/>
+                                                    <input className="defaultInputNumber" placeholder="2" type="text" maxLength="2"/>
                                                     <label>Número de banheiros</label>
-                                                    <input className="registrationInputNumber" placeholder="3" type="text" maxLength="2"/>
+                                                    <input className="defaultInputNumber" placeholder="3" type="text" maxLength="2"/>
                                                     <label>Número de dormitórios</label>
-                                                    <input className="registrationInputNumber" placeholder="2" type="text" maxLength="2"/>
+                                                    <input className="defaultInputNumber" placeholder="2" type="text" maxLength="2"/>
                                                 </div>
                                             )
                                             :
@@ -124,7 +124,7 @@ export default function Registration() {
                                         <div className="formValue">
                                             <label>Valor do aluguel</label>
                                             <div className="formValueInputContainer">
-                                                <input className="registrationInputCurrency" placeholder="150000" type="text" maxLength="70"/>
+                                                <input className="defaultInputCurrency" placeholder="150000" type="text" maxLength="70"/>
                                             </div>
                                         </div>
                                         
@@ -139,57 +139,57 @@ export default function Registration() {
                                     <form className="registrationForm">
                                     <div className="formAddress">
                                         <label>Logradouro</label>
-                                        <input className="registrationInput" placeholder="Exemplo: Avenida Brasil" type="text" maxLength="50"/>
+                                        <input className="defaultInput" placeholder="Exemplo: Avenida Brasil" type="text" maxLength="50"/>
                                         <label>Número</label>
-                                        <input className="registrationInputNumber" placeholder="12" type="text" maxLength="5"/>
+                                        <input className="defaultInputNumber" placeholder="12" type="text" maxLength="5"/>
                                         <label>Complemento</label>
-                                        <input className="registrationInput" placeholder="Apto 505" type="text" maxLength="20"/>
+                                        <input className="defaultInput" placeholder="Apto 505" type="text" maxLength="20"/>
                                         <label>CEP</label>
-                                        <input className="registrationInput" placeholder="12345678" type="text" maxLength="20"/>
+                                        <input className="defaultInput" placeholder="12345678" type="text" maxLength="20"/>
                                         <label>Bairro</label>
-                                        <input className="registrationInput" placeholder="Mooca" type="text" maxLength="20"/>
+                                        <input className="defaultInput" placeholder="Mooca" type="text" maxLength="20"/>
                                         <label>Cidade</label>
-                                        <input className="registrationInput" placeholder="São Paulo" type="text" maxLength="20"/>
+                                        <input className="defaultInput" placeholder="São Paulo" type="text" maxLength="20"/>
                                         <label>Estado</label>
-                                        <select className="registrationDropdown">
-                                            <option className="registrationOptionDropdown" value="AC">Acre</option>
-                                            <option className="registrationOptionDropdown" value="AL">Alagoas</option>
-                                            <option className="registrationOptionDropdown" value="AP">Amapá</option>
-                                            <option className="registrationOptionDropdown" value="AM">Amazonas</option>
-                                            <option className="registrationOptionDropdown" value="BA">Bahia</option>
-                                            <option className="registrationOptionDropdown" value="CE">Ceará</option>
-                                            <option className="registrationOptionDropdown" value="DF">Distrito Federal</option>
-                                            <option className="registrationOptionDropdown" value="ES">Espirito Santo</option>
-                                            <option className="registrationOptionDropdown" value="GO">Goiás</option>
-                                            <option className="registrationOptionDropdown" value="MA">Maranhão</option>
-                                            <option className="registrationOptionDropdown" value="MT">Mato Grosso</option>
-                                            <option className="registrationOptionDropdown" value="MS">Mato Grosso do Sul</option>
-                                            <option className="registrationOptionDropdown" value="MG">Minas Gerais</option>
-                                            <option className="registrationOptionDropdown" value="PA">Pará</option>
-                                            <option className="registrationOptionDropdown" value="PB">Paraíba</option>
-                                            <option className="registrationOptionDropdown" value="PR">Paraná</option>
-                                            <option className="registrationOptionDropdown" value="PE">Pernambuco</option>
-                                            <option className="registrationOptionDropdown" value="PI">Piauí</option>
-                                            <option className="registrationOptionDropdown" value="RJ">Rio de Janeiro</option>
-                                            <option className="registrationOptionDropdown" value="RN">Rio Grande do Norte</option>
-                                            <option className="registrationOptionDropdown" value="RS">Rio Grande do Sul</option>
-                                            <option className="registrationOptionDropdown" value="RO">Rondônia</option>
-                                            <option className="registrationOptionDropdown" value="RR">Roraima</option>
-                                            <option className="registrationOptionDropdown" value="SC">Santa Catarina</option>
-                                            <option className="registrationOptionDropdown" value="SP">São Paulo</option>
-                                            <option className="registrationOptionDropdown" value="SE">Sergipe</option>
-                                            <option className="registrationOptionDropdown" value="TO">Tocantins</option>
+                                        <select className="defaultDropdown">
+                                            <option className="defaultDropdownOption" value="AC">Acre</option>
+                                            <option className="defaultDropdownOption" value="AL">Alagoas</option>
+                                            <option className="defaultDropdownOption" value="AP">Amapá</option>
+                                            <option className="defaultDropdownOption" value="AM">Amazonas</option>
+                                            <option className="defaultDropdownOption" value="BA">Bahia</option>
+                                            <option className="defaultDropdownOption" value="CE">Ceará</option>
+                                            <option className="defaultDropdownOption" value="DF">Distrito Federal</option>
+                                            <option className="defaultDropdownOption" value="ES">Espirito Santo</option>
+                                            <option className="defaultDropdownOption" value="GO">Goiás</option>
+                                            <option className="defaultDropdownOption" value="MA">Maranhão</option>
+                                            <option className="defaultDropdownOption" value="MT">Mato Grosso</option>
+                                            <option className="defaultDropdownOption" value="MS">Mato Grosso do Sul</option>
+                                            <option className="defaultDropdownOption" value="MG">Minas Gerais</option>
+                                            <option className="defaultDropdownOption" value="PA">Pará</option>
+                                            <option className="defaultDropdownOption" value="PB">Paraíba</option>
+                                            <option className="defaultDropdownOption" value="PR">Paraná</option>
+                                            <option className="defaultDropdownOption" value="PE">Pernambuco</option>
+                                            <option className="defaultDropdownOption" value="PI">Piauí</option>
+                                            <option className="defaultDropdownOption" value="RJ">Rio de Janeiro</option>
+                                            <option className="defaultDropdownOption" value="RN">Rio Grande do Norte</option>
+                                            <option className="defaultDropdownOption" value="RS">Rio Grande do Sul</option>
+                                            <option className="defaultDropdownOption" value="RO">Rondônia</option>
+                                            <option className="defaultDropdownOption" value="RR">Roraima</option>
+                                            <option className="defaultDropdownOption" value="SC">Santa Catarina</option>
+                                            <option className="defaultDropdownOption" value="SP">São Paulo</option>
+                                            <option className="defaultDropdownOption" value="SE">Sergipe</option>
+                                            <option className="defaultDropdownOption" value="TO">Tocantins</option>
                                         </select>
                                     </div>
 
                                     <div className="formType">
                                             <label>Tipo do imóvel</label>
-                                            <select className="registrationDropdown" onChange={e => setTypeImmobile(e.target.value)}>
-                                                <option className="registrationOptionDropdown" value="casa" checked>Casa</option>
-                                                <option className="registrationOptionDropdown" value="apartamento">Apartamento</option>
-                                                <option className="registrationOptionDropdown" value="terreno">Terreno</option>
-                                                <option className="registrationOptionDropdown" value="comercial">Comercial</option>
-                                                <option className="registrationOptionDropdown" value="galpão">Galpão</option>
+                                            <select className="defaultDropdown" onChange={e => setTypeImmobile(e.target.value)}>
+                                                <option className="defaultDropdownOption" value="casa" checked>Casa</option>
+                                                <option className="defaultDropdownOption" value="apartamento">Apartamento</option>
+                                                <option className="defaultDropdownOption" value="terreno">Terreno</option>
+                                                <option className="defaultDropdownOption" value="comercial">Comercial</option>
+                                                <option className="defaultDropdownOption" value="galpão">Galpão</option>
                                             </select>
                                         </div>
 
@@ -197,13 +197,13 @@ export default function Registration() {
                                             <div className="formAreaLeft">
                                                 <label>Área do terreno</label>
                                                 <div className="formAreaInputContainer">
-                                                    <input className="registrationInputNumber" placeholder="400" type="text" maxLength="70"/><span className="formAreaInputContainerMeasure">m²</span>
+                                                    <input className="defaultInputNumber" placeholder="400" type="text" maxLength="70"/><span className="formAreaInputContainerMeasure">m²</span>
                                                 </div>
                                             </div>
                                             <div className="formAreaRight">
                                                 <label>Área do imóvel</label>
                                                 <div className="formAreaInputContainer">
-                                                    <input className="registrationInputNumber" placeholder="120" type="text" maxLength="70"/><span className="formAreaInputContainerMeasure">m²</span>
+                                                    <input className="defaultInputNumber" placeholder="120" type="text" maxLength="70"/><span className="formAreaInputContainerMeasure">m²</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -213,11 +213,11 @@ export default function Registration() {
                                             (
                                                 <div className="formInfos">
                                                     <label>Número de vagas</label>
-                                                    <input className="registrationInputNumber" placeholder="2" type="text" maxLength="2"/>
+                                                    <input className="defaultInputNumber" placeholder="2" type="text" maxLength="2"/>
                                                     <label>Número de banheiros</label>
-                                                    <input className="registrationInputNumber" placeholder="3" type="text" maxLength="2"/>
+                                                    <input className="defaultInputNumber" placeholder="3" type="text" maxLength="2"/>
                                                     <label>Número de dormitórios</label>
-                                                    <input className="registrationInputNumber" placeholder="2" type="text" maxLength="2"/>
+                                                    <input className="defaultInputNumber" placeholder="2" type="text" maxLength="2"/>
                                                 </div>
                                             )
                                             :
@@ -227,7 +227,7 @@ export default function Registration() {
                                     <div className="formValue">
                                         <label>Valor da venda</label>
                                         <div className="formValueInputContainer">
-                                            <input className="registrationInputCurrency" placeholder="150000" type="text" maxLength="70"/>
+                                            <input className="defaultInputCurrency" placeholder="150000" type="text" maxLength="70"/>
                                         </div>
                                     </div>
                                     
