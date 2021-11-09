@@ -89,13 +89,141 @@
     object-fit: cover;
 }
 
-.pictureCarouselItemPrice{
-    font-size: var(--subtitle-size);
-    margin-top: 20px;
-    color: var(--secondary-color);
+.fsPictureWrap{
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 4;
+    width: 100%;
+    height: 100%;
+    background-color: #000000dd;
+    display: flex;
+    flex-direction: column;
 }
 
-.pictureCarouselItemDetail{
-    opacity: 0;
+.fsPictureClose{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 30px;
+    height: 30px;
+    background-color: var(--primary-color);
+    color: var(--background-default);
+}
+
+.fsPicturePreview{
+    padding: 20px;
+    width: 100%;
+    height: calc(100% - 100px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.fsPicturePreviewImage{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.fsPictureCarouselWrap{
+    height: 100px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex: 1;
+}
+
+.fsPictureCarouselDirection{
+    position: absolute;
+    width: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+#leftfsPictureCarouselDirection{
+    left: 0;
+}
+
+#rightfsPictureCarouselDirection{
+    right: 0;
+}
+
+.fsPictureCarouselDirectionButton{
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    background-color: var(--terciary-color);
+    border-radius: 1000px;
+}
+
+.fsPictureCarouselDirectionButton svg{
+    fill: var(--primary-color);
+}
+
+.fsPictureCarouselDirectionButtonDisabled{
+    width: 50px;
+    height: 50px;
+    background-color: #dddddd;
+    border-radius: 1000px;
+}
+
+.fsPictureCarouselDirectionButtonDisabled svg{
+    fill: var(--text-dark-secondary);
+}
+
+.fsPictureCarouselViewport{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    overflow-x: scroll;
+    overflow-y: visible;
+}
+
+.fsPictureCarouselViewport::-webkit-scrollbar{
+    display: none;
+}
+
+.fsPictureCarouselViewport{
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.fsPictureCarouselContent{
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.fsPictureCarouselItem{
+    margin-left: 5px;
+    cursor: pointer;
+    width: auto;
+    height: 100px;
+    width: 100px;
+    border-radius: 10px;
+    color: var(--text-dark-primary);
+}
+
+.fsPictureCarouselItem:hover > .fsPictureCarouselItemDetail{
+    opacity: 1;
+}
+
+.fsPictureCarouselItem:hover > .fsPictureCarouselItemImage{
+    opacity: .5;
+}
+
+.fsPictureCarouselItemImage{
+    width: 100%;
+    height: 100%;
+    margin-bottom: 20px;
     transition: opacity .5s;
+    object-fit: cover;
 }
