@@ -73,19 +73,15 @@
     color: var(--text-dark-primary);
 }
 
-.pictureCarouselItem:hover > .pictureCarouselItemDetail{
-    opacity: 1;
-}
-
 .pictureCarouselItem:hover > .pictureCarouselItemImage{
-    opacity: .5;
+    filter: brightness(120%);
 }
 
 .pictureCarouselItemImage{
     width: 100%;
     height: 100%;
     margin-bottom: 20px;
-    transition: opacity .5s;
+    transition: filter .5s;
     object-fit: cover;
 }
 
@@ -212,18 +208,14 @@
     color: var(--text-dark-primary);
 }
 
-.fsPictureCarouselItem:hover > .fsPictureCarouselItemDetail{
-    opacity: 1;
-}
-
 .fsPictureCarouselItem:hover > .fsPictureCarouselItemImage{
-    opacity: .5;
+    filter: brightness(120%);
 }
 
 .fsPictureCarouselItemImage{
     width: 100%;
     height: 100%;
     margin-bottom: 20px;
-    transition: opacity .5s;
+    transition: filter .5s;
     object-fit: cover;
 }

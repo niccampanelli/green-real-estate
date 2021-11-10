@@ -20,47 +20,49 @@ export default function PictureCarousel(props) {
     var fsPictureCarouselMaxScroll = 0;
 
     useEffect(() => {
-        console.log("aa")
         pictureCarouselMaxScroll = pictureCarouselViewport.current.scrollWidth - pictureCarouselViewport.current.clientWidth;
     }, [])
 
     function slidePictureCarousel(direction){
         if(direction){
             if(direction === "right"){
-                if(pictureCarouselPosition < elementsToDisplay.length && pictureCarouselViewport.current.scrollLeft < pictureCarouselMaxScroll){
-                    pictureCarouselPosition += 1;
-    
+                if(pictureCarouselPosition < elementsToDisplay.length -1 && pictureCarouselViewport.current.scrollLeft < pictureCarouselMaxScroll){
+
+                    pictureCarouselPosition ++;
+
                     pictureCarouselViewport.current.scrollTo({
                         top: 0, 
                         left: (pictureCarouselElements.current[pictureCarouselPosition].offsetLeft),
-                        behavior: "smooth"});
+                        behavior: "smooth"
+                    });
                 }
             } else if(direction === "left" && pictureCarouselPosition > 0){
-                pictureCarouselPosition -= 1;
+                pictureCarouselPosition --;
 
                 pictureCarouselViewport.current.scrollTo({
                     top: 0, 
                     left: (pictureCarouselElements.current[pictureCarouselPosition].offsetLeft), 
-                    behavior: "smooth"})
+                    behavior: "smooth"
+                })
             }
         }
     }
 
     function slideFSPictureCarousel(direction){
-        console.log(fsPictureCarouselElements.current);
-
         if(direction){
             if(direction === "right"){
-                if(fsPictureCarouselPosition < elementsToDisplay.length && fsPictureCarouselViewport.current.scrollLeft < fsPictureCarouselMaxScroll){
-                    fsPictureCarouselPosition += 1;
+                if(fsPictureCarouselPosition < elementsToDisplay.length -1 && fsPictureCarouselViewport.current.scrollLeft < fsPictureCarouselMaxScroll){
+                    fsPictureCarouselPosition ++;
     
                     fsPictureCarouselViewport.current.scrollTo({
                         top: 0, 
                         left: (fsPictureCarouselElements.current[fsPictureCarouselPosition].offsetLeft),
                         behavior: "smooth"});
+
+                    console.log(fsPictureCarouselElements.current);
                 }
             } else if(direction === "left" && fsPictureCarouselPosition > 0){
-                fsPictureCarouselPosition -= 1;
+                fsPictureCarouselPosition --;
 
                 fsPictureCarouselViewport.current.scrollTo({
                     top: 0, 
@@ -68,12 +70,13 @@ export default function PictureCarousel(props) {
                     behavior: "smooth"})
             }
         }
+
+        console.log(fsPictureCarouselPosition + " - " + elementsToDisplay.length + " - " + fsPictureCarouselViewport.current.scrollLeft + " - " + fsPictureCarouselMaxScroll)
     }
 
     const FullscreenPictures = () => {
 
         useEffect(() => {
-            console.log(fsPictureCarouselPosition);
             fsPictureCarouselMaxScroll = fsPictureCarouselViewport.current.scrollWidth - fsPictureCarouselViewport.current.clientWidth;
         }, []);
 
