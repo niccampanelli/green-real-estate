@@ -3,6 +3,7 @@ import Footer from "../Footer";
 import Header from "../Header";
 import "./style.css";
 import PictureCarousel from "../Components/PictureCarousel";
+import { FaBath, FaBed, FaCarSide, FaExpand, FaTag } from "react-icons/fa";
 
 export default function Details() {
     window.scrollTo(0, 0);
@@ -17,10 +18,10 @@ export default function Details() {
                         <h1 className="detailsMainInfoLeftTitle">Apartamento em Cidade Antônio Estevão de Carvalho</h1>
                         <h2 className="detailsMainInfoLeftSubtitle">Rua Csar Carlos de Camargo Manezzi, 13590 - São Paulo, SP</h2>
                         <ul className="detailsMainInfoSpecList">
-                            <li className="detailsMainInfoSpec">50 m²</li>
-                            <li className="detailsMainInfoSpec">2 Dormitórios</li>
-                            <li className="detailsMainInfoSpec">1 Banheiro</li>
-                            <li className="detailsMainInfoSpec">1 Vaga</li>
+                            <li className="detailsMainInfoSpec"><FaExpand size="18px"/> 50 m²</li>
+                            <li className="detailsMainInfoSpec"><FaBed size="18px"/> 2 Dormitórios</li>
+                            <li className="detailsMainInfoSpec"><FaBath size="18px"/> 1 Banheiro</li>
+                            <li className="detailsMainInfoSpec"><FaCarSide size="18px"/> 1 Vaga</li>
                         </ul>
                         <h2 className="detailsMainInfoLeftTitle">Detalhes sobre o imóvel</h2>
                         <p>Consectetur qui est minim cillum irure aliquip. Qui enim ipsum deserunt nostrud sunt elit aute occaecat. Cillum occaecat non eu velit occaecat sint duis magna. Consectetur esse ut aliquip pariatur consectetur sunt reprehenderit minim exercitation consectetur. Occaecat proident minim exercitation pariatur ullamco aliqua enim aliquip amet ad sunt velit eu non. Laboris velit consequat ut veniam ex quis nostrud sint commodo minim ad nulla adipisicing. Laboris nisi sint laboris dolore ea mollit reprehenderit consectetur.
@@ -41,7 +42,7 @@ Pariatur excepteur minim ex ex nulla nostrud magna commodo ea id velit. Amet non
                     </div>
                     <div className="detailsMainInfoRight">
                         <div className="detailsMainInfoRightCard">
-                            <h2 className="detailsInfoRightTitle">R$ 168.000,00</h2>
+                            <h2 className="detailsInfoRightTitle">R$ 168.000,00 <FaTag size="16px"/></h2>
                             <h3 className="detailsInfoRightSubtitle">Venda</h3>
                             <p className="detailsInfoRightAdditional">Condomínio</p>
                             <p className="detailsInfoRightAdditional">R$ 200,00</p>

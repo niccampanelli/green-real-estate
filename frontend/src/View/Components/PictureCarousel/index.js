@@ -11,8 +11,8 @@ export default function PictureCarousel(props) {
 
     const pictureCarouselViewport = useRef();
     const pictureCarouselElements = useRef([]);
+    const [pictureCarouselMaxScroll, setPictureCarouselMaxScroll] = useState();
     var pictureCarouselPosition = 0;
-    var pictureCarouselMaxScroll = 0;
 
     const fsPictureCarouselViewport = useRef();
     const fsPictureCarouselElements = useRef([]);
@@ -20,7 +20,7 @@ export default function PictureCarousel(props) {
     var fsPictureCarouselMaxScroll = 0;
 
     useEffect(() => {
-        pictureCarouselMaxScroll = pictureCarouselViewport.current.scrollWidth - pictureCarouselViewport.current.clientWidth;
+        setPictureCarouselMaxScroll(pictureCarouselViewport.current.scrollWidth - pictureCarouselViewport.current.clientWidth);
     }, [])
 
     function slidePictureCarousel(direction){
@@ -51,15 +51,20 @@ export default function PictureCarousel(props) {
     function slideFSPictureCarousel(direction){
         if(direction){
             if(direction === "right"){
-                if(fsPictureCarouselPosition < elementsToDisplay.length -1 && fsPictureCarouselViewport.current.scrollLeft < fsPictureCarouselMaxScroll){
+                if(fsPictureCarouselPosition < elementsToDisplay.length -1){
+                    
                     fsPictureCarouselPosition ++;
-    
-                    fsPictureCarouselViewport.current.scrollTo({
-                        top: 0, 
-                        left: (fsPictureCarouselElements.current[fsPictureCarouselPosition].offsetLeft),
-                        behavior: "smooth"});
 
-                    console.log(fsPictureCarouselElements.current);
+                    fsPictureCarouselElements.current[fsPictureCarouselPosition - 1].style.filter = "brightness(100%)";
+                    fsPictureCarouselElements.current[fsPictureCarouselPosition].style.filter = "brightness(120%)";
+
+                    if(fsPictureCarouselViewport.current.scrollLeft < fsPictureCarouselMaxScroll){
+                        fsPictureCarouselViewport.current.scrollTo({
+                            top: 0, 
+                            left: (fsPictureCarouselElements.current[fsPictureCarouselPosition].offsetLeft),
+                            behavior: "smooth"
+                        });
+                    }
                 }
             } else if(direction === "left" && fsPictureCarouselPosition > 0){
                 fsPictureCarouselPosition --;
@@ -67,11 +72,13 @@ export default function PictureCarousel(props) {
                 fsPictureCarouselViewport.current.scrollTo({
                     top: 0, 
                     left: (fsPictureCarouselElements.current[fsPictureCarouselPosition].offsetLeft), 
-                    behavior: "smooth"})
+                    behavior: "smooth"
+                })
+
+                fsPictureCarouselElements.current[fsPictureCarouselPosition + 1].style.filter = "brightness(100%)";
+                fsPictureCarouselElements.current[fsPictureCarouselPosition].style.filter = "brightness(120%)";
             }
         }
-
-        console.log(fsPictureCarouselPosition + " - " + elementsToDisplay.length + " - " + fsPictureCarouselViewport.current.scrollLeft + " - " + fsPictureCarouselMaxScroll)
     }
 
     const FullscreenPictures = () => {
@@ -101,7 +108,7 @@ export default function PictureCarousel(props) {
                         <ul className="fsPictureCarouselContent">
                             { elementsToDisplay ? 
                                 ( elementsToDisplay.map((elem, i) => (
-                                    <li key={i} ref={thisElem => fsPictureCarouselElements.current.push(thisElem)} onClick={() => {}} className="fsPictureCarouselItem">
+                                    <li key={i} ref={thisElem => fsPictureCarouselElements.current[i] = thisElem} onClick={() => {}} className="fsPictureCarouselItem">
                                         <img className="fsPictureCarouselItemImage" alt="Sem Foto" src={NoImageDefault}/>
                                     </li>
                                 ))) 
@@ -126,7 +133,7 @@ export default function PictureCarousel(props) {
                 <ul className="pictureCarouselContent">
                     { elementsToDisplay ? 
                         ( elementsToDisplay.map((elem, i) => (
-                            <li key={i} ref={thisElem => pictureCarouselElements.current.push(thisElem)} onClick={() => setFullscreenEnabled(true)} className="pictureCarouselItem">
+                            <li key={i} ref={thisElem => pictureCarouselElements.current[i] = thisElem} onClick={() => setFullscreenEnabled(true)} className="pictureCarouselItem">
                                 <img className="pictureCarouselItemImage" alt="Sem Foto" src={NoImageDefault}/>
                             </li>
                         ))) 

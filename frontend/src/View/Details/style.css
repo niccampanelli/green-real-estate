@@ -28,7 +28,7 @@
 }
 
 .detailsMainInfoSpecList{
-    margin: 10px 0 30px 0;
+    margin: 20px 0 40px 0;
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -43,6 +43,13 @@
     font-size: var(--paragraph-size);
     font-weight: 700;
     color: var(--primary-color);
+    margin-right: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.detailsMainInfoSpec svg{
     margin-right: 10px;
 }
 
@@ -67,6 +74,10 @@
 .detailsInfoRightTitle{
     font-size: var(--subtitle-size);
     color: var(--text-dark-primary);
+}
+
+.detailsInfoRightTitle svg{
+    color: var(--primary-color);
 }
 
 .detailsInfoRightSubtitle{
