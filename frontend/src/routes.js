@@ -4,6 +4,7 @@ import Home from './View/Home/';
 import Contact from './View/Contact';
 import Registration from './View/Registration';
 import Details from './View/Details';
+import Search from './View/Search';
 
 export default function Routes(){
     return(
@@ -13,6 +14,7 @@ export default function Routes(){
                 <Route path="/imovel" component={Details}/>
                 <Route path='/sobre' component={Contact}/>
                 <Route path='/registro' component={Registration}/>
+                <Route path='/pesquisa' component={Search}/>
             </Switch>
         </BrowserRouter>
     );
