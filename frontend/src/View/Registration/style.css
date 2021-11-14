@@ -48,7 +48,6 @@
     }
 
     .formSection{
-        border-radius: 50px 50px 0 0;
         background-color: var(--background-default);
         clear: both;
         display: table;

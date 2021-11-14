@@ -12,5 +12,62 @@
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-    
+    .searchArticle{
+        padding-top: 53px;
+        color: var(--text-dark-primary);
+        background-color: var(--background-color);
+    }
+
+    .searchFilterSection{
+        height: 500px;
+        width: 100%;
+        padding: 50px 80px;
+    }
+
+    .searchTitle{
+        font-size: var(--subtitle-size);
+    }
+
+    .searchSubtitle{
+        font-size: 13px;
+    }
+
+    .searchFilterLabel{
+        font-size: 15px;
+        width: 100%;
+        text-align: center;
+    }
+
+    .searchSelectInput{
+        display: block;
+    }
+
+    .searchFilterContainer{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        margin-top: 25px;
+    }
+
+    .searchFilterCategoryContainer{
+        /* display: inline; */
+        width: 20%;
+    }
+
+    .searchFilterForm{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .searchResultSection{
+
+    }
+
+    .searchResultRow{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }

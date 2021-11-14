@@ -67,7 +67,7 @@ html{
     background-color: var(--background-default);
     border: 1px solid var(--quaternary-color);
     border-radius: 10px;
-    width: 400px;
+    width: 100%;
     height: 45px;
     font-size: var(--paragraph-size);
     padding: 0 15px;
