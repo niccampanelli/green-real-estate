@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { FaBath, FaBed, FaCarSide, FaChevronLeft, FaChevronRight, FaExpand } from "react-icons/fa";
 import { useHistory } from "react-router-dom";
 import NoImageDefault from "../../../Assets/NoImageDefault.svg";
 import "./style.css";
@@ -55,6 +55,12 @@ export default function Carousel(props) {
                                 <img className="carouselItemImage" alt="Sem Foto" src={NoImageDefault}/>
                                 <h3 className="carouselItemTitle">{elem.district}</h3>
                                 <span className="carouselItemSubtitle">{elem.type} - {elem.purpose}</span>
+                                <ul className="carouselItemSpecList">
+                                    <li className="carouselItemSpec"><FaExpand size="18px"/> 50 m²</li>
+                                    <li className="carouselItemSpec"><FaBed size="18px"/> 2</li>
+                                    <li className="carouselItemSpec"><FaBath size="18px"/> 1</li>
+                                    <li className="carouselItemSpec"><FaCarSide size="18px"/> 1</li>
+                                </ul>
                                 <h4 className="carouselItemPrice">R$ {elem.totalPrice/100}</h4>
                                 <span className="carouselItemDetail">Clique para Detalhes</span>
                             </li>

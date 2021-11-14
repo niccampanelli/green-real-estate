@@ -1,13 +1,17 @@
-import React, { Fragment, useEffect, useRef } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import Header from "../Header";
 import Footer from "../Footer";
 import Carousel from "../Components/Carousel";
 import {  } from "react-icons/"
 import "./style.css";
 import { FaSearch } from "react-icons/fa";
+import { useHistory } from "react-router-dom";
 
 export default function Home() {
     
+    const history = useHistory();
+
+    const [searchText, setSearchText] = useState("");
     const searchInput = useRef();
     var typewriterIndex = 0;
     var textListIndex = 0;
@@ -111,13 +115,19 @@ export default function Home() {
         }
     }
 
+    function makeSearch(e){
+        e.preventDefault();
+
+        history.push("/pesquisa", { search: searchText });   
+    }
+
     return(
         <Fragment>
             <Header/>
             <main>
                 <section className="landing">
-                    <form className="landingSearch">
-                        <input type="search" className="searchInput" ref={searchInput}/>
+                    <form className="landingSearch" onSubmit={e => makeSearch(e)}>
+                        <input type="search" value={searchText} onChange={e => setSearchText(e.target.value)} className="searchInput" ref={searchInput}/>
                         <button type="submit" className="searchInputButton"><FaSearch size="50%"/></button>
                     </form>
                     <button className="searchSwitch">Procurar por Características</button>

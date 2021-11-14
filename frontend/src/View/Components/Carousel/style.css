@@ -98,3 +98,28 @@
     opacity: 0;
     transition: opacity .5s;
 }
+
+.carouselItemSpecList{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    list-style: none;
+}
+
+.carouselItemSpec{
+    background-color: var(--terciary-color);
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: var(--paragraph-size);
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-right: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.carouselItemSpec svg{
+    margin-right: 10px;
+}
