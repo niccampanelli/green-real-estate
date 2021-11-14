@@ -118,7 +118,7 @@ export default function Home() {
     function makeSearch(e){
         e.preventDefault();
 
-        history.push("/pesquisa", { search: searchText });   
+        history.push({ pathname: "/pesquisa", search: searchText });
     }
 
     return(
