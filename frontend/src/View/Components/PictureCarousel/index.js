@@ -19,9 +19,17 @@ export default function PictureCarousel(props) {
     var fsPictureCarouselPosition = 0;
     var fsPictureCarouselMaxScroll = 0;
 
+    const fsPictureCarouselCounter = useRef();
+
     useEffect(() => {
         setPictureCarouselMaxScroll(pictureCarouselViewport.current.scrollWidth - pictureCarouselViewport.current.clientWidth);
     }, [])
+
+    useEffect(() => {
+        if(fsPictureCarouselCounter.current){
+            fsPictureCarouselCounter.current.innerText = fsPictureCarouselPosition + " de " + (fsPictureCarouselElements.current.length -1);
+        }
+    }, [fsPictureCarouselElements.current.length])
 
     function slidePictureCarousel(direction){
         if(direction){
@@ -37,6 +45,7 @@ export default function PictureCarousel(props) {
                     });
                 }
             } else if(direction === "left" && pictureCarouselPosition > 0){
+
                 pictureCarouselPosition --;
 
                 pictureCarouselViewport.current.scrollTo({
@@ -67,6 +76,7 @@ export default function PictureCarousel(props) {
                     }
                 }
             } else if(direction === "left" && fsPictureCarouselPosition > 0){
+
                 fsPictureCarouselPosition --;
 
                 fsPictureCarouselViewport.current.scrollTo({
@@ -78,6 +88,8 @@ export default function PictureCarousel(props) {
                 fsPictureCarouselElements.current[fsPictureCarouselPosition + 1].style.filter = "brightness(100%)";
                 fsPictureCarouselElements.current[fsPictureCarouselPosition].style.filter = "brightness(120%)";
             }
+
+            fsPictureCarouselCounter.current.innerText = fsPictureCarouselPosition + " de " + (fsPictureCarouselElements.current.length -1);
         }
     }
 
@@ -105,6 +117,7 @@ export default function PictureCarousel(props) {
                 </div>
                 <div className="fsPictureCarouselWrap">
                     <div ref={fsPictureCarouselViewport} className="fsPictureCarouselViewport">
+                        <div className="fsPictureCarouselCounter" ref={fsPictureCarouselCounter}>0 de 0</div>
                         <ul className="fsPictureCarouselContent">
                             { elementsToDisplay ? 
                                 ( elementsToDisplay.map((elem, i) => (
