@@ -5,6 +5,7 @@ import Contact from './View/Contact';
 import Registration from './View/Registration';
 import Details from './View/Details';
 import Search from './View/Search';
+import RedirectTo from './View/Redirect';
 
 export default function Routes(){
     return(
@@ -15,6 +16,7 @@ export default function Routes(){
                 <Route path='/sobre' component={Contact}/>
                 <Route path='/registro' component={Registration}/>
                 <Route path='/pesquisa' component={Search}/>
+                <Route path='/redirect' component={RedirectTo}/>
             </Switch>
         </BrowserRouter>
     );
