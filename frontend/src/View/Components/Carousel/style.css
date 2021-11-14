@@ -61,6 +61,7 @@
 }
 
 .carouselItem{
+    position: relative;
     cursor: pointer;
     padding: 15px;
     margin-left: 20px;
@@ -68,6 +69,11 @@
     box-shadow: 0 0 12px -5px #888888;
     border-radius: 10px;
     color: var(--text-dark-primary);
+    transition: box-shadow .5s;
+}
+
+.carouselItem:hover{
+    box-shadow: 0 0 16px -5px #888888;
 }
 
 .carouselItem:hover > .carouselItemDetail{
@@ -91,10 +97,16 @@
 .carouselItemPrice{
     font-size: var(--subtitle-size);
     margin-top: 20px;
-    color: var(--secondary-color);
+    color: var(--text-dark-primary);
 }
 
 .carouselItemDetail{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    top: 26px;
+    left: 0;
+    right: 0;
     opacity: 0;
     transition: opacity .5s;
 }
@@ -103,23 +115,24 @@
     width: 100%;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     align-items: center;
     list-style: none;
 }
 
 .carouselItemSpec{
+    margin-top: 10px;
     background-color: var(--terciary-color);
-    padding: 5px 10px;
+    padding: 4px 8px;
     border-radius: 10px;
-    font-size: var(--paragraph-size);
+    font-size: 14px;
     font-weight: 700;
     color: var(--primary-color);
-    margin-right: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
 .carouselItemSpec svg{
-    margin-right: 10px;
+    margin-right: 5px;
 }

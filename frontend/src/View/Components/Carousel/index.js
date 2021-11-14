@@ -55,13 +55,13 @@ export default function Carousel(props) {
                                 <img className="carouselItemImage" alt="Sem Foto" src={NoImageDefault}/>
                                 <h3 className="carouselItemTitle">{elem.district}</h3>
                                 <span className="carouselItemSubtitle">{elem.type} - {elem.purpose}</span>
+                                <h4 className="carouselItemPrice">R$ {elem.totalPrice/100}</h4>
                                 <ul className="carouselItemSpecList">
-                                    <li className="carouselItemSpec"><FaExpand size="18px"/> 50 m²</li>
+                                    <li className="carouselItemSpec">50 m²</li>
                                     <li className="carouselItemSpec"><FaBed size="18px"/> 2</li>
                                     <li className="carouselItemSpec"><FaBath size="18px"/> 1</li>
                                     <li className="carouselItemSpec"><FaCarSide size="18px"/> 1</li>
                                 </ul>
-                                <h4 className="carouselItemPrice">R$ {elem.totalPrice/100}</h4>
                                 <span className="carouselItemDetail">Clique para Detalhes</span>
                             </li>
                         ))) 
