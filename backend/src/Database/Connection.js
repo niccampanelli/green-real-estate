@@ -6,21 +6,23 @@ const pool = mariadb.createPool({
     connectionLimit: 1
 });
 
-function getPool(){
-    return pool;
+module.exports = {
+    async initializeDatabase(){
+        let conn;
+    
+        try{
+            conn = await pool.getConnection();
+            if(conn){
+                const database = await conn.query(`CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME}`);
+                console.log(database);
+            }
+        }
+        catch(err){
+            throw err;
+        }
+    },
+    
+    getPool(){
+        return pool;
+    }
 }
-
-/*async function asyncFunction(){
-    let conn;
-
-    try{
-        conn = await pool.getConnection();
-    }
-    catch(err){
-        throw err;
-    }
-    finally{
-        if (conn)
-            return conn.end();
-    }
-}*/

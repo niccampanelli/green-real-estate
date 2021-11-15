@@ -21,3 +21,5 @@ router.delete('/user', userController.delete);
 router.post('/image', imageController.create);
 router.get('/image', imageController.read);
 router.delete('/image', imageController.delete);
+
+module.exports = router;
