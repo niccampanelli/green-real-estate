@@ -1,9 +1,10 @@
 const mariadb = require('mariadb');
 const pool = mariadb.createPool({
-    host: '',
-    user: '',
+    host: 'localhost',
+    user: 'root',
     password: '',
-    connectionLimit: 1
+    database: 'greendatabase',
+    connectionLimit: 1,
 });
 
 module.exports = {
@@ -12,10 +13,8 @@ module.exports = {
     
         try{
             conn = await pool.getConnection();
-            if(conn){
-                const database = await conn.query(`CREATE DATABASE IF NOT EXISTS ${process.env.DB_NAME}`);
-                console.log(database);
-            }
+            const tables = await conn.query("SHOW TABLES");
+            console.log(tables);
         }
         catch(err){
             throw err;
