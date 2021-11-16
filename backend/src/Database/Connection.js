@@ -1,9 +1,9 @@
 const mariadb = require('mariadb');
 const pool = mariadb.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'greendatabase',
+    host: 'sql10.freemysqlhosting.net',
+    user: 'sql10451212',
+    password: 'tUM83mfke1',
+    database: 'sql10451212',
     connectionLimit: 1,
 });
 
