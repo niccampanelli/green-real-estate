@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
+import API from "../../Services/API";
 import "./style.css";
 
 export default function Auth() {
@@ -13,7 +14,7 @@ export default function Auth() {
     const [telValue, setTelValue] = useState("");
     const [tel2Value, setTel2Value] = useState("");
 
-    function authenticate(e){
+    async function authenticate(e){
         e.preventDefault();
 
         if(authState){
@@ -32,10 +33,22 @@ export default function Auth() {
         else{
             if(nameValue && nameValue.length >= 5){
                 if(emailValue && emailValue.length >= 9 && emailValue.includes("@", 0) && emailValue.includes(".", 0)){
-                    if(telValue && telValue.length >= 10){
+                    if(telValue && telValue.length >= 10 && telValue.match(/^[0-9]+$/)){
                         if(passwordValue && passwordValue.match(/^[0-9a-zA-Z]+$/)){
-                            if(passwordValue.search(/[a-z]/) < 0 && passwordValue.search(/[A-Z]/) < 0 && passwordValue.search(/[0-9]/)){
+                            if(passwordValue.search(/[a-z]/) >= 0 && passwordValue.search(/[A-Z]/) >= 0 && passwordValue.search(/[0-9]/ >= 0)){
                                 
+                                await API.post("/user", {
+                                    name: nameValue,
+                                    email: emailValue.toLowerCase(),
+                                    tel: telValue,
+                                    tel2: tel2Value,
+                                    password: passwordValue
+                                }).then(response => {
+
+                                    console.log(response);
+
+                                }).catch(e => console.error(e));
+
                             }
                             else{
                                 alert("Sua senha precisa conter letras maiúsculas, minúsculas e numeros.")

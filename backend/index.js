@@ -9,9 +9,8 @@ require('dotenv').config({
     path: path.resolve(__dirname, ".env")
 });
 
+app.use(cors());
 app.listen(port);
-app.use(express.json());
 app.use(routes);
-app.use(cors);
 
 conn.initializeDatabase();
