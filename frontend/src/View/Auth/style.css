@@ -1,0 +1,62 @@
+.authMain{
+    height: 100%;
+    background-color: var(--secondary-color);
+    padding: 103px 80px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.authIllustration{
+    flex: 1;
+}
+
+.authCard{
+    float: right;
+    width: 400px;
+    background-color: var(--background-default);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.authFormTitle{
+    font-size: var(--subtitle-size);
+    color: var(--text-dark-primary);
+    margin-bottom: 20px;
+}
+
+.authFormContainer{
+    width: 100%;
+    margin: 10px 0;
+}
+
+.authFormLabel{
+    font-size: var(--paragraph-size);
+    font-weight: 700;
+    color: var(--text-dark-primary);
+}
+
+.authFormHint{
+    font-size: var(--paragraph-size);
+    color: var(--text-dark-secondary);
+    margin: 20px 0;
+}
+
+.authFormSubmit{
+    width: 100%;
+    height: 45px;
+    background-color: var(--terciary-color);
+    color: var(--primary-color);
+    font-size: var(--paragraph-size);
+    font-weight: 700;
+}
+
+.authFormSwitch{
+    cursor: pointer;
+    color: var(--text-dark-primary);
+    margin-top: 10px;
+}
+
+.authFormSwitch strong{
+    color: var(--primary-color);
+}

@@ -6,12 +6,14 @@ import Registration from './View/Registration';
 import Details from './View/Details';
 import Search from './View/Search';
 import RedirectTo from './View/Redirect';
+import Auth from './View/Auth';
 
 export default function Routes(){
     return(
         <BrowserRouter>
             <Switch>
                 <Route exact path='/' component={Home}/>
+                <Route path='/autenticar' component={Auth}/>
                 <Route path="/imovel" component={Details}/>
                 <Route path='/sobre' component={Contact}/>
                 <Route path='/registro' component={Registration}/>

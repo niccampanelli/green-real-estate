@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
-import Footer from '../Footer';
-import Header from '../Header';
+import Footer from '../Components/Footer';
+import Header from '../Components/Header';
 import Imagem1 from '../../Assets/img1-small.jpg'
 import './style.css';
 

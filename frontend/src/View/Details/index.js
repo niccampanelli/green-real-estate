@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
-import Footer from "../Footer";
-import Header from "../Header";
+import Footer from '../Components/Footer';
+import Header from '../Components/Header';
 import "./style.css";
 import PictureCarousel from "../Components/PictureCarousel";
 import { FaBath, FaBed, FaCarSide, FaExpand, FaTag } from "react-icons/fa";

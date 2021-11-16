@@ -1,8 +1,7 @@
 import React, { Fragment, useEffect, useRef, useState } from "react";
-import Header from "../Header";
-import Footer from "../Footer";
+import Footer from '../Components/Footer';
+import Header from '../Components/Header';
 import Carousel from "../Components/Carousel";
-import {  } from "react-icons/"
 import "./style.css";
 import { FaSearch } from "react-icons/fa";
 import { useHistory } from "react-router-dom";

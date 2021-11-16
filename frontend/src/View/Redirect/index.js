@@ -1,6 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { useHistory } from "react-router-dom";
-import { useLocation } from "react-router";
+import { useHistory, useLocation } from "react-router-dom";
 
 export default function RedirectTo(){
     const history = useHistory();
