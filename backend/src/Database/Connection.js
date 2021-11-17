@@ -1,26 +1,19 @@
 const mariadb = require('mariadb');
+const path = require('path');
+
+require('dotenv').config({
+    path: path.resolve(__dirname, "../../.env")
+});
+
 const pool = mariadb.createPool({
-    host: 'sql10.freemysqlhosting.net',
-    user: 'sql10451403',
-    password: 'yrWr9S7zng',
-    database: 'sql10451403',
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
     connectionLimit: 2,
 });
 
 module.exports = {
-    async initializeDatabase(){
-        let conn;
-    
-        try{
-            conn = await pool.getConnection();
-            const tables = await conn.query("SHOW TABLES");
-            console.log(tables);
-        }
-        catch(err){
-            throw err;
-        }
-    },
-    
     getPool(){
         return pool;
     }

@@ -1,7 +1,20 @@
+const { getPool } = require("../Database/Connection");
+
+
 module.exports = {
     async create(req, res){
-        console.log(req.body);
-        return res.json({"status": "foi"});
+        // Variável que salvará a conexão com o banco
+        let conn;
+
+        try{
+            // Realizando a conexão ao banco de dados
+            conn = getPool().getConnection();
+
+            var newUser = req.body;
+        }
+        catch(err){
+            throw err;
+        }
     },
 
     async read(req, res){},
