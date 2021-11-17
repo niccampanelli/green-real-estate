@@ -31,43 +31,38 @@ export default function Auth() {
             }
         }
         else{
-            if(nameValue && nameValue.length >= 5){
-                if(emailValue && emailValue.length >= 9 && emailValue.includes("@", 0) && emailValue.includes(".", 0)){
-                    if(telValue && telValue.length >= 10 && telValue.match(/^[0-9]+$/)){
-                        if(passwordValue && passwordValue.match(/^[0-9a-zA-Z]+$/)){
-                            if(passwordValue.search(/[a-z]/) >= 0 && passwordValue.search(/[A-Z]/) >= 0 && passwordValue.search(/[0-9]/ >= 0)){
-                                
-                                await API.post("/user", {
-                                    name: nameValue,
-                                    email: emailValue.toLowerCase(),
-                                    tel: telValue,
-                                    tel2: tel2Value,
-                                    password: passwordValue
-                                }).then(response => {
-
-                                    console.log(response);
-
-                                }).catch(e => console.error(e));
-
-                            }
-                            else{
-                                alert("Sua senha precisa conter letras maiúsculas, minúsculas e numeros.")
-                            }
-                        }
-                        else{
-                            alert("Insira a senha.")
-                        }
-                    }
-                    else{
-                        alert("Insira o telefone.")
-                    }
-                }
-                else[
-                    alert("Insira o email.")
-                ]
+            // Se não tiver o nome OU se tiver o nome e o comprimento for menor que 6 OU se tiver o nome e o nome contiver numeros
+            if(!nameValue || (nameValue && nameValue.toString().length < 6) || (nameValue && nameValue.toString().search(/[0-9]/) !== -1)){
+                alert("Insira um nome e sobrenome válidos.")
+            }
+            // Se não tiver o email OU se tiver o email e o comprimento for menor que 9 OU se tiver o email e não tiver um @ OU se tiver o email e não tiver um ponto
+            else if(!emailValue || (emailValue && emailValue.toString().length < 9) || (emailValue && !emailValue.toString().includes("@", 0)) || (emailValue && !emailValue.toString().includes(".", 0))){
+                alert("Insira um email válido.")
+            }
+            // Se não tiver o telefone OU se tiver o telefone e o comprimento for menor que 10 OU se tiver o telefone e não for só numeros
+            else if(!telValue || (telValue && telValue.toString().length < 10) || (telValue && !telValue.toString().match(/^[0-9]+$/))){
+                alert("Insira um telefone válido.")
+            }
+            // Se tiver o telefone2 e o comprimento for menor que 10 OU se tiver o telefone e não for só numeros
+            else if((tel2Value && tel2Value.toString().length < 10) || (tel2Value && !tel2Value.toString().match(/^[0-9]+$/))){
+                alert("Insira um telefone secundário válido.")
+            }
+            // Se não tiver a senha OU se tiver a senha e não for apenas letras e numeros OU se tiver a senha e não tiver letras minúsculas OU se tiver a senha e não tiver letras maiúsculas OU se tiver a senha e não tiver números
+            else if(!passwordValue || (passwordValue && !passwordValue.toString().match(/^[0-9a-zA-Z]+$/)) || (passwordValue && passwordValue.toString().search(/[a-z]/) === -1) || (passwordValue && passwordValue.toString().search(/[A-Z]/) === -1) || (passwordValue && passwordValue.toString().search(/[0-9]/) === -1)){
+                alert("Insira uma senha válida.")
             }
             else{
-                alert("Insira o nome.")
+                await API.post("/user", {
+                    name: nameValue,
+                    email: emailValue.toLowerCase(),
+                    tel: telValue,
+                    tel2: tel2Value,
+                    credential: passwordValue
+                }).then(response => {
+
+                    console.log(response);
+
+                }).catch(e => console.error(e));
             }
         }
     }
