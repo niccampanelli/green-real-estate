@@ -228,13 +228,118 @@ module.exports = {
             }
         }
         catch(err){
-            throw err;
+            return err;
         }
     },
 
-    async read(req, res){},
+    /* 
+        Método responsável por buscar registros de imóveis no banco de dados 
+    */
+    async read(req, res){
+        // Variável que salvará a conexão com o banco
+        let conn;
 
-    async update(req, res){},
+        try{
+            // Criando a conexão com o banco
+            conn = connection.getPool().getConnection();
 
+            // Variável que armazenará a query que será realizada
+            var sql = "";
+
+            // Variável que armazenará o objeto enviado pela response
+            var reqImmobile = req.query;
+
+            // Variável de condição da query
+            var sqlCondition = ``;
+
+            // Percorrendo objeto para verificar quais existem como parâmetro para as condições da query
+            for(item in reqImmobile){
+                // Se a chave do objeto possuir valor
+                if(reqImmobile[item]){
+                    // Obs: o item retorna o nome da chave, enquanto o reqImmobile[item] retorna o valor da chave
+                    sqlCondition += ` and ${item} = ${reqImmobile[item]}`;
+                }
+            }
+
+            sql = `SELECT id, purpose, address,
+                          number, complement, cep, 
+                          district, city, uf, 
+                          type, terrainArea, immobileArea, 
+                          parkNumber, bathNumber, bedNumber, 
+                          price, description, reference, 
+                          dateSubscript, status, id_user FROM tb_immobile
+                          WHERE 1 = 1 ${sqlCondition}`;
+
+            var reponseImmobiles = (await conn).query(sql).then(result => 
+                {
+                    return res.json({data: result});
+                }
+            );
+
+            sql = null;
+            sqlCondition = null;
+            reqImmobile = null;
+        }
+        catch(err){
+            return err;
+        }
+    },
+
+    /* 
+        Método responsável por atualizar registros de imóveis no banco de dados 
+    */
+    async update(req, res){
+        // Variável que salvará a conexão com o banco
+        let conn;
+
+        try{
+            // Criando a conexão com o banco
+            conn = connection.getPool().getConnection();
+
+            // Variável que armazenará a query que será realizada
+            var sql = "";
+
+            // Variável que armazenará o objeto enviado pela response
+            var reqImmobile = req.query;
+
+            // Variável de condição da query
+            var sqlCondition = ``;
+
+            // Percorrendo objeto para verificar quais existem como parâmetro para as condições da query
+            for(item in reqImmobile){
+                // Se a chave do objeto possuir valor
+                if(reqImmobile[item]){
+                    // Obs: o item retorna o nome da chave, enquanto o reqImmobile[item] retorna o valor da chave
+                    sqlCondition += ` and ${item} = ${reqImmobile[item]}`;
+                }
+            }
+
+            sql = `SELECT id, purpose, address,
+                          number, complement, cep, 
+                          district, city, uf, 
+                          type, terrainArea, immobileArea, 
+                          parkNumber, bathNumber, bedNumber, 
+                          price, description, reference, 
+                          dateSubscript, status, id_user FROM tb_immobile
+                          WHERE 1 = 1 ${sqlCondition}`;
+
+            var reponseImmobiles = (await conn).query(sql).then(result => 
+                {
+                    return res.json({data: result});
+                }
+            );
+
+            sql = null;
+            sqlCondition = null;
+            reqImmobile = null;
+        }
+        catch(err){
+            return err;
+        }
+    },
+
+    /* 
+        Método responsável por deletar registros de imóveis no banco de dados 
+    */
     async delete(req, res){},
 }
