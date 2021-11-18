@@ -18,16 +18,25 @@ export default function Auth() {
         e.preventDefault();
 
         if(authState){
-            if(!emailValue){
-                if(passwordValue){
-
-                }
-                else{
-                    alert("Insira a senha");
-                }
+            // Se não tiver o email OU se tiver o email e o comprimento for menor que 9 OU se tiver o email e não tiver um @ OU se tiver o email e não tiver um ponto
+            if(!emailValue || (emailValue && emailValue.toString().length < 9) || (emailValue && !emailValue.toString().includes("@", 0)) || (emailValue && !emailValue.toString().includes(".", 0))){
+                alert("Insira um email válido.")
+            }
+            // Se não tiver a senha OU se tiver a senha e não for apenas letras e numeros OU se tiver a senha e não tiver letras minúsculas OU se tiver a senha e não tiver letras maiúsculas OU se tiver a senha e não tiver números
+            else if(!passwordValue || (passwordValue && !passwordValue.toString().match(/^[0-9a-zA-Z]+$/)) || (passwordValue && passwordValue.toString().search(/[a-z]/) === -1) || (passwordValue && passwordValue.toString().search(/[A-Z]/) === -1) || (passwordValue && passwordValue.toString().search(/[0-9]/) === -1)){
+                alert("Insira uma senha válida.")
             }
             else{
-                alert("Insira o email");
+                await API.post("/auth", {
+                    email: emailValue.toLowerCase(),
+                    credential: passwordValue
+                }).then(response => {
+
+                    console.log(response.body);
+
+                }).catch(e => {
+                    console.error(e);
+                });
             }
         }
         else{
@@ -60,9 +69,13 @@ export default function Auth() {
                     credential: passwordValue
                 }).then(response => {
 
-                    console.log(response);
+                    console.log(response.body);
 
-                }).catch(e => console.error(e));
+                }).catch(e => {
+                    if(e.response.data === "EMAIL_IN_USE"){
+                        alert("Email em uso.");
+                    }
+                });
             }
         }
     }
@@ -78,11 +91,11 @@ export default function Auth() {
                             <form className="authForm" onSubmit={e => authenticate(e)}>
                                 <h1 className="authFormTitle">Login</h1>
                                 <div className="authFormContainer">
-                                    <label for="authFormEmailInput" className="authFormLabel">Endereço de Email*</label>
+                                    <label htmlFor="authFormEmailInput" className="authFormLabel">Endereço de Email*</label>
                                     <input id="authFormEmailInput" className="defaultInput" value={emailValue} onChange={e => setEmailValue(e.target.value)} type="email" placeholder="exemplo@email.com"/>
                                 </div>
                                 <div className="authFormContainer">
-                                    <label for="authFormPasswordInput" className="authFormLabel">Senha*</label>
+                                    <label htmlFor="authFormPasswordInput" className="authFormLabel">Senha*</label>
                                     <input id="authFormPasswordInput" className="defaultInput" value={passwordValue} onChange={e => setPasswordValue(e.target.value)} type="password" placeholder="Digite sua senha."/>
                                 </div>
                                 <p className="authFormHint">Os campos com * são obrigatórios.</p>
@@ -93,23 +106,23 @@ export default function Auth() {
                             <form className="authForm" onSubmit={e => authenticate(e)}>
                                 <h1 className="authFormTitle">Cadastro</h1>
                                 <div className="authFormContainer">
-                                    <label for="authFormNameInput" className="authFormLabel">Nome*</label>
+                                    <label htmlFor="authFormNameInput" className="authFormLabel">Nome Completo*</label>
                                     <input id="authFormNameInput" className="defaultInput" value={nameValue} onChange={e => setNameValue(e.target.value)} type="text" placeholder="Digite seu nome completo."/>
                                 </div>
                                 <div className="authFormContainer">
-                                    <label for="authFormEmailInput" className="authFormLabel">Endereço de Email*</label>
+                                    <label htmlFor="authFormEmailInput" className="authFormLabel">Endereço de Email*</label>
                                     <input id="authFormEmailInput" className="defaultInput" value={emailValue} onChange={e => setEmailValue(e.target.value)} type="email" placeholder="exemplo@email.com"/>
                                 </div>
                                 <div className="authFormContainer">
-                                    <label for="authFormTelInput" className="authFormLabel">Telefone de Contato*</label>
+                                    <label htmlFor="authFormTelInput" className="authFormLabel">Telefone de Contato*</label>
                                     <input id="authFormTelInput" className="defaultInput" value={telValue} onChange={e => setTelValue(e.target.value)} type="tel" placeholder="(DDD) 00000-0000"/>
                                 </div>
                                 <div className="authFormContainer">
-                                    <label for="authFormTel2Input" className="authFormLabel">Telefone de Contato Secundário</label>
+                                    <label htmlFor="authFormTel2Input" className="authFormLabel">Telefone de Contato Secundário</label>
                                     <input id="authFormTel2Input" className="defaultInput" value={tel2Value} onChange={e => setTel2Value(e.target.value)} type="tel" placeholder="(DDD) 00000-0000."/>
                                 </div>
                                 <div className="authFormContainer">
-                                    <label for="authFormPasswordInput" className="authFormLabel">Senha*</label>
+                                    <label htmlFor="authFormPasswordInput" className="authFormLabel">Senha*</label>
                                     <input id="authFormPasswordInput" className="defaultInput" value={passwordValue} onChange={e => setPasswordValue(e.target.value)} type="password" placeholder="Crie uma senha."/>
                                 </div>
                                 <p className="authFormHint">Os campos com * são obrigatórios. A senha deve conter letras maiúsculas, minúsculas e números.</p>

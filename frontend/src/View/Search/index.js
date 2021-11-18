@@ -1,8 +1,10 @@
 import React, { Fragment, useState } from "react";
+import { useLocation } from "react-router-dom";
+import API from "../../Services/API";
 import Footer from '../Components/Footer';
 import Header from '../Components/Header';
+import ImmobileCard from "../Components/ImmobileCard";
 import './style.css';
-import { useLocation } from "react-router-dom";
 
 export default function Search(){
 
@@ -13,6 +15,7 @@ export default function Search(){
 
     const [title, setTitle] = useState("");
     const [resultQuant, setResultQuant] = useState(0);
+    const [immobileList, setImmobileList] = useState();
 
     useState(() => {
         if(objSearch === "" || objSearch === undefined || objSearch === null){
@@ -29,7 +32,18 @@ export default function Search(){
         else{
             setTitle("Imóveis para " + objSearch.purpose);
         }
+
+        makeSearch();
     }, []);
+
+
+    function makeSearch(){
+        API.get("/immobile", {params: objSearch}).then(result => {
+            setImmobileList(result);
+            setResultQuant(result.data.length);
+            console.log(result);
+        });
+    }
 
     return(
         <Fragment>
@@ -84,21 +98,14 @@ export default function Search(){
                         </section>
                         
                         <section className="searchResultSection">
-                            <div className="searchResultRow">
-                                
-                            </div>
-
-                            <div className="searchResultRow">
-                                
-                            </div>
-
-                            <div className="searchResultRow">
-                                
-                            </div>
-
-                            <div className="searchResultRow">
-                                
-                            </div>
+                            { immobileList ? (
+                                immobileList.map((immo, i) => (
+                                    <ImmobileCard district={immo.district} type={immo.type} purpose={immo.purpose} price={immo.price} bed={immo.bedNumber} bath={immo.bathNumber} park={immo.parkNumber} />
+                                ))
+                            )
+                            :
+                            ''
+                            }
                         </section>
                     </article>
                 </main>

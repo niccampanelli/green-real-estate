@@ -1,5 +1,7 @@
 .landing{
-    height: 600px;
+    padding: 80px 0;
+    min-height: 600px;
+    height: fit-content;
     background-color: var(--secondary-color);
     display: flex;
     flex-direction: column;
@@ -48,6 +50,59 @@
     font-weight: 700;
     font-size: var(--paragraph-size);
     border-radius: 0 0 10px 10px;
+}
+
+.searchSwitchDetail{
+    margin-top: 5px;
+    width: 600px;
+    height: 30px;
+    background-color: var(--terciary-color);
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: var(--paragraph-size);
+    border-radius: 10px 10px 0 0;
+}
+
+.landingSearchDetail{
+    padding: 20px;
+    width: 600px;
+    background-color: var(--background-default);
+    display: flex;
+    flex-direction: column;
+    border-radius: 0 0 10px 10px;
+}
+
+.landingSearchDetailRow{
+    display: flex;
+    flex-direction: row;
+}
+
+.landingSearchDetailDiv{
+    flex: 1;
+    margin-left: 10px;
+}
+
+.landingSearchDetailDiv:first-child{
+    margin: 0;
+}
+
+.landingSearchDetailLabel{
+    width: 100%;
+    font-size: var(--paragraph-size);
+    font-weight: 700;
+    color: var(--text-dark-primary);
+}
+
+.landingSearchDetailButton{
+    margin: 10px 0 0 20px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--terciary-color);
+    color: var(--primary-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
 }
 
 .listing{

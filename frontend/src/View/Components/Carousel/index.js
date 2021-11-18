@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { FaBath, FaBed, FaCarSide, FaChevronLeft, FaChevronRight, FaExpand } from "react-icons/fa";
+import { FaBath, FaBed, FaCarSide, FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useHistory } from "react-router-dom";
 import NoImageDefault from "../../../Assets/NoImageDefault.svg";
 import "./style.css";

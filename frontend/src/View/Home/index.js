@@ -10,7 +10,22 @@ export default function Home() {
     
     const history = useHistory();
 
+    const [searchType, setSearchType] = useState(true);
     const [searchText, setSearchText] = useState("");
+    
+    const [immoType, setImmoType] = useState();
+    const [immoPurpose, setImmoPurpose] = useState();
+    const [immoAddress, setImmoAddress] = useState();
+    const [immoDistrict, setImmoDistrict] = useState();
+    const [immoCity, setImmoCity] = useState();
+    const [immoUF, setImmoUF] = useState();
+    const [immoTerrainArea, setImmoTerrainArea] = useState();
+    const [immoArea, setImmoArea] = useState();
+    const [immoPark, setImmoPark] = useState();
+    const [immoBath, setImmoBath] = useState();
+    const [immoBed, setImmoBed] = useState();
+    const [immoReference, setImmoReference] = useState();
+
     const searchInput = useRef();
     var typewriterIndex = 0;
     var textListIndex = 0;
@@ -117,7 +132,20 @@ export default function Home() {
     function makeSearch(e){
         e.preventDefault();
 
-        history.push({ pathname: "/pesquisa", search: searchText }, {object: undefined});
+        history.push({ pathname: "/pesquisa", search: searchText }, {object: {
+            type: immoType,
+            purpose: immoPurpose,
+            address: immoAddress,
+            district: immoDistrict,
+            city: immoCity,
+            UF: immoUF,
+            terrainArea: immoTerrainArea,
+            immobileArea: immoArea,
+            parkNumber: immoPark,
+            bathNumber: immoBath,
+            bedNumber: immoBed,
+            reference: immoReference
+        }});
     }
 
     return(
@@ -125,11 +153,80 @@ export default function Home() {
             <Header/>
             <main>
                 <section className="landing">
-                    <form className="landingSearch" onSubmit={e => makeSearch(e)}>
-                        <input type="search" value={searchText} onChange={e => setSearchText(e.target.value)} className="searchInput" ref={searchInput}/>
-                        <button type="submit" className="searchInputButton"><FaSearch size="50%"/></button>
-                    </form>
-                    <button className="searchSwitch">Procurar por Características</button>
+                    { searchType ?
+                        <Fragment>
+                        <form className="landingSearch" onSubmit={e => makeSearch(e)}>
+                            <input type="search" value={searchText} onChange={e => setSearchText(e.target.value)} className="searchInput" ref={searchInput}/>
+                            <button type="submit" className="searchInputButton"><FaSearch size="50%"/></button>
+                        </form>
+                        <button className="searchSwitch" onClick={() => setSearchType(!searchType)}>Procurar por Características</button>
+                        </Fragment>
+                        :
+                        <Fragment>
+                        <button className="searchSwitchDetail" onClick={() => setSearchType(!searchType)}>Procurar por Texto</button>
+                        <form className="landingSearchDetail" onSubmit={e => makeSearch(e)}>
+                            <div className="landingSearchDetailRow">
+                                <div className="landingSearchDetailDiv">
+                                    <label className="landingSearchDetailLabel">Tipo</label>
+                                    <input className="defaultInput" value={immoType} onChange={e => setImmoType(e.target.value)}/>
+                                </div>
+                                <div className="landingSearchDetailDiv">
+                                    <label className="landingSearchDetailLabel">Propósito</label>
+                                    <input className="defaultInput" value={immoPurpose} onChange={e => setImmoPurpose(e.target.value)}/>
+                                </div>
+                            </div>
+                            <div className="landingSearchDetailRow">
+                                <div className="landingSearchDetailDiv">
+                                    <label className="landingSearchDetailLabel">Logradouro</label>
+                                    <input className="defaultInput" value={immoAddress} onChange={e => setImmoAddress(e.target.value)}/>
+                                </div>
+                                <div className="landingSearchDetailDiv">
+                                    <label className="landingSearchDetailLabel">Bairro</label>
+                                    <input className="defaultInput" value={immoDistrict} onChange={e => setImmoDistrict(e.target.value)}/>
+                                </div>
+                            </div>
+                            <div className="landingSearchDetailRow">
+                                <div className="landingSearchDetailDiv">
+                                    <label className="landingSearchDetailLabel">Cidade</label>
+                                    <input className="defaultInput" value={immoCity} onChange={e => setImmoCity(e.target.value)}/>
+                                </div>
+                                <div className="landingSearchDetailDiv">
+                                    <label className="landingSearchDetailLabel">UF</label>
+                                    <input className="defaultInput" value={immoUF} onChange={e => setImmoUF(e.target.value)}/>
+                                </div>
+                            </div>
+                            <div className="landingSearchDetailRow">
+                                <div className="landingSearchDetailDiv">
+                                    <label className="landingSearchDetailLabel">Área Útil</label>
+                                    <input className="defaultInput" value={immoArea} onChange={e => setImmoArea(e.target.value)}/>
+                                </div>
+                                <div className="landingSearchDetailDiv">
+                                    <label className="landingSearchDetailLabel">Quartos</label>
+                                    <input className="defaultInput" value={immoBed} onChange={e => setImmoBed(e.target.value)}/>
+                                </div>
+                                <div className="landingSearchDetailDiv">
+                                    <label className="landingSearchDetailLabel">Banheiros</label>
+                                    <input className="defaultInput" value={immoBath} onChange={e => setImmoBath(e.target.value)}/>
+                                </div>
+                                <div className="landingSearchDetailDiv">
+                                    <label className="landingSearchDetailLabel">Vagas</label>
+                                    <input className="defaultInput" value={immoPark} onChange={e => setImmoPark(e.target.value)}/>
+                                </div>
+                            </div>
+                            <div className="landingSearchDetailRow">
+                                <div className="landingSearchDetailDiv">
+                                    <label className="landingSearchDetailLabel">Área do Terreno</label>
+                                    <input className="defaultInput" value={immoTerrainArea} onChange={e => setImmoTerrainArea(e.target.value)}/>
+                                </div>
+                                <div className="landingSearchDetailDiv">
+                                    <label className="landingSearchDetailLabel">Referencia</label>
+                                    <input className="defaultInput" value={immoReference} onChange={e => setImmoReference(e.target.value)}/>
+                                </div>
+                                <button type="submit" className="landingSearchDetailButton"><FaSearch size="50%"/></button>
+                            </div>
+                        </form>
+                        </Fragment>
+                    }
                 </section>
                 <section className="listing">
                     <section className="listingSection">
