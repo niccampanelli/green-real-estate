@@ -479,8 +479,17 @@ module.exports = {
             for(item in reqImmobile){
                 // Se a chave do objeto possuir valor
                 if(reqImmobile[item]){
-                    // Obs: o item retorna o nome da chave, enquanto o reqImmobile[item] retorna o valor da chave
-                    sqlCondition += ` and ${item} = ${reqImmobile[item]}`;
+                    // Se o item a ser adicionado na condição for string, deve ter aspas na query
+                    if(item === 'purpose' || item === 'address' || item === 'complement' || item === 'district' || 
+                        item === 'city' || item === 'uf' || item === 'type' || item === 'description' || item === 'cep'){
+                        // Obs: o item retorna o nome da chave, enquanto o reqImmobile[item] retorna o valor da chave
+                        sqlCondition += ` and ${item} = '${reqImmobile[item]}'`;
+                    }
+                    else{
+                        // Obs: o item retorna o nome da chave, enquanto o reqImmobile[item] retorna o valor da chave
+                        sqlCondition += ` and ${item} = ${reqImmobile[item]}`;
+                    }
+                    
                 }
             }
 
