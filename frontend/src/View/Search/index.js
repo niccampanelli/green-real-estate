@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useHistory } from "react-router-dom";
 import API from "../../Services/API";
 import Footer from '../Components/Footer';
 import Header from '../Components/Header';
@@ -8,6 +8,7 @@ import './style.css';
 
 export default function Search(){
 
+    const history = useHistory();
     const location = useLocation();
 
     const search = location.search;
@@ -38,6 +39,7 @@ export default function Search(){
         await API.get("/immobile", {params: objSearch}).then(result => {
             setImmobileList(result.data);
             setResultQuant(result.data.length);
+            sessionStorage.setItem("lastData", JSON.stringify(result.data));
         });
     }, [])
 
@@ -48,7 +50,7 @@ export default function Search(){
                     <article className="searchArticle">
                         <section className="searchFilterSection">
                             <h1 className="searchTitle">{title}</h1>
-                            <p className="searchSubtitle">{resultQuant} imóveis encontrados</p>
+                            <p className="searchSubtitle">{resultQuant} { (resultQuant > 1) ? "imóveis encontrados." : "imóvel encontrado." }</p>
 
                             <div className="searchFilterContainer">
                                 <form className="searchFilterForm">
@@ -94,14 +96,16 @@ export default function Search(){
                         </section>
                         
                         <section className="searchResultSection">
-                            { immobileList ? (
-                                immobileList.map((immo, i) => (
-                                    <ImmobileCard district={immo.district} type={immo.type} purpose={immo.purpose} price={immo.price} bed={immo.bedNumber} bath={immo.bathNumber} park={immo.parkNumber} />
-                                ))
-                            )
-                            :
-                            ''
-                            }
+                            <ul className="searchResultList">
+                                { immobileList ? (
+                                    immobileList.map((immo, i) => (
+                                        <ImmobileCard key={i} immo={immo}/>
+                                    ))
+                                )
+                                :
+                                ''
+                                }
+                            </ul>
                         </section>
                     </article>
                 </main>
