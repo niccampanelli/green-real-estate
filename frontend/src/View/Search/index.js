@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import API from "../../Services/API";
 import Footer from '../Components/Footer';
@@ -15,9 +15,9 @@ export default function Search(){
 
     const [title, setTitle] = useState("");
     const [resultQuant, setResultQuant] = useState(0);
-    const [immobileList, setImmobileList] = useState();
+    const [immobileList, setImmobileList] = useState([]);
 
-    useState(() => {
+    useEffect(() => {
         if(objSearch === "" || objSearch === undefined || objSearch === null){
             
             if(search !== undefined && search !== "" && search !== null){
@@ -32,18 +32,14 @@ export default function Search(){
         else{
             setTitle("Imóveis para " + objSearch.purpose);
         }
-
-        makeSearch();
     }, []);
 
-
-    function makeSearch(){
-        API.get("/immobile", {params: objSearch}).then(result => {
-            setImmobileList(result);
+    useEffect(async () => {
+        await API.get("/immobile", {params: objSearch}).then(result => {
+            setImmobileList(result.data);
             setResultQuant(result.data.length);
-            console.log(result);
         });
-    }
+    }, [])
 
     return(
         <Fragment>

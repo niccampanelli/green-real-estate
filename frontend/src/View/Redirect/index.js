@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import { useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 
 export default function RedirectTo(){
@@ -6,7 +6,7 @@ export default function RedirectTo(){
 
     const location = useLocation();
 
-    useState(() => {
+    useEffect(() => {
         console.log(location.state.path);
         console.log(location.state.object);
 
