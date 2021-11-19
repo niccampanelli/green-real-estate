@@ -33,16 +33,15 @@ module.exports = {
                                                                                         city, uf, type, terrainArea, 
                                                                                         immobileArea, parkNumber, 
                                                                                         bathNumber, bedNumber, price, 
-                                                                                        description, dateSubscript, 
+                                                                                        description, 
                                                                                         status, id_user) values (?, ?, ?, ?,
-                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
                                                                                         [newImmobile.purpose, newImmobile.address, newImmobile.number, 
                                                                                         newImmobile.complement, newImmobile.cep, newImmobile.district, 
                                                                                         newImmobile.city, newImmobile.uf, newImmobile.type, newImmobile.terrainArea, 
                                                                                         newImmobile.immobileArea, newImmobile.parkNumber, 
                                                                                         newImmobile.bathNumber, newImmobile.bedNumber, newImmobile.price, 
-                                                                                        newImmobile.description, newImmobile.dateSubscript, 
-                                                                                        newImmobile.status, newImmobile.id_user])
+                                                                                        newImmobile.description, newImmobile.status, newImmobile.id_user])
                                                         .then(result => {
                                                             insertedId = result.insertId;
                                                             return res.json({id: insertedId, data: newImmobile});
@@ -57,16 +56,15 @@ module.exports = {
                                                                                         city, uf, type, terrainArea, 
                                                                                         immobileArea, parkNumber, 
                                                                                         bathNumber, bedNumber, price, 
-                                                                                        description, reference, dateSubscript, 
+                                                                                        description, reference, 
                                                                                         status, id_user) values (?, ?, ?, ?,
-                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
                                                                                         [newImmobile.purpose, newImmobile.address, newImmobile.number, 
                                                                                         newImmobile.complement, newImmobile.cep, newImmobile.district, 
                                                                                         newImmobile.city, newImmobile.uf, newImmobile.type, newImmobile.terrainArea, 
                                                                                         newImmobile.immobileArea, newImmobile.parkNumber, 
                                                                                         newImmobile.bathNumber, newImmobile.bedNumber, newImmobile.price, 
-                                                                                        newImmobile.description, newImmobile.reference, newImmobile.dateSubscript, 
-                                                                                        newImmobile.status, newImmobile.id_user])
+                                                                                        newImmobile.description, newImmobile.reference, newImmobile.status, newImmobile.id_user])
                                                         .then(result => {
                                                             insertedId = result.insertId;
                                                             return res.json({id: insertedId, data: newImmobile});
@@ -85,16 +83,15 @@ module.exports = {
                                                                                         city, uf, type, terrainArea, 
                                                                                         immobileArea, parkNumber, 
                                                                                         bathNumber, bedNumber, price, 
-                                                                                        description, reference, dateSubscript, 
-                                                                                        status) values (?, ?, ?, ?,
-                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                                                                                        description, reference, status) 
+                                                                                        values (?, ?, ?, ?,
+                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
                                                                                         [newImmobile.purpose, newImmobile.address, newImmobile.number, 
                                                                                         newImmobile.complement, newImmobile.cep, newImmobile.district, 
                                                                                         newImmobile.city, newImmobile.uf, newImmobile.type, newImmobile.terrainArea, 
                                                                                         newImmobile.immobileArea, newImmobile.parkNumber, 
                                                                                         newImmobile.bathNumber, newImmobile.bedNumber, newImmobile.price, 
-                                                                                        newImmobile.description, newImmobile.reference, newImmobile.dateSubscript, 
-                                                                                        newImmobile.status])
+                                                                                        newImmobile.description, newImmobile.reference, newImmobile.status])
                                                         .then(result => {
                                                             insertedId = result.insertId;
                                                             return res.json({id: insertedId, data: newImmobile});
@@ -109,16 +106,15 @@ module.exports = {
                                                                                         city, uf, type, terrainArea, 
                                                                                         immobileArea, parkNumber, 
                                                                                         bathNumber, bedNumber, price, 
-                                                                                        description, dateSubscript, 
+                                                                                        description, 
                                                                                         status) values (?, ?, ?, ?,
-                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
                                                                                         [newImmobile.purpose, newImmobile.address, newImmobile.number, 
                                                                                         newImmobile.complement, newImmobile.cep, newImmobile.district, 
                                                                                         newImmobile.city, newImmobile.uf, newImmobile.type, newImmobile.terrainArea, 
                                                                                         newImmobile.immobileArea, newImmobile.parkNumber, 
                                                                                         newImmobile.bathNumber, newImmobile.bedNumber, newImmobile.price, 
-                                                                                        newImmobile.description, newImmobile.dateSubscript, 
-                                                                                        newImmobile.status])
+                                                                                        newImmobile.description, newImmobile.status])
                                                         .then(result => {
                                                             insertedId = result.insertId;
                                                             return res.json({id: insertedId, data: newImmobile});
@@ -139,15 +135,14 @@ module.exports = {
                                                                                         complement, cep, district, 
                                                                                         city, uf, type, terrainArea, 
                                                                                         immobileArea, price, 
-                                                                                        description, dateSubscript, 
+                                                                                        description, 
                                                                                         status, id_user) values (?, ?, ?, ?,
-                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
                                                                                         [newImmobile.purpose, newImmobile.address, newImmobile.number, 
                                                                                         newImmobile.complement, newImmobile.cep, newImmobile.district, 
                                                                                         newImmobile.city, newImmobile.uf, newImmobile.type, newImmobile.terrainArea, 
                                                                                         newImmobile.immobileArea, newImmobile.price, 
-                                                                                        newImmobile.description, newImmobile.dateSubscript, 
-                                                                                        newImmobile.status, newImmobile.id_user])
+                                                                                        newImmobile.description, newImmobile.status, newImmobile.id_user])
                                                         .then(result => {
                                                             insertedId = result.insertId;
                                                             return res.json({id: insertedId, data: newImmobile});
@@ -161,15 +156,14 @@ module.exports = {
                                                                                         complement, cep, district, 
                                                                                         city, uf, type, terrainArea, 
                                                                                         immobileArea, price, 
-                                                                                        description, reference, dateSubscript, 
+                                                                                        description, reference, 
                                                                                         status, id_user) values (?, ?, ?, ?,
-                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
                                                                                         [newImmobile.purpose, newImmobile.address, newImmobile.number, 
                                                                                         newImmobile.complement, newImmobile.cep, newImmobile.district, 
                                                                                         newImmobile.city, newImmobile.uf, newImmobile.type, newImmobile.terrainArea, 
                                                                                         newImmobile.immobileArea, newImmobile.price, 
-                                                                                        newImmobile.description, newImmobile.reference, newImmobile.dateSubscript, 
-                                                                                        newImmobile.status, newImmobile.id_user])
+                                                                                        newImmobile.description, newImmobile.reference, newImmobile.status, newImmobile.id_user])
                                                         .then(result => {
                                                             insertedId = result.insertId;
                                                             return res.json({id: insertedId, data: newImmobile});
@@ -187,15 +181,14 @@ module.exports = {
                                                                                         complement, cep, district, 
                                                                                         city, uf, type, terrainArea, 
                                                                                         immobileArea, price, 
-                                                                                        description, reference, dateSubscript, 
+                                                                                        description, reference, 
                                                                                         status) values (?, ?, ?, ?,
-                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
                                                                                         [newImmobile.purpose, newImmobile.address, newImmobile.number, 
                                                                                         newImmobile.complement, newImmobile.cep, newImmobile.district, 
                                                                                         newImmobile.city, newImmobile.uf, newImmobile.type, newImmobile.terrainArea, 
                                                                                         newImmobile.immobileArea, newImmobile.price, 
-                                                                                        newImmobile.description, newImmobile.reference, newImmobile.dateSubscript, 
-                                                                                        newImmobile.status])
+                                                                                        newImmobile.description, newImmobile.reference, newImmobile.status])
                                                         .then(result => {
                                                             insertedId = result.insertId;
                                                             return res.json({id: insertedId, data: newImmobile});
@@ -209,15 +202,14 @@ module.exports = {
                                                                                         complement, cep, district, 
                                                                                         city, uf, type, terrainArea, 
                                                                                         immobileArea, price, 
-                                                                                        description, dateSubscript, 
-                                                                                        status) values (?, ?, ?, ?,
+                                                                                        description, status) 
+                                                                                        values (?, ?, ?, ?,
                                                                                         ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
                                                                                         [newImmobile.purpose, newImmobile.address, newImmobile.number, 
                                                                                         newImmobile.complement, newImmobile.cep, newImmobile.district, 
                                                                                         newImmobile.city, newImmobile.uf, newImmobile.type, newImmobile.terrainArea, 
                                                                                         newImmobile.immobileArea, newImmobile.price, 
-                                                                                        newImmobile.description, newImmobile.dateSubscript, 
-                                                                                        newImmobile.status])
+                                                                                        newImmobile.description, newImmobile.status])
                                                             .then(result => {
                                                                 insertedId = result.insertId;
                                                                 return res.json({id: insertedId, data: newImmobile});
@@ -242,16 +234,15 @@ module.exports = {
                                                                                         uf, type, terrainArea, 
                                                                                         immobileArea, parkNumber, 
                                                                                         bathNumber, bedNumber, price, 
-                                                                                        description, dateSubscript, 
+                                                                                        description,
                                                                                         status, id_user) values (?, ?, ?,
-                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
                                                                                         [newImmobile.purpose, newImmobile.address, newImmobile.number, 
                                                                                         newImmobile.cep, newImmobile.district, newImmobile.city, 
                                                                                         newImmobile.uf, newImmobile.type, newImmobile.terrainArea, 
                                                                                         newImmobile.immobileArea, newImmobile.parkNumber, 
                                                                                         newImmobile.bathNumber, newImmobile.bedNumber, newImmobile.price, 
-                                                                                        newImmobile.description, newImmobile.dateSubscript, 
-                                                                                        newImmobile.status, newImmobile.id_user])
+                                                                                        newImmobile.description, newImmobile.status, newImmobile.id_user])
                                                         .then(result => {
                                                             insertedId = result.insertId;
                                                             return res.json({id: insertedId, data: newImmobile});
@@ -266,16 +257,15 @@ module.exports = {
                                                                                         uf, type, terrainArea, 
                                                                                         immobileArea, parkNumber, 
                                                                                         bathNumber, bedNumber, price, 
-                                                                                        description, reference, dateSubscript, 
+                                                                                        description, reference, 
                                                                                         status, id_user) values (?, ?, ?,
-                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
                                                                                         [newImmobile.purpose, newImmobile.address, newImmobile.number, 
                                                                                         newImmobile.cep, newImmobile.district, newImmobile.city, 
                                                                                         newImmobile.uf, newImmobile.type, newImmobile.terrainArea, 
                                                                                         newImmobile.immobileArea, newImmobile.parkNumber, 
                                                                                         newImmobile.bathNumber, newImmobile.bedNumber, newImmobile.price, 
-                                                                                        newImmobile.description, newImmobile.reference, newImmobile.dateSubscript, 
-                                                                                        newImmobile.status, newImmobile.id_user])
+                                                                                        newImmobile.description, newImmobile.reference, newImmobile.status, newImmobile.id_user])
                                                         .then(result => {
                                                             insertedId = result.insertId;
                                                             return res.json({id: insertedId, data: newImmobile});
@@ -294,16 +284,15 @@ module.exports = {
                                                                                         uf, type, terrainArea, 
                                                                                         immobileArea, parkNumber, 
                                                                                         bathNumber, bedNumber, price, 
-                                                                                        description, reference, dateSubscript, 
-                                                                                        status) values (?, ?, ?,
+                                                                                        description, reference, status) 
+                                                                                        values (?, ?, ?,
                                                                                         ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
                                                                                         [newImmobile.purpose, newImmobile.address, newImmobile.number, 
                                                                                         newImmobile.cep, newImmobile.district, newImmobile.city, 
                                                                                         newImmobile.uf, newImmobile.type, newImmobile.terrainArea, 
                                                                                         newImmobile.immobileArea, newImmobile.parkNumber, 
                                                                                         newImmobile.bathNumber, newImmobile.bedNumber, newImmobile.price, 
-                                                                                        newImmobile.description, newImmobile.reference, newImmobile.dateSubscript, 
-                                                                                        newImmobile.status])
+                                                                                        newImmobile.description, newImmobile.reference, newImmobile.status])
                                                         .then(result => {
                                                             insertedId = result.insertId;
                                                             return res.json({id: insertedId, data: newImmobile});
@@ -318,16 +307,15 @@ module.exports = {
                                                                                         uf, type, terrainArea, 
                                                                                         immobileArea, parkNumber, 
                                                                                         bathNumber, bedNumber, price, 
-                                                                                        description, dateSubscript, 
+                                                                                        description, 
                                                                                         status) values (?, ?, ?,
-                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
                                                                                         [newImmobile.purpose, newImmobile.address, newImmobile.number, 
                                                                                         newImmobile.cep, newImmobile.district, newImmobile.city, 
                                                                                         newImmobile.uf, newImmobile.type, newImmobile.terrainArea, 
                                                                                         newImmobile.immobileArea, newImmobile.parkNumber, 
                                                                                         newImmobile.bathNumber, newImmobile.bedNumber, newImmobile.price, 
-                                                                                        newImmobile.description, newImmobile.dateSubscript, 
-                                                                                        newImmobile.status])
+                                                                                        newImmobile.description, newImmobile.status])
                                                         .then(result => {
                                                             insertedId = result.insertId;
                                                             return res.json({id: insertedId, data: newImmobile});
@@ -348,15 +336,14 @@ module.exports = {
                                                                                         cep, district, city, 
                                                                                         uf, type, terrainArea, 
                                                                                         immobileArea, price, 
-                                                                                        description, dateSubscript, 
+                                                                                        description, 
                                                                                         status, id_user) values (?, ?, ?,
-                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
                                                                                         [newImmobile.purpose, newImmobile.address, newImmobile.number, 
                                                                                         newImmobile.cep, newImmobile.district, newImmobile.city, 
                                                                                         newImmobile.uf, newImmobile.type, newImmobile.terrainArea, 
                                                                                         newImmobile.immobileArea, newImmobile.price, 
-                                                                                        newImmobile.description, newImmobile.dateSubscript, 
-                                                                                        newImmobile.status, newImmobile.id_user])
+                                                                                        newImmobile.description, newImmobile.status, newImmobile.id_user])
                                                         .then(result => {
                                                             insertedId = result.insertId;
                                                             return res.json({id: insertedId, data: newImmobile});
@@ -370,14 +357,14 @@ module.exports = {
                                                                                         cep, district, city, 
                                                                                         uf, type, terrainArea, 
                                                                                         immobileArea, price, 
-                                                                                        description, reference, dateSubscript, 
+                                                                                        description, reference, 
                                                                                         status, id_user) values (?, ?, ?,
-                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
                                                                                         [newImmobile.purpose, newImmobile.address, newImmobile.number, 
                                                                                         newImmobile.cep, newImmobile.district, newImmobile.city, 
                                                                                         newImmobile.uf, newImmobile.type, newImmobile.terrainArea, 
                                                                                         newImmobile.immobileArea, newImmobile.price, 
-                                                                                        newImmobile.description, newImmobile.reference, newImmobile.dateSubscript, 
+                                                                                        newImmobile.description, newImmobile.reference,
                                                                                         newImmobile.status, newImmobile.id_user])
                                                         .then(result => {
                                                             insertedId = result.insertId;
@@ -396,14 +383,14 @@ module.exports = {
                                                                                         cep, district, city, 
                                                                                         uf, type, terrainArea, 
                                                                                         immobileArea, price, 
-                                                                                        description, reference, dateSubscript, 
+                                                                                        description, reference, 
                                                                                         status) values (?, ?, ?,
-                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
                                                                                         [newImmobile.purpose, newImmobile.address, newImmobile.number, 
                                                                                         newImmobile.cep, newImmobile.district, newImmobile.city, 
                                                                                         newImmobile.uf, newImmobile.type, newImmobile.terrainArea, 
                                                                                         newImmobile.immobileArea, newImmobile.price, 
-                                                                                        newImmobile.description, newImmobile.reference, newImmobile.dateSubscript, 
+                                                                                        newImmobile.description, newImmobile.reference,
                                                                                         newImmobile.status])
                                                         .then(result => {
                                                             insertedId = result.insertId;
@@ -418,15 +405,14 @@ module.exports = {
                                                                                         cep, district, 
                                                                                         city, uf, type, terrainArea, 
                                                                                         immobileArea, price, 
-                                                                                        description, dateSubscript, 
-                                                                                        status) values (?, ?, ?,
-                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                                                                                        description, status) 
+                                                                                        values (?, ?, ?,
+                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
                                                                                         [newImmobile.purpose, newImmobile.address, newImmobile.number, 
                                                                                         newImmobile.cep, newImmobile.district, newImmobile.city, 
                                                                                         newImmobile.uf, newImmobile.type, newImmobile.terrainArea, 
                                                                                         newImmobile.immobileArea, newImmobile.price, 
-                                                                                        newImmobile.description, newImmobile.dateSubscript, 
-                                                                                        newImmobile.status])
+                                                                                        newImmobile.description, newImmobile.status])
                                                             .then(result => {
                                                                 insertedId = result.insertId;
                                                                 return res.json({id: insertedId, data: newImmobile});
