@@ -551,7 +551,7 @@ module.exports = {
                     if(Object.keys(reqImmobile).indexOf(item) === Object.keys(reqImmobile).length - 1){
                         // Se o item a ser adicionado na condição for string, deve ter aspas na query
                         if(item === 'purpose' || item === 'address' || item === 'complement' || item === 'district' || 
-                           item === 'city' || item === 'uf' || item === 'type' ||item === 'description'){
+                           item === 'city' || item === 'uf' || item === 'type' || item === 'description' || item === 'cep'){
                             // Obs: o item retorna o nome da chave, enquanto o reqImmobile[item] retorna o valor da chave
                             sqlCondition += `${item} = '${reqImmobile[item]}' `;
                         }
@@ -563,7 +563,7 @@ module.exports = {
                     else{
                         // Se o item a ser adicionado na condição for string, deve ter aspas na query
                         if(item === 'purpose' || item === 'address' || item === 'complement' || item === 'district' || 
-                            item === 'city' || item === 'uf' || item === 'type' ||item === 'description'){
+                            item === 'city' || item === 'uf' || item === 'type' || item === 'description' || item === 'cep'){
                             // Obs: o item retorna o nome da chave, enquanto o reqImmobile[item] retorna o valor da chave
                             sqlCondition += `${item} = '${reqImmobile[item]}', `;
                         }
