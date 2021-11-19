@@ -480,7 +480,7 @@ module.exports = {
                 // Se a chave do objeto possuir valor
                 if(reqImmobile[item]){
                     // Obs: o item retorna o nome da chave, enquanto o reqImmobile[item] retorna o valor da chave
-                    sqlCondition += ` and ${item} = '${reqImmobile[item]}'`;
+                    sqlCondition += ` and ${item} = ${reqImmobile[item]}`;
                 }
             }
 
@@ -492,7 +492,7 @@ module.exports = {
                           price, description, reference, 
                           dateSubscript, status, id_user FROM tb_immobile
                           WHERE 1 = 1 ${sqlCondition}`;
-
+            
             (await conn).query(sql).then(result => 
                 {
                     sql = null;
