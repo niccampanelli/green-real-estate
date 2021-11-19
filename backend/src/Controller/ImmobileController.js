@@ -469,8 +469,6 @@ module.exports = {
             // Criando a conexão com o banco
             conn = connection.getPool().getConnection();
 
-            console.log(reqImmobile);
-
             // Variável que armazenará a query que será realizada
             var sql = "";
 
@@ -500,8 +498,6 @@ module.exports = {
                     sql = null;
                     sqlCondition = null;
                     reqImmobile = null;
-                    
-                    console.log(result);
 
                     return res.json(result);
                 }
