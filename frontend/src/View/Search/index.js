@@ -36,11 +36,35 @@ export default function Search(){
     }, []);
 
     useEffect(async () => {
-        await API.get("/immobile", {params: objSearch}).then(result => {
-            setImmobileList(result.data);
-            setResultQuant(result.data.length);
-            sessionStorage.setItem("lastData", JSON.stringify(result.data));
-        });
+        const lastData = JSON.parse(sessionStorage.getItem("lastData"));
+        var cleanObjSearch = objSearch;
+        Object.keys(cleanObjSearch).forEach(key => cleanObjSearch[key] === undefined && delete cleanObjSearch[key]);
+
+        if(lastData){            
+            if((search && search === lastData.search) || (JSON.stringify(cleanObjSearch) && JSON.stringify(cleanObjSearch) === JSON.stringify(lastData.query))){
+                setImmobileList(lastData.data);
+                setResultQuant(lastData.data.length);
+            }
+            else{
+                getData();
+            }
+        }
+        else{
+            getData();
+        }
+
+        async function getData(){
+            await API.get("/immobile", {params: objSearch}).then(result => {
+                setImmobileList(result.data);
+                setResultQuant(result.data.length);
+    
+                sessionStorage.setItem("lastData", JSON.stringify({
+                    search: search,
+                    query: objSearch,
+                    data: result.data,
+                }));
+            });
+        }
     }, [])
 
     return(

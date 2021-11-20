@@ -469,7 +469,7 @@ module.exports = {
                     if(item === 'purpose' || item === 'address' || item === 'complement' || item === 'district' || 
                         item === 'city' || item === 'uf' || item === 'type' || item === 'description' || item === 'cep'){
                         // Obs: o item retorna o nome da chave, enquanto o reqImmobile[item] retorna o valor da chave
-                        sqlCondition += ` and ${item} = '${reqImmobile[item]}'`;
+                        sqlCondition += ` and ${item} LIKE '%${reqImmobile[item]}%'`;
                     }
                     else{
                         // Obs: o item retorna o nome da chave, enquanto o reqImmobile[item] retorna o valor da chave
@@ -487,7 +487,7 @@ module.exports = {
                           price, description, reference, 
                           dateSubscript, status, id_user FROM tb_immobile
                           WHERE 1 = 1 ${sqlCondition}`;
-            
+
             (await conn).query(sql).then(result => 
                 {
                     sql = null;
