@@ -148,6 +148,10 @@ export default function Home() {
         }});
     }
 
+    function filterInputChar(e){
+        
+    }
+
     return(
         <Fragment>
             <Header/>
@@ -168,55 +172,119 @@ export default function Home() {
                             <div className="landingSearchDetailRow">
                                 <div className="landingSearchDetailDiv">
                                     <label className="landingSearchDetailLabel">Tipo</label>
-                                    <input className="defaultInput" value={immoType} onChange={e => setImmoType(e.target.value)}/>
+                                    <select className="defaultDropdown" value={immoType} onChange={e => setImmoType(e.target.value)}>
+                                        <option className="defaultDropdownOption" selected value="">Todos</option>
+                                        <option className="defaultDropdownOption" value="casa">Casa</option>
+                                        <option className="defaultDropdownOption" value="apartamento">Apartamento</option>
+                                        <option className="defaultDropdownOption" value="terreno">Terreno</option>
+                                        <option className="defaultDropdownOption" value="comercial">Comercial</option>
+                                        <option className="defaultDropdownOption" value="galpão">Galpão</option>
+                                    </select>
                                 </div>
                                 <div className="landingSearchDetailDiv">
                                     <label className="landingSearchDetailLabel">Propósito</label>
-                                    <input className="defaultInput" value={immoPurpose} onChange={e => setImmoPurpose(e.target.value)}/>
+                                    <select className="defaultDropdown" value={immoPurpose} onChange={e => setImmoPurpose(e.target.value)}>
+                                        <option className="defaultDropdownOption" value="">Todos</option>
+                                        <option className="defaultDropdownOption" value="venda">Venda</option>
+                                        <option className="defaultDropdownOption" value="alugar">Alugar</option>
+                                    </select>
                                 </div>
                             </div>
                             <div className="landingSearchDetailRow">
                                 <div className="landingSearchDetailDiv">
                                     <label className="landingSearchDetailLabel">Logradouro</label>
-                                    <input className="defaultInput" value={immoAddress} onChange={e => setImmoAddress(e.target.value)}/>
+                                    <input className="defaultInput" value={immoAddress} onChange={e => setImmoAddress(e.target.value)} type="text" />
                                 </div>
                                 <div className="landingSearchDetailDiv">
                                     <label className="landingSearchDetailLabel">Bairro</label>
-                                    <input className="defaultInput" value={immoDistrict} onChange={e => setImmoDistrict(e.target.value)}/>
+                                    <input className="defaultInput" value={immoDistrict} onChange={e => setImmoDistrict(e.target.value)} type="text"/>
                                 </div>
                             </div>
                             <div className="landingSearchDetailRow">
                                 <div className="landingSearchDetailDiv">
                                     <label className="landingSearchDetailLabel">Cidade</label>
-                                    <input className="defaultInput" value={immoCity} onChange={e => setImmoCity(e.target.value)}/>
+                                    <input className="defaultInput" value={immoCity} onChange={e => setImmoCity(e.target.value)} type="city" />
                                 </div>
                                 <div className="landingSearchDetailDiv">
                                     <label className="landingSearchDetailLabel">UF</label>
-                                    <input className="defaultInput" value={immoUF} onChange={e => setImmoUF(e.target.value)}/>
+                                    <select className="defaultDropdown" value={immoUF} onChange={e => setImmoUF(e.target.value)}>
+                                        <option className="defaultDropdownOption" value="">Todos</option>
+                                        <option className="defaultDropdownOption" value="AC">Acre</option>
+                                        <option className="defaultDropdownOption" value="AL">Alagoas</option>
+                                        <option className="defaultDropdownOption" value="AP">Amapá</option>
+                                        <option className="defaultDropdownOption" value="AM">Amazonas</option>
+                                        <option className="defaultDropdownOption" value="BA">Bahia</option>
+                                        <option className="defaultDropdownOption" value="CE">Ceará</option>
+                                        <option className="defaultDropdownOption" value="DF">Distrito Federal</option>
+                                        <option className="defaultDropdownOption" value="ES">Espirito Santo</option>
+                                        <option className="defaultDropdownOption" value="GO">Goiás</option>
+                                        <option className="defaultDropdownOption" value="MA">Maranhão</option>
+                                        <option className="defaultDropdownOption" value="MT">Mato Grosso</option>
+                                        <option className="defaultDropdownOption" value="MS">Mato Grosso do Sul</option>
+                                        <option className="defaultDropdownOption" value="MG">Minas Gerais</option>
+                                        <option className="defaultDropdownOption" value="PA">Pará</option>
+                                        <option className="defaultDropdownOption" value="PB">Paraíba</option>
+                                        <option className="defaultDropdownOption" value="PR">Paraná</option>
+                                        <option className="defaultDropdownOption" value="PE">Pernambuco</option>
+                                        <option className="defaultDropdownOption" value="PI">Piauí</option>
+                                        <option className="defaultDropdownOption" value="RJ">Rio de Janeiro</option>
+                                        <option className="defaultDropdownOption" value="RN">Rio Grande do Norte</option>
+                                        <option className="defaultDropdownOption" value="RS">Rio Grande do Sul</option>
+                                        <option className="defaultDropdownOption" value="RO">Rondônia</option>
+                                        <option className="defaultDropdownOption" value="RR">Roraima</option>
+                                        <option className="defaultDropdownOption" value="SC">Santa Catarina</option>
+                                        <option className="defaultDropdownOption" value="SP">São Paulo</option>
+                                        <option className="defaultDropdownOption" value="SE">Sergipe</option>
+                                        <option className="defaultDropdownOption" value="TO">Tocantins</option>
+                                    </select>
                                 </div>
                             </div>
                             <div className="landingSearchDetailRow">
                                 <div className="landingSearchDetailDiv">
                                     <label className="landingSearchDetailLabel">Área Útil</label>
-                                    <input className="defaultInput" value={immoArea} onChange={e => setImmoArea(e.target.value)}/>
+                                    <input className="defaultInput" value={immoArea} onChange={e => setImmoArea(e.target.value)} type="number"/>
                                 </div>
                                 <div className="landingSearchDetailDiv">
                                     <label className="landingSearchDetailLabel">Quartos</label>
-                                    <input className="defaultInput" value={immoBed} onChange={e => setImmoBed(e.target.value)}/>
+                                    <select className="defaultInput" value={immoBed} onChange={e => setImmoBed(e.target.value)} type="number">
+                                        <option className="defaultDropdownOption" value="">Qualquer</option>
+                                        <option className="defaultDropdownOption" value="0">Sem</option>
+                                        <option className="defaultDropdownOption" value="1">1+</option>
+                                        <option className="defaultDropdownOption" value="2">2+</option>
+                                        <option className="defaultDropdownOption" value="3">3+</option>
+                                        <option className="defaultDropdownOption" value="4">4+</option>
+                                        <option className="defaultDropdownOption" value="5">5+</option>
+                                    </select>
                                 </div>
                                 <div className="landingSearchDetailDiv">
                                     <label className="landingSearchDetailLabel">Banheiros</label>
-                                    <input className="defaultInput" value={immoBath} onChange={e => setImmoBath(e.target.value)}/>
+                                    <select className="defaultInput" value={immoBath} onChange={e => setImmoBath(e.target.value)} type="number">
+                                        <option className="defaultDropdownOption" value="">Qualquer</option>
+                                        <option className="defaultDropdownOption" value="0">Sem</option>
+                                        <option className="defaultDropdownOption" value="1">1+</option>
+                                        <option className="defaultDropdownOption" value="2">2+</option>
+                                        <option className="defaultDropdownOption" value="3">3+</option>
+                                        <option className="defaultDropdownOption" value="4">4+</option>
+                                        <option className="defaultDropdownOption" value="5">5+</option>
+                                    </select>
                                 </div>
                                 <div className="landingSearchDetailDiv">
                                     <label className="landingSearchDetailLabel">Vagas</label>
-                                    <input className="defaultInput" value={immoPark} onChange={e => setImmoPark(e.target.value)}/>
+                                    <select className="defaultInput" value={immoPark} onChange={e => setImmoPark(e.target.value)} type="number">
+                                        <option className="defaultDropdownOption" value="">Qualquer</option>
+                                        <option className="defaultDropdownOption" value="0">Sem</option>
+                                        <option className="defaultDropdownOption" value="1">1+</option>
+                                        <option className="defaultDropdownOption" value="2">2+</option>
+                                        <option className="defaultDropdownOption" value="3">3+</option>
+                                        <option className="defaultDropdownOption" value="4">4+</option>
+                                        <option className="defaultDropdownOption" value="5">5+</option>
+                                    </select>
                                 </div>
                             </div>
                             <div className="landingSearchDetailRow">
                                 <div className="landingSearchDetailDiv">
                                     <label className="landingSearchDetailLabel">Área do Terreno</label>
-                                    <input className="defaultInput" value={immoTerrainArea} onChange={e => setImmoTerrainArea(e.target.value)}/>
+                                    <input className="defaultInput" value={immoTerrainArea} onChange={e => setImmoTerrainArea(e.target.value)} type="number"/>
                                 </div>
                                 <div className="landingSearchDetailDiv">
                                     <label className="landingSearchDetailLabel">Referencia</label>
