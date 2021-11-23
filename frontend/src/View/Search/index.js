@@ -4,6 +4,7 @@ import API from "../../Services/API";
 import Footer from '../Components/Footer';
 import Header from '../Components/Header';
 import ImmobileCard from "../Components/ImmobileCard";
+import loader from "../../Assets/loader.gif";
 import './style.css';
 
 export default function Search(){
@@ -16,7 +17,7 @@ export default function Search(){
 
     const [title, setTitle] = useState("");
     const [resultQuant, setResultQuant] = useState(0);
-    const [immobileList, setImmobileList] = useState([]);
+    const [immobileList, setImmobileList] = useState();
 
     useEffect(() => {
         if(objSearch === "" || objSearch === undefined || objSearch === null){
@@ -57,7 +58,7 @@ export default function Search(){
             await API.get("/immobile", {params: objSearch}).then(result => {
                 setImmobileList(result.data);
                 setResultQuant(result.data.length);
-    
+
                 sessionStorage.setItem("lastData", JSON.stringify({
                     search: search,
                     query: objSearch,
@@ -120,16 +121,19 @@ export default function Search(){
                         </section>
                         
                         <section className="searchResultSection">
-                            <ul className="searchResultList">
-                                { immobileList ? (
+                            { immobileList ? 
+                                <ul className="searchResultList">
+                                {
                                     immobileList.map((immo, i) => (
                                         <ImmobileCard key={i} immo={immo}/>
                                     ))
-                                )
-                                :
-                                ''
                                 }
-                            </ul>
+                                </ul>
+                            :
+                            <div className="defaultLoader">
+                                <img src={loader}/>
+                            </div>
+                            }
                         </section>
                     </article>
                 </main>

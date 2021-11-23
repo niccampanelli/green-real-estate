@@ -1,13 +1,104 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Footer from '../Components/Footer';
 import Header from '../Components/Header';
-import Imagem1 from '../../Assets/img1-small.jpg'
+import API from '../../Services/API';
 import './style.css';
 
 export default function Registration() {
 
     const [purposeSwitch, setPurposeSwitch] = useState();
-    const [typeImmobile, setTypeImmobile] = useState("casa");
+
+    const [immoImages, setImmoImages] = useState();
+    const [immoAddress, setImmoAddress] = useState("");
+    const [immoNumber, setImmoNumber] = useState("");
+    const [immoComplement, setImmoComplement] = useState("");
+    const [immoCEP, setImmoCEP] = useState("");
+    const [immoDistrict, setImmoDistrict] = useState("");
+    const [immoCity, setImmoCity] = useState("");
+    const [immoUF, setImmoUF] = useState("");
+    const [immoType, setImmoType] = useState("");
+    const [immoArea, setImmoArea] = useState("");
+    const [immoTerrainArea, setImmoTerrainArea] = useState("");
+    const [immoPark, setImmoPark] = useState("");
+    const [immoBath, setImmoBath] = useState("");
+    const [immoBed, setImmoBed] = useState("");
+    const [immoPrice, setImmoPrice] = useState("");
+    const [immoDescription, setImmoDescription] = useState("");
+
+    useEffect(() => {
+        console.log(immoImages);
+    }, [immoImages])
+
+    // Método para enviar o formulário
+    function sendData(e){
+        e.preventDefault();
+
+        // Se o "purposeSwitch" existir
+        if(purposeSwitch){
+
+            if(!immoAddress || (immoAddress && !immoAddress.toString().length > 70)){
+                alert("Insira um logradouro válido. O logradouro não pode conter símbolos");
+            }
+            else if(!immoNumber || (immoNumber && !immoNumber.toString().match(/^[0-9]+$/))){
+                alert("Insira um número válido. O número deve conter apenas digitos.");
+            }
+            else if(!immoComplement || (immoComplement && immoComplement.toString().length > 70)){
+                alert("Insira um complemento válido.");
+            }
+            else if(!immoCEP || (immoCEP && !immoCEP.toString().match(/^[0-9]+$/)) || (immoCEP && immoCEP.toString().length > 8)){
+                alert("Insira um CEP válido.");
+            }
+            else if(!immoDistrict || (immoDistrict && !immoDistrict.toString().match(/^[a-zA-Z]+$/)) || (immoDistrict && immoDistrict.toString().length > 50)){
+                alert("Insira um bairro válido.");
+            }
+            else if(!immoCity){
+                alert("Insira uma cidade válida.");
+            }
+            else if(!immoUF){
+                alert("Insira uma cidade válida.");
+            }
+            else if(!immoType){
+                alert("Insira um tipo de imóvel válido.");
+            }
+            else if(!immoArea || (immoArea && !immoArea.toString().match(/^[0-9]+$/))){
+                alert("Insira uma área válida.");
+            }
+            else if(!immoTerrainArea || (immoTerrainArea && !immoTerrainArea.toString().match(/^[0-9]+$/))){
+                alert("Insira uma área do terreno válida.");
+            }
+            else if(immoPark === null || immoPark === undefined || (immoPark && !immoPark.toString().match(/^[0-9]+$/))){
+                alert("Insira um número de vagas válido.");
+            }
+            else if(immoBath === null || immoBath === undefined || (immoBath && !immoBath.toString().match(/^[0-9]+$/))){
+                alert("Insira um número de banheiros válido.");
+            }
+            else if(immoBed === null || immoBed === undefined || (immoBed && !immoBed.toString().match(/^[0-9]+$/))){
+                alert("Insira um número de dormitórios válido.");
+            }
+            else if(!immoPrice || (immoPrice && !immoPrice.toString().match(/^[0-9]+$/)) || immoPrice < 100){
+                alert("Insira um valor válido.");
+            }
+            else if(!immoDescription || (immoDescription && immoDescription.toString().length < 100)){
+                alert("Insira um descrição válida.");
+            }
+            else{
+                // Se o propósito for aluguel
+                if(purposeSwitch === "rent" || purposeSwitch === "sale"){
+                    console.log(immoImages[0]);
+                    const formData = new FormData();
+                    formData.append("images", immoImages[0]);
+                    API.post("/image", formData);
+                }
+                // Se for um valor inválido
+                else{
+                    return null;
+                }
+            }
+        }
+        else{
+            return null;
+        }
+    }
 
     return(
         <Fragment>
@@ -25,30 +116,33 @@ export default function Registration() {
                         </section>
                         <section className="formSection">
                             <div className="formLeft">
-                                <img alt="Ilustração" />
+                                <img alt="Ilustração"/>
                             </div>
                             <div className="formRight">
                                 <h2 className="formSubtitle">Conte-nos sobre o seu imóvel</h2>
                                 <p className="formDescription">Proident id reprehenderit laborum non excepteur in quis adipisicing laboris nostrud enim elit. Pariatur laboris id aliqua sunt ut adipisicing sint. Quis culpa irure ullamco non qui aute ad enim. Cupidatat pariatur deserunt sint minim.</p>
-                                
                                 { purposeSwitch ? (
-                                    (purposeSwitch === 'rent') ? 
-                                        <form className="registrationForm">
+                                    purposeSwitch === 'rent' ?
+                                    <form encType="multipart/form-data" className="registrationForm" onSubmit={e => sendData(e)}>
+                                        <div className="formImages">
+                                            <label>Imagens do imóvel</label>
+                                            <input onChange={e => setImmoImages(e.target.files)} type="file"/>
+                                        </div>
                                         <div className="formAddress">
                                             <label>Logradouro</label>
-                                            <input className="defaultInput" placeholder="Exemplo: Avenida Brasil" type="text" maxLength="50"/>
+                                            <input value={immoAddress} onChange={e => setImmoAddress(e.target.value)} className="defaultInput" placeholder="Exemplo: Avenida Brasil" type="text" maxLength="50"/>
                                             <label>Número</label>
-                                            <input className="defaultInputNumber" placeholder="12" type="text" maxLength="5"/>
+                                            <input value={immoNumber} onChange={e => setImmoNumber(e.target.value)} className="defaultInputNumber" placeholder="12" type="text" maxLength="5"/>
                                             <label>Complemento</label>
-                                            <input className="defaultInput" placeholder="Apto 505" type="text" maxLength="20"/>
+                                            <input value={immoComplement} onChange={e => setImmoComplement(e.target.value)} className="defaultInput" placeholder="Apto 505" type="text" maxLength="20"/>
                                             <label>CEP</label>
-                                            <input className="defaultInput" placeholder="12345678" type="text" maxLength="20"/>
+                                            <input value={immoCEP} onChange={e => setImmoCEP(e.target.value)} className="defaultInput" placeholder="12345678" type="text" maxLength="20"/>
                                             <label>Bairro</label>
-                                            <input className="defaultInput" placeholder="Mooca" type="text" maxLength="20"/>
+                                            <input value={immoDistrict} onChange={e => setImmoDistrict(e.target.value)} className="defaultInput" placeholder="Mooca" type="text" maxLength="20"/>
                                             <label>Cidade</label>
-                                            <input className="defaultInput" placeholder="São Paulo" type="text" maxLength="20"/>
+                                            <input value={immoCity} onChange={e => setImmoCity(e.target.value)} className="defaultInput" placeholder="São Paulo" type="text" maxLength="20"/>
                                             <label>Estado</label>
-                                            <select className="defaultDropdown">
+                                            <select value={immoUF} onChange={e => setImmoUF(e.target.value)} className="defaultDropdown">
                                                 <option className="defaultDropdownOption" value="AC">Acre</option>
                                                 <option className="defaultDropdownOption" value="AL">Alagoas</option>
                                                 <option className="defaultDropdownOption" value="AP">Amapá</option>
@@ -78,167 +172,150 @@ export default function Registration() {
                                                 <option className="defaultDropdownOption" value="TO">Tocantins</option>
                                             </select>
                                         </div>
-
                                         <div className="formType">
                                             <label>Tipo do imóvel</label>
-                                            <select className="defaultDropdown" onChange={e => setTypeImmobile(e.target.value)}>
+                                            <select value={immoType} onChange={e => setImmoType(e.target.value)} className="defaultDropdown">
                                                 <option className="defaultDropdownOption" value="casa" checked>Casa</option>
                                                 <option className="defaultDropdownOption" value="apartamento">Apartamento</option>
                                                 <option className="defaultDropdownOption" value="terreno">Terreno</option>
                                                 <option className="defaultDropdownOption" value="comercial">Comercial</option>
-                                                <option className="defaultDropdownOption" value="galpão">Galpão</option>
+                                                <option className="defaultDropdownOption" value="galpao">Galpão</option>
                                             </select>
                                         </div>
-
                                         <div className="formArea">
                                             <div className="formAreaLeft">
                                                 <label>Área do terreno</label>
                                                 <div className="formAreaInputContainer">
-                                                    <input className="defaultInputNumber" placeholder="400" type="text" maxLength="70"/><span className="formAreaInputContainerMeasure">m²</span>
+                                                    <input value={immoArea} onChange={e => setImmoArea(e.target.value)} className="defaultInputNumber" placeholder="400" type="text" maxLength="70"/><span className="formAreaInputContainerMeasure">m²</span>
                                                 </div>
                                             </div>
                                             <div className="formAreaRight">
                                                 <label>Área do imóvel</label>
                                                 <div className="formAreaInputContainer">
-                                                    <input className="defaultInputNumber" placeholder="120" type="text" maxLength="70"/><span className="formAreaInputContainerMeasure">m²</span>
+                                                    <input value={immoTerrainArea} onChange={e => setImmoTerrainArea(e.target.value)} className="defaultInputNumber" placeholder="120" type="text" maxLength="70"/><span className="formAreaInputContainerMeasure">m²</span>
                                                 </div>
                                             </div>
                                         </div>
-
-                                        {
-                                            typeImmobile === "casa" || typeImmobile === "apartamento" ? 
-                                            (
-                                                <div className="formInfos">
-                                                    <label>Número de vagas</label>
-                                                    <input className="defaultInputNumber" placeholder="2" type="text" maxLength="2"/>
-                                                    <label>Número de banheiros</label>
-                                                    <input className="defaultInputNumber" placeholder="3" type="text" maxLength="2"/>
-                                                    <label>Número de dormitórios</label>
-                                                    <input className="defaultInputNumber" placeholder="2" type="text" maxLength="2"/>
-                                                </div>
-                                            )
+                                        { immoType === "casa" || immoType === "apartamento" ?
+                                            <div className="formInfos">
+                                                <label>Número de vagas</label>
+                                                <input value={immoPark} onChange={e => setImmoPark(e.target.value)} className="defaultInputNumber" placeholder="2" type="text" maxLength="2"/>
+                                                <label>Número de banheiros</label>
+                                                <input value={immoBath} onChange={e => setImmoBath(e.target.value)} className="defaultInputNumber" placeholder="3" type="text" maxLength="2"/>
+                                                <label>Número de dormitórios</label>
+                                                <input value={immoBed} onChange={e => setImmoBed(e.target.value)} className="defaultInputNumber" placeholder="2" type="text" maxLength="2"/>
+                                            </div>
                                             :
                                             ""
                                         }
-
                                         <div className="formValue">
                                             <label>Valor do aluguel</label>
                                             <div className="formValueInputContainer">
-                                                <input className="defaultInputCurrency" placeholder="150000" type="text" maxLength="70"/>
+                                                <input value={immoPrice} onChange={e => setImmoPrice(e.target.value)} className="defaultInputCurrency" placeholder="150000" type="text" maxLength="70"/>
                                             </div>
                                         </div>
-                                        
                                         <div className="formObservation">
                                             <label>Agora, escreva a descrição, com detalhes, do seu imóvel</label>
-                                            <textarea className="registrationTextArea" placeholder="Exemplo: Imóvel sito na Zona Leste, próximo à estação do Metrõ e fácil acesso às principais rodovias. Rua movimentada e vaga de garagem coberta."></textarea>
+                                            <textarea value={immoDescription} onChange={e => setImmoDescription(e.target.value)} className="registrationTextArea" placeholder="Exemplo: Imóvel sito na Zona Leste, próximo à estação do Metrõ e fácil acesso às principais rodovias. Rua movimentada e vaga de garagem coberta."></textarea>
                                         </div>
-
                                         <button className="registrationFormBtn">Pronto!</button>
                                     </form>
-                                    : 
-                                    <form className="registrationForm">
-                                    <div className="formAddress">
-                                        <label>Logradouro</label>
-                                        <input className="defaultInput" placeholder="Exemplo: Avenida Brasil" type="text" maxLength="50"/>
-                                        <label>Número</label>
-                                        <input className="defaultInputNumber" placeholder="12" type="text" maxLength="5"/>
-                                        <label>Complemento</label>
-                                        <input className="defaultInput" placeholder="Apto 505" type="text" maxLength="20"/>
-                                        <label>CEP</label>
-                                        <input className="defaultInput" placeholder="12345678" type="text" maxLength="20"/>
-                                        <label>Bairro</label>
-                                        <input className="defaultInput" placeholder="Mooca" type="text" maxLength="20"/>
-                                        <label>Cidade</label>
-                                        <input className="defaultInput" placeholder="São Paulo" type="text" maxLength="20"/>
-                                        <label>Estado</label>
-                                        <select className="defaultDropdown">
-                                            <option className="defaultDropdownOption" value="AC">Acre</option>
-                                            <option className="defaultDropdownOption" value="AL">Alagoas</option>
-                                            <option className="defaultDropdownOption" value="AP">Amapá</option>
-                                            <option className="defaultDropdownOption" value="AM">Amazonas</option>
-                                            <option className="defaultDropdownOption" value="BA">Bahia</option>
-                                            <option className="defaultDropdownOption" value="CE">Ceará</option>
-                                            <option className="defaultDropdownOption" value="DF">Distrito Federal</option>
-                                            <option className="defaultDropdownOption" value="ES">Espirito Santo</option>
-                                            <option className="defaultDropdownOption" value="GO">Goiás</option>
-                                            <option className="defaultDropdownOption" value="MA">Maranhão</option>
-                                            <option className="defaultDropdownOption" value="MT">Mato Grosso</option>
-                                            <option className="defaultDropdownOption" value="MS">Mato Grosso do Sul</option>
-                                            <option className="defaultDropdownOption" value="MG">Minas Gerais</option>
-                                            <option className="defaultDropdownOption" value="PA">Pará</option>
-                                            <option className="defaultDropdownOption" value="PB">Paraíba</option>
-                                            <option className="defaultDropdownOption" value="PR">Paraná</option>
-                                            <option className="defaultDropdownOption" value="PE">Pernambuco</option>
-                                            <option className="defaultDropdownOption" value="PI">Piauí</option>
-                                            <option className="defaultDropdownOption" value="RJ">Rio de Janeiro</option>
-                                            <option className="defaultDropdownOption" value="RN">Rio Grande do Norte</option>
-                                            <option className="defaultDropdownOption" value="RS">Rio Grande do Sul</option>
-                                            <option className="defaultDropdownOption" value="RO">Rondônia</option>
-                                            <option className="defaultDropdownOption" value="RR">Roraima</option>
-                                            <option className="defaultDropdownOption" value="SC">Santa Catarina</option>
-                                            <option className="defaultDropdownOption" value="SP">São Paulo</option>
-                                            <option className="defaultDropdownOption" value="SE">Sergipe</option>
-                                            <option className="defaultDropdownOption" value="TO">Tocantins</option>
-                                        </select>
-                                    </div>
-
-                                    <div className="formType">
+                                    :
+                                    <form className="registrationForm" onSubmit={e => sendData(e)}>
+                                        <div className="formAddress">
+                                            <label>Logradouro</label>
+                                            <input value={immoAddress} onChange={e => setImmoAddress(e.target.value)} className="defaultInput" placeholder="Exemplo: Avenida Brasil" type="text" maxLength="50"/>
+                                            <label>Número</label>
+                                            <input value={immoNumber} onChange={e => setImmoNumber(e.target.value)} className="defaultInputNumber" placeholder="12" type="text" maxLength="5"/>
+                                            <label>Complemento</label>
+                                            <input value={immoComplement} onChange={e => setImmoComplement(e.target.value)} className="defaultInput" placeholder="Apto 505" type="text" maxLength="20"/>
+                                            <label>CEP</label>
+                                            <input value={immoCEP} onChange={e => setImmoCEP(e.target.value)} className="defaultInput" placeholder="12345678" type="text" maxLength="20"/>
+                                            <label>Bairro</label>
+                                            <input value={immoDistrict} onChange={e => setImmoDistrict(e.target.value)} className="defaultInput" placeholder="Mooca" type="text" maxLength="20"/>
+                                            <label>Cidade</label>
+                                            <input value={immoCity} onChange={e => setImmoCity(e.target.value)} className="defaultInput" placeholder="São Paulo" type="text" maxLength="20"/>
+                                            <label>Estado</label>
+                                            <select value={immoUF} onChange={e => setImmoUF(e.target.value)} className="defaultDropdown">
+                                                <option className="defaultDropdownOption" value="AC">Acre</option>
+                                                <option className="defaultDropdownOption" value="AL">Alagoas</option>
+                                                <option className="defaultDropdownOption" value="AP">Amapá</option>
+                                                <option className="defaultDropdownOption" value="AM">Amazonas</option>
+                                                <option className="defaultDropdownOption" value="BA">Bahia</option>
+                                                <option className="defaultDropdownOption" value="CE">Ceará</option>
+                                                <option className="defaultDropdownOption" value="DF">Distrito Federal</option>
+                                                <option className="defaultDropdownOption" value="ES">Espirito Santo</option>
+                                                <option className="defaultDropdownOption" value="GO">Goiás</option>
+                                                <option className="defaultDropdownOption" value="MA">Maranhão</option>
+                                                <option className="defaultDropdownOption" value="MT">Mato Grosso</option>
+                                                <option className="defaultDropdownOption" value="MS">Mato Grosso do Sul</option>
+                                                <option className="defaultDropdownOption" value="MG">Minas Gerais</option>
+                                                <option className="defaultDropdownOption" value="PA">Pará</option>
+                                                <option className="defaultDropdownOption" value="PB">Paraíba</option>
+                                                <option className="defaultDropdownOption" value="PR">Paraná</option>
+                                                <option className="defaultDropdownOption" value="PE">Pernambuco</option>
+                                                <option className="defaultDropdownOption" value="PI">Piauí</option>
+                                                <option className="defaultDropdownOption" value="RJ">Rio de Janeiro</option>
+                                                <option className="defaultDropdownOption" value="RN">Rio Grande do Norte</option>
+                                                <option className="defaultDropdownOption" value="RS">Rio Grande do Sul</option>
+                                                <option className="defaultDropdownOption" value="RO">Rondônia</option>
+                                                <option className="defaultDropdownOption" value="RR">Roraima</option>
+                                                <option className="defaultDropdownOption" value="SC">Santa Catarina</option>
+                                                <option className="defaultDropdownOption" value="SP">São Paulo</option>
+                                                <option className="defaultDropdownOption" value="SE">Sergipe</option>
+                                                <option className="defaultDropdownOption" value="TO">Tocantins</option>
+                                            </select>
+                                        </div>
+                                        <div className="formType">
                                             <label>Tipo do imóvel</label>
-                                            <select className="defaultDropdown" onChange={e => setTypeImmobile(e.target.value)}>
+                                            <select value={immoType} onChange={e => setImmoType(e.target.value)} className="defaultDropdown">
                                                 <option className="defaultDropdownOption" value="casa" checked>Casa</option>
                                                 <option className="defaultDropdownOption" value="apartamento">Apartamento</option>
                                                 <option className="defaultDropdownOption" value="terreno">Terreno</option>
                                                 <option className="defaultDropdownOption" value="comercial">Comercial</option>
-                                                <option className="defaultDropdownOption" value="galpão">Galpão</option>
+                                                <option className="defaultDropdownOption" value="galpao">Galpão</option>
                                             </select>
                                         </div>
-
                                         <div className="formArea">
                                             <div className="formAreaLeft">
                                                 <label>Área do terreno</label>
                                                 <div className="formAreaInputContainer">
-                                                    <input className="defaultInputNumber" placeholder="400" type="text" maxLength="70"/><span className="formAreaInputContainerMeasure">m²</span>
+                                                    <input value={immoTerrainArea} onChange={e => setImmoTerrainArea(e.target.value)} className="defaultInputNumber" placeholder="400" type="text" maxLength="70"/><span className="formAreaInputContainerMeasure">m²</span>
                                                 </div>
                                             </div>
                                             <div className="formAreaRight">
                                                 <label>Área do imóvel</label>
                                                 <div className="formAreaInputContainer">
-                                                    <input className="defaultInputNumber" placeholder="120" type="text" maxLength="70"/><span className="formAreaInputContainerMeasure">m²</span>
+                                                    <input value={immoArea} onChange={e => setImmoArea(e.target.value)} className="defaultInputNumber" placeholder="120" type="text" maxLength="70"/><span className="formAreaInputContainerMeasure">m²</span>
                                                 </div>
                                             </div>
                                         </div>
-
-                                        {
-                                            typeImmobile === "casa" || typeImmobile === "apartamento" ? 
-                                            (
-                                                <div className="formInfos">
-                                                    <label>Número de vagas</label>
-                                                    <input className="defaultInputNumber" placeholder="2" type="text" maxLength="2"/>
-                                                    <label>Número de banheiros</label>
-                                                    <input className="defaultInputNumber" placeholder="3" type="text" maxLength="2"/>
-                                                    <label>Número de dormitórios</label>
-                                                    <input className="defaultInputNumber" placeholder="2" type="text" maxLength="2"/>
-                                                </div>
-                                            )
+                                        { immoType === "casa" || immoType === "apartamento" ?
+                                            <div className="formInfos">
+                                                <label>Número de vagas</label>
+                                                <input value={immoPark} onChange={e => setImmoPark(e.target.value)} className="defaultInputNumber" placeholder="2" type="text" maxLength="2"/>
+                                                <label>Número de banheiros</label>
+                                                <input value={immoBath} onChange={e => setImmoBath(e.target.value)} className="defaultInputNumber" placeholder="3" type="text" maxLength="2"/>
+                                                <label>Número de dormitórios</label>
+                                                <input value={immoBed} onChange={e => setImmoBed(e.target.value)} className="defaultInputNumber" placeholder="2" type="text" maxLength="2"/>
+                                            </div>
                                             :
                                             ""
                                         }
-
-                                    <div className="formValue">
-                                        <label>Valor da venda</label>
-                                        <div className="formValueInputContainer">
-                                            <input className="defaultInputCurrency" placeholder="150000" type="text" maxLength="70"/>
+                                        <div className="formValue">
+                                            <label>Valor da venda</label>
+                                            <div className="formValueInputContainer">
+                                                <input value={immoPrice} onChange={e => setImmoPrice(e.target.value)} className="defaultInputCurrency" placeholder="150000" type="text" maxLength="70"/>
+                                            </div>
                                         </div>
-                                    </div>
-                                    
-                                    <div className="formObservation">
-                                        <label>Agora, escreva a descrição, com detalhes, do seu imóvel</label>
-                                        <textarea className="registrationTextArea" placeholder="Exemplo: Imóvel sito na Zona Leste, próximo à estação do Metrõ e fácil acesso às principais rodovias. Rua movimentada e vaga de garagem coberta."></textarea>
-                                    </div>
-
-                                    <button className="registrationFormBtn">Pronto!</button>
+                                        <div className="formObservation">
+                                            <label>Agora, escreva a descrição, com detalhes, do seu imóvel</label>
+                                            <textarea value={immoDescription} onChange={e => setImmoDescription(e.target.value)} className="registrationTextArea" placeholder="Exemplo: Imóvel sito na Zona Leste, próximo à estação do Metrõ e fácil acesso às principais rodovias. Rua movimentada e vaga de garagem coberta."></textarea>
+                                        </div>
+                                        <button className="registrationFormBtn">Pronto!</button>
                                     </form>
-                                ) : 
+                                )
+                                :
                                 (
                                     <div>
                                         <div className="purposeTitleContainer">

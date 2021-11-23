@@ -13,6 +13,7 @@
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
     .searchArticle{
+        min-height: 100vh;
         padding-top: 53px;
         color: var(--text-dark-primary);
         background-color: var(--background-color);

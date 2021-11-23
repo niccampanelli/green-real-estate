@@ -10,3 +10,4 @@ app.use(cookies());
 app.use(express.json());
 app.use(routes);
 app.listen(port);
+app.use(express.static("public"));

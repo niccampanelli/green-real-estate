@@ -3,8 +3,20 @@ const immobileController = require('./src/Controller/ImmobileController');
 const userController = require('./src/Controller/UserController');
 const imageController = require('./src/Controller/ImageController');
 const authController = require('./src/Controller/AuthController');
+const multer = require('multer');
 
 const router = express.Router();
+
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, "public/upload")
+    },
+    filename: (req, file, cb) => {
+        cb(null, file.originalname);
+    }
+});
+
+const upload = multer({ storage: storage });
 
 /* Rotas para CRUD dos imóveis */
 router.post('/immobile', immobileController.create);
@@ -19,7 +31,7 @@ router.put('/user', userController.update);
 router.delete('/user', userController.delete);
 
 /* Rotas para controle das imagens */
-router.post('/image', imageController.create);
+router.post('/image', upload.single('images'), () => { console.log("foi") });
 router.get('/image', imageController.read);
 router.delete('/image', imageController.delete);
 
