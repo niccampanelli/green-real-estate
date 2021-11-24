@@ -8,8 +8,6 @@ module.exports = {
         // Variável que salvará a conexão com o banco
         let conn;
 
-        console.log(req.cookies.session);
-
         try{
             // Realizando a conexão ao banco de dados
             conn = getPool().getConnection();
@@ -40,11 +38,10 @@ module.exports = {
                             if(result[0].credential){
                                 if(result[0].credential === credential){
                                     jwt.sign(user, "greenreal", { expiresIn: "24h" }, (err, token) => {
-                                        return res.cookie("session", token, {
+                                        return res.status(200).cookie("session", token, {
                                             maxAge: 86400,
                                             httpOnly: true
                                         }).json(user);
-
                                     })
                                 }
                                 else{

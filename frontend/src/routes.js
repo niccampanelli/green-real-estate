@@ -21,18 +21,9 @@ export default function Routes(){
                     setAuthState(props.component);
             })
             .catch(err => {
-                setAuthState(<Redirect to="/autenticar"/>);
+                setAuthState(<Redirect to={{ pathname: "/autenticar", state: { origin: props.origin } }}/>);
             });
         }, []);
-        
-        useEffect(() => {
-            if(authState){
-                if(authState === "logged")
-                    return props.component;
-                else if(authState === "redirect")
-                    return <Redirect to="/autenticar"/>
-            }
-        }, [authState])
 
         return(
             authState
@@ -46,7 +37,7 @@ export default function Routes(){
                 <Route path='/autenticar' component={Auth}/>
                 <Route path="/imovel" component={Details}/>
                 <Route path='/sobre' component={Contact}/>
-                <Route path='/registro' render={(props) => ( <VerifyAuth {...props} component={<Registration/>}/> )}/>
+                <Route path='/registro' render={(props) => ( <VerifyAuth {...props} component={<Registration/>} origin="/registro" /> )}/>
                 <Route path='/pesquisa' component={Search}/>
                 <Route path='/redirect' component={RedirectTo}/>
             </Switch>

@@ -20,7 +20,9 @@
         z-index: 3;
         width: 100%;
         display: flex;
+        justify-content: space-between;
         align-items: center;
+        flex-direction: row;
     }
 
     .logoHeader{
@@ -28,12 +30,17 @@
     }
 
     .navigation{
+        flex: 1;
         display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row;
         width: 100%;
         text-align: center;
     }
 
     .headerInput{
+        flex: 1;
         color: var(--text-dark-primary);
         background-color: var(--background-default);
         border-radius: 10px;
@@ -41,26 +48,41 @@
         height: 45px;
         font-size: var(--paragraph-size);
         padding: 0 15px;
-        margin: 0;
-    }
-
-    .headerInputContainer{
-        margin: 0 !important;
     }
 
     .navList{
+        padding: 0 20px;
+        flex: 1;
         display: flex;
+        justify-content: space-between;
         align-items: center;
         list-style: none;
         float: right;
-        width: fit-content;
+        width: 100%;
     }
 
     .listItem{
+        padding: 5px 15px;
+        background-color: var(--terciary-color);
+        color: var(--primary-color);
         display: inline;
-        margin-left: 53px;
         cursor: pointer;
-        font-weight: 400;
+        font-weight: 700;
+        border-radius: 10px;
+
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    .listItemSpecial{
+        padding: 5px 15px;
+        background-color: var(--background-default);
+        color: var(--primary-color);
+        display: inline;
+        cursor: pointer;
+        font-weight: 700;
+        border-radius: 10px;
 
         -webkit-user-select: none;
         -ms-user-select: none;

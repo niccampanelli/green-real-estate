@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from "react";
+import { useLocation, useHistory } from "react-router-dom";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
 import API from "../../Services/API";
@@ -6,7 +7,12 @@ import "./style.css";
 
 export default function Auth() {
 
-    const [authState, setAuthState] = useState(false);
+    const location = useLocation();
+    const history = useHistory();
+
+    const origin = location.state.origin;
+
+    const [authState, setAuthState] = useState( location.state.authState ? location.state.authState : false );
     
     const [nameValue, setNameValue] = useState("");
     const [emailValue, setEmailValue] = useState("");
@@ -30,9 +36,14 @@ export default function Auth() {
                 await API.post("/auth", {
                     email: emailValue.toLowerCase(),
                     credential: passwordValue
-                }).then(response => {
+                }).then(() => {
 
-                    console.log(response.body);
+                    if(origin){
+                        history.push(origin);
+                    }
+                    else{
+                        history.push("/");
+                    }
 
                 }).catch(e => {
                     console.error(e);

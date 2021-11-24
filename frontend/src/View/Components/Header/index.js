@@ -21,6 +21,8 @@ export default function Header(){
                         <li className="listItem" onClick={() => history.push({pathname:"/redirect"}, {path: '/pesquisa', object: {purpose: "comprar"}})}>Comprar um imóvel</li>
                         <li className="listItem" onClick={() => history.push('/registro')}>Cadastrar um imóvel</li>
                         <li className="listItem" onClick={() => history.push('/sobre')}>Sobre nós</li>
+                        <li className="listItem" onClick={() => history.push('/autenticar', { authState: false })}>Cadastro</li>
+                        <li className="listItemSpecial" onClick={() => history.push('/autenticar', { authState: true })}>Login</li>
                     </ul>
                 </nav>
             </header>
