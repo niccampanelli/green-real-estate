@@ -16,7 +16,7 @@ export default function Registration() {
     const [immoDistrict, setImmoDistrict] = useState("");
     const [immoCity, setImmoCity] = useState("");
     const [immoUF, setImmoUF] = useState("");
-    const [immoType, setImmoType] = useState("");
+    const [immoType, setImmoType] = useState("Casa");
     const [immoArea, setImmoArea] = useState("");
     const [immoTerrainArea, setImmoTerrainArea] = useState("");
     const [immoPark, setImmoPark] = useState("");
@@ -48,7 +48,7 @@ export default function Registration() {
             else if(!immoCEP || (immoCEP && !immoCEP.toString().match(/^[0-9]+$/)) || (immoCEP && immoCEP.toString().length > 8)){
                 alert("Insira um CEP válido.");
             }
-            else if(!immoDistrict || (immoDistrict && !immoDistrict.toString().match(/^[a-zA-Z]+$/)) || (immoDistrict && immoDistrict.toString().length > 50)){
+            else if(!immoDistrict || (immoDistrict && immoDistrict.toString().length > 50)){
                 alert("Insira um bairro válido.");
             }
             else if(!immoCity){
@@ -83,8 +83,31 @@ export default function Registration() {
             }
             else{
                 // Se o propósito for aluguel
-                if(purposeSwitch === "rent" || purposeSwitch === "sale"){
-                    console.log(immoImages[0]);
+                if(purposeSwitch === "alugar" || purposeSwitch === "comprar"){
+                    API.post('/immobile', {
+                        address: immoAddress,
+                        number: Number(immoNumber),
+                        complement: immoComplement,
+                        cep: immoCEP,
+                        district: immoDistrict,
+                        city: immoCity,
+                        uf: immoUF.toString().toUpperCase(),
+                        type: immoType,
+                        immobileArea: Number(immoArea),
+                        terrainArea: Number(immoTerrainArea),
+                        parkNumber: immoPark ? Number(immoPark) : null,
+                        bathNumber: immoBath ? Number(immoBath) : null,
+                        bedNumber: immoBed ? Number(immoBed) : null,
+                        price: immoPrice,
+                        purpose: purposeSwitch,
+                        description: immoDescription,
+                        status: 1
+                    })
+                    .then(response => {
+                        if(response.data.id){
+                            alert("Cadastrado com sucesso!");
+                        }
+                    });
                     const formData = new FormData();
                     formData.append("images", immoImages[0]);
                     API.post("/image", formData);
@@ -122,7 +145,7 @@ export default function Registration() {
                                 <h2 className="formSubtitle">Conte-nos sobre o seu imóvel</h2>
                                 <p className="formDescription">Proident id reprehenderit laborum non excepteur in quis adipisicing laboris nostrud enim elit. Pariatur laboris id aliqua sunt ut adipisicing sint. Quis culpa irure ullamco non qui aute ad enim. Cupidatat pariatur deserunt sint minim.</p>
                                 { purposeSwitch ? (
-                                    purposeSwitch === 'rent' ?
+                                    purposeSwitch === 'alugar' ?
                                     <form encType="multipart/form-data" className="registrationForm" onSubmit={e => sendData(e)}>
                                         <div className="formImages">
                                             <label>Imagens do imóvel</label>
@@ -175,11 +198,11 @@ export default function Registration() {
                                         <div className="formType">
                                             <label>Tipo do imóvel</label>
                                             <select value={immoType} onChange={e => setImmoType(e.target.value)} className="defaultDropdown">
-                                                <option className="defaultDropdownOption" value="casa" checked>Casa</option>
-                                                <option className="defaultDropdownOption" value="apartamento">Apartamento</option>
-                                                <option className="defaultDropdownOption" value="terreno">Terreno</option>
-                                                <option className="defaultDropdownOption" value="comercial">Comercial</option>
-                                                <option className="defaultDropdownOption" value="galpao">Galpão</option>
+                                                <option className="defaultDropdownOption" value="Casa" checked>Casa</option>
+                                                <option className="defaultDropdownOption" value="Apartamento">Apartamento</option>
+                                                <option className="defaultDropdownOption" value="Terreno">Terreno</option>
+                                                <option className="defaultDropdownOption" value="Comercial">Comercial</option>
+                                                <option className="defaultDropdownOption" value="Galpao">Galpão</option>
                                             </select>
                                         </div>
                                         <div className="formArea">
@@ -196,7 +219,7 @@ export default function Registration() {
                                                 </div>
                                             </div>
                                         </div>
-                                        { immoType === "casa" || immoType === "apartamento" ?
+                                        { immoType === "Casa" || immoType === "Apartamento" ?
                                             <div className="formInfos">
                                                 <label>Número de vagas</label>
                                                 <input value={immoPark} onChange={e => setImmoPark(e.target.value)} className="defaultInputNumber" placeholder="2" type="text" maxLength="2"/>
@@ -269,8 +292,8 @@ export default function Registration() {
                                         <div className="formType">
                                             <label>Tipo do imóvel</label>
                                             <select value={immoType} onChange={e => setImmoType(e.target.value)} className="defaultDropdown">
-                                                <option className="defaultDropdownOption" value="casa" checked>Casa</option>
-                                                <option className="defaultDropdownOption" value="apartamento">Apartamento</option>
+                                                <option className="defaultDropdownOption" value="Casa" checked>Casa</option>
+                                                <option className="defaultDropdownOption" value="Apartamento">Apartamento</option>
                                                 <option className="defaultDropdownOption" value="terreno">Terreno</option>
                                                 <option className="defaultDropdownOption" value="comercial">Comercial</option>
                                                 <option className="defaultDropdownOption" value="galpao">Galpão</option>
@@ -290,7 +313,7 @@ export default function Registration() {
                                                 </div>
                                             </div>
                                         </div>
-                                        { immoType === "casa" || immoType === "apartamento" ?
+                                        { immoType === "Casa" || immoType === "Apartamento" ?
                                             <div className="formInfos">
                                                 <label>Número de vagas</label>
                                                 <input value={immoPark} onChange={e => setImmoPark(e.target.value)} className="defaultInputNumber" placeholder="2" type="text" maxLength="2"/>
@@ -323,10 +346,10 @@ export default function Registration() {
                                         </div>
                                         <div className="purposeOptionsContainer">
                                             <div className="purposeOptionsLeft">
-                                                <img className="purposeOptionSale" onClick={() => setPurposeSwitch("sale")} alt="Vender"/>
+                                                <img className="purposeOptioncomprar" onClick={() => setPurposeSwitch("comprar")} alt="Vender"/>
                                             </div>
                                             <div className="purposeOptionsLeft">
-                                                <img className="purposeOptionRent" onClick={() => setPurposeSwitch("rent")} alt="Alugar"/>
+                                                <img className="purposeOptionalugar" onClick={() => setPurposeSwitch("alugar")} alt="Alugar"/>
                                             </div>
                                         </div>
                                     </div>

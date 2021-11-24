@@ -204,7 +204,7 @@ module.exports = {
                                                                                         immobileArea, price, 
                                                                                         description, status) 
                                                                                         values (?, ?, ?, ?,
-                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+                                                                                        ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
                                                                                         [newImmobile.purpose, newImmobile.address, newImmobile.number, 
                                                                                         newImmobile.complement, newImmobile.cep, newImmobile.district, 
                                                                                         newImmobile.city, newImmobile.uf, newImmobile.type, newImmobile.terrainArea, 
