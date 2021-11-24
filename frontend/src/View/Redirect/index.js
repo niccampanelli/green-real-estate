@@ -7,9 +7,6 @@ export default function RedirectTo(){
     const location = useLocation();
 
     useEffect(() => {
-        console.log(location.state.path);
-        console.log(location.state.object);
-
         history.push({pathname: location.state.path}, {object: location.state.object});
     }, []);
 

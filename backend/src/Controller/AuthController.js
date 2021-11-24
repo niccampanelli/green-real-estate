@@ -1,5 +1,6 @@
 const { getPool } = require("../Database/Connection");
 const jwt = require('jsonwebtoken');
+const cookieParser = require("cookie-parser");
 
 module.exports = {
 
@@ -69,6 +70,30 @@ module.exports = {
         }
         catch(err){
             return res.json(err);
+        }
+    },
+
+    // Método para validação do token salvo no cookie
+    async validate(req, res){
+        // Armazena o token salvo no cookie chamado session
+        const token = req.cookies.session;
+
+        // Se não existir nenhum token
+        if(!token){
+            // Retorna erro 401 de usuário não logado
+            return res.status(401).send("USER_NOT_LOGGED");
+        }
+        // Se existir um token
+        else{
+            // Verifica se é válido utilizando o segredo
+            jwt.verify(token, "greenreal", (err) => {
+                // Se ocorrer um erro, o token é inválido. Retorna um erro 401 de token inválido
+                if(err)
+                    return res.status(401).send("INVALID_TOKEN");
+                // Se não, retorna um status 200 informando que o token é válido
+                else
+                    return res.status(200).send(true);
+            })
         }
     }
 

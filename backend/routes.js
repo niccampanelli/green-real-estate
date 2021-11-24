@@ -37,5 +37,6 @@ router.delete('/image', imageController.delete);
 
 /* Rotas para controle de autenticação */
 router.post('/auth', authController.create);
+router.get('/auth', authController.validate);
 
 module.exports = router;
