@@ -8,8 +8,6 @@ module.exports = {
         // Variável que salvará a conexão com o banco
         let conn;
 
-        console.log(req.cookies.session);
-
         try{
             // Realizando a conexão ao banco de dados
             conn = getPool().getConnection();

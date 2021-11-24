@@ -104,7 +104,6 @@ export default function Registration() {
                         status: 1
                     })
                     .then(response => {
-                        console.log(response);
                         if(response.data.id){
                             alert("Cadastrado com sucesso!");
                         }
