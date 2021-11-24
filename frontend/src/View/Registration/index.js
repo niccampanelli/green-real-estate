@@ -105,12 +105,13 @@ export default function Registration() {
                     })
                     .then(response => {
                         if(response.data.id){
-                            alert("Cadastrado com sucesso!");
+                            console.log(response.data.id);
+                            const formData = new FormData();
+                            formData.append("idField", response.data.id);
+                            formData.append("images", immoImages);
+                            API.post("/image", formData);
                         }
                     });
-                    const formData = new FormData();
-                    formData.append("images", immoImages[0]);
-                    API.post("/image", formData);
                 }
                 // Se for um valor inválido
                 else{
@@ -149,7 +150,7 @@ export default function Registration() {
                                     <form encType="multipart/form-data" className="registrationForm" onSubmit={e => sendData(e)}>
                                         <div className="formImages">
                                             <label>Imagens do imóvel</label>
-                                            <input onChange={e => setImmoImages(e.target.files)} type="file"/>
+                                            <input onChange={e => setImmoImages(e.target.files)} multiple type="file"/>
                                         </div>
                                         <div className="formAddress">
                                             <label>Logradouro</label>
@@ -244,7 +245,11 @@ export default function Registration() {
                                         <button className="registrationFormBtn">Pronto!</button>
                                     </form>
                                     :
-                                    <form className="registrationForm" onSubmit={e => sendData(e)}>
+                                    <form encType="multipart/form-data" className="registrationForm" onSubmit={e => sendData(e)}>
+                                        <div className="formImages">
+                                            <label>Imagens do imóvel</label>
+                                            <input onChange={e => setImmoImages(e.target.files)} multiple type="file"/>
+                                        </div>
                                         <div className="formAddress">
                                             <label>Logradouro</label>
                                             <input value={immoAddress} onChange={e => setImmoAddress(e.target.value)} className="defaultInput" placeholder="Exemplo: Avenida Brasil" type="text" maxLength="50"/>
