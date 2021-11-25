@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
+import { FaPlusCircle } from "react-icons/fa";
 import Footer from '../Components/Footer';
 import Header from '../Components/Header';
 import API from '../../Services/API';
@@ -25,9 +26,23 @@ export default function Registration() {
     const [immoPrice, setImmoPrice] = useState("");
     const [immoDescription, setImmoDescription] = useState("");
 
-    useEffect(() => {
-        console.log(immoImages);
-    }, [immoImages])
+    const [imagesToDisplay, setImagesToDisplay] = useState([]);
+
+    function handleImagesUpload(e){
+        e.preventDefault();
+
+        setImmoImages(e.target.files);
+
+        if(e.target.files){
+            Array.from(e.target.files).forEach((elem) => {
+                let reader = new FileReader();
+                reader.onload = e => {
+                    setImagesToDisplay(previous => [...previous, e.target.result]);
+                };
+                reader.readAsDataURL(elem);
+            })
+        }
+    }
 
     // Método para enviar o formulário
     function sendData(e){
@@ -109,7 +124,7 @@ export default function Registration() {
                             const formData = new FormData();
                             formData.append("idField", response.data.id);
                             formData.append("images", immoImages);
-                            API.post("/image", formData);
+                            API.post('/image', formData);
                         }
                     });
                 }
@@ -149,8 +164,17 @@ export default function Registration() {
                                     purposeSwitch === 'alugar' ?
                                     <form encType="multipart/form-data" className="registrationForm" onSubmit={e => sendData(e)}>
                                         <div className="formImages">
-                                            <label>Imagens do imóvel</label>
-                                            <input onChange={e => setImmoImages(e.target.files)} multiple type="file"/>
+                                            { (imagesToDisplay && (typeof imagesToDisplay === "object" && (imagesToDisplay && imagesToDisplay.length > 0))) ?
+                                                <label htmlFor="formImagesHiddenInput" className="formImagesImage">
+                                                    { Array.from(imagesToDisplay).map((image, i) => (
+                                                        <img key={i} src={image}/>
+                                                    ))}
+                                                    <div className="formImagesImageHint"><FaPlusCircle size="30%"/><p>Adicionar mais imagens</p></div>
+                                                </label>
+                                                :
+                                                <label htmlFor="formImagesHiddenInput" className="formImagesInput"><FaPlusCircle size="30%"/><p>Adicionar imagens</p></label>
+                                            }
+                                            <input id="formImagesHiddenInput" onChange={e => handleImagesUpload(e)} multiple type="file"/>
                                         </div>
                                         <div className="formAddress">
                                             <label>Logradouro</label>
@@ -247,8 +271,17 @@ export default function Registration() {
                                     :
                                     <form encType="multipart/form-data" className="registrationForm" onSubmit={e => sendData(e)}>
                                         <div className="formImages">
-                                            <label>Imagens do imóvel</label>
-                                            <input onChange={e => setImmoImages(e.target.files)} multiple type="file"/>
+                                            { (imagesToDisplay && (typeof imagesToDisplay === "object" && (imagesToDisplay && imagesToDisplay.length > 0))) ?
+                                                <label htmlFor="formImagesHiddenInput" className="formImagesImage">
+                                                    { Array.from(imagesToDisplay).map((image, i) => (
+                                                        <img key={i} src={image}/>
+                                                    ))}
+                                                    <div className="formImagesImageHint"><FaPlusCircle size="30%"/><p>Adicionar mais imagens</p></div>
+                                                </label>
+                                                :
+                                                <label htmlFor="formImagesHiddenInput" className="formImagesInput"><FaPlusCircle size="30%"/><p>Adicionar imagens</p></label>
+                                            }
+                                            <input id="formImagesHiddenInput" onChange={e => handleImagesUpload(e)} multiple type="file"/>
                                         </div>
                                         <div className="formAddress">
                                             <label>Logradouro</label>

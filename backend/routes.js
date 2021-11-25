@@ -4,24 +4,14 @@ const userController = require('./src/Controller/UserController');
 const imageController = require('./src/Controller/ImageController');
 const authController = require('./src/Controller/AuthController');
 const multer = require('multer');
-const fs = require("fs");
-const path = require('path');
 
 const router = express.Router();
 
 const storage = multer.diskStorage({
     destination: (req, files, cb) => {
-        fs.mkdir(path.resolve(__dirname + "/public/upload/" + req.body.idField), (err) => {
-            if(err)
-                console.error(err);
-            else{
-                console.log("criou");
-                cb(null, "public/upload/" + req.body.idField);
-            }
-        });
+        cb(null, "public/upload/");
     },
     filename: (req, files, cb) => {
-        console.log(files);
         cb(null, req.body.idField + '_' + Date.now() + "." + files[0].mimetype.split("/")[1]);
     }
 });
@@ -41,7 +31,7 @@ router.put('/user', userController.update);
 router.delete('/user', userController.delete);
 
 /* Rotas para controle das imagens */
-router.post('/image', upload.array('images'), () => { console.log("foi") });
+router.post('/image', upload.array('images')/*, imageController.create*/);
 router.get('/image', imageController.read);
 router.delete('/image', imageController.delete);
 
