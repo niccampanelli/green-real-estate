@@ -448,7 +448,8 @@ module.exports = {
                    item !== 'type' && item !== 'terrainArea' && item !== 'immobileArea' &&
                    item !== 'parkNumber' && item !== 'bathNumber' && item !== 'bedNumber' &&
                    item !== 'price' && item !== 'description' && item !== 'reference' &&
-                   item !== 'dateSubscript' && item !== 'status' && item !== 'id_user')
+                   item !== 'dateSubscript' && item !== 'status' && item !== 'id_user' &&
+                   item !== 'limit' && item !== 'offset')
                    return res.status(400).send("Corpo da requisição enviada está incorreto.");
             }
 
@@ -463,8 +464,8 @@ module.exports = {
 
             // Percorrendo objeto para verificar quais existem como parâmetro para as condições da query
             for(item in reqImmobile){
-                // Se a chave do objeto possuir valor
-                if(reqImmobile[item]){
+                // Se a chave do objeto possuir valor e não for limite ou offset (não são parâmetros para busca)
+                if(reqImmobile[item] && item !== 'limit' && item !== 'offset'){
                     // Se o item a ser adicionado na condição for string, deve ter aspas na query
                     if(item === 'purpose' || item === 'address' || item === 'complement' || item === 'district' || 
                         item === 'city' || item === 'uf' || item === 'type' || item === 'description' || item === 'cep'){
@@ -479,14 +480,28 @@ module.exports = {
                 }
             }
 
-            sql = `SELECT id, purpose, address,
+            if(reqImmobile.limit > 0){
+                sql = `SELECT id, purpose, address,
                           number, complement, cep, 
                           district, city, uf, 
                           type, terrainArea, immobileArea, 
                           parkNumber, bathNumber, bedNumber, 
                           price, description, reference, 
                           dateSubscript, status, id_user FROM tb_immobile
-                          WHERE 1 = 1 ${sqlCondition}`;
+                          WHERE 1 = 1 ${sqlCondition}
+                          LIMIT ${reqImmobile.limit} 
+                          OFFSET ${reqImmobile.limit * reqImmobile.offset}`;
+            }
+            else{
+                sql = `SELECT id, purpose, address,
+                            number, complement, cep, 
+                            district, city, uf, 
+                            type, terrainArea, immobileArea, 
+                            parkNumber, bathNumber, bedNumber, 
+                            price, description, reference, 
+                            dateSubscript, status, id_user FROM tb_immobile
+                            WHERE 1 = 1 ${sqlCondition}`;
+            }
 
             (await conn).query(sql).then(result => 
                 {

@@ -25,6 +25,7 @@ export default function Home() {
     const [immoBath, setImmoBath] = useState();
     const [immoBed, setImmoBed] = useState();
     const [immoReference, setImmoReference] = useState();
+    const [offsetSearch, setOffsetSearch] = useState(0);
 
     const searchInput = useRef();
     var typewriterIndex = 0;
@@ -144,7 +145,9 @@ export default function Home() {
             parkNumber: immoPark,
             bathNumber: immoBath,
             bedNumber: immoBed,
-            reference: immoReference
+            reference: immoReference,
+            limit: 28,
+            offset: offsetSearch
         }});
     }
 
