@@ -17,6 +17,8 @@ export default function Search(){
 
     const [title, setTitle] = useState("");
     const [resultQuant, setResultQuant] = useState(0);
+    const [resultTotal, setResultTotal] = useState(0);
+    const [pageCount, setPageCount] = useState(0);
     const [immobileList, setImmobileList] = useState();
 
     useEffect(() => {
@@ -56,17 +58,51 @@ export default function Search(){
 
         async function getData(){
             await API.get("/immobile", {params: objSearch}).then(result => {
-                setImmobileList(result.data);
-                setResultQuant(result.data.length);
+                setImmobileList(result.data.immobiles);
+                setResultQuant(result.data.immobiles.length);
+                setResultTotal(result.data.count);
+                setPageCount(Math.ceil(result.data.count/objSearch.limit));
 
                 sessionStorage.setItem("lastData", JSON.stringify({
                     search: search,
                     query: objSearch,
-                    data: result.data,
+                    data: result.data.immobiles,
                 }));
             });
         }
     }, [])
+
+    async function makeSearch(e){
+        e.preventDefault();
+
+        await API.get("/immobile", {params: {
+            type: objSearch.type,
+            purpose: objSearch.purpose,
+            address: objSearch.address,
+            district: objSearch.district,
+            city: objSearch.city,
+            UF: objSearch.UF,
+            terrainArea: objSearch.terrainArea,
+            immobileArea: objSearch.immobileArea,
+            parkNumber: objSearch.parkNumber,
+            bathNumber: objSearch.bathNumber,
+            bedNumber: objSearch.bedNumber,
+            reference: objSearch.reference,
+            limit: objSearch.limit,
+            offset: e.target.value,
+        }}).then(result => {
+            setImmobileList(result.data.immobiles);
+            setResultQuant(result.data.immobiles.length);
+            setResultTotal(result.data.count);
+            setPageCount(Math.ceil(result.data.count/objSearch.limit));
+
+            sessionStorage.setItem("lastData", JSON.stringify({
+                search: search,
+                query: objSearch,
+                data: result.data.immobiles,
+            }));
+        });
+    }
 
     return(
         <Fragment>
@@ -75,7 +111,7 @@ export default function Search(){
                     <article className="searchArticle">
                         <section className="searchFilterSection">
                             <h1 className="searchTitle">{title}</h1>
-                            <p className="searchSubtitle">{resultQuant} { (resultQuant > 1) ? "imóveis encontrados." : "imóvel encontrado." }</p>
+                            <p className="searchSubtitle">{resultQuant} { (resultQuant > 1) ? `imóveis de ${resultTotal} encontrados.` : `imóvel de ${resultTotal} encontrado.` }</p>
 
                             <div className="searchFilterContainer">
                                 <form className="searchFilterForm">
@@ -133,6 +169,11 @@ export default function Search(){
                             <div className="defaultLoader">
                                 <img src={loader}/>
                             </div>
+                            }
+                            { 
+                                Array(pageCount).fill(0).map((el, i) => (
+                                    <button onClick={e => makeSearch(e)} value={i}>{i+1}</button>
+                                ))
                             }
                         </section>
                     </article>
