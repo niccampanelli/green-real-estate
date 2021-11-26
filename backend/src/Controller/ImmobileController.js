@@ -459,6 +459,9 @@ module.exports = {
             // Variável que armazenará a query que será realizada
             var sql = "";
 
+            // Variável que armazenará a query da quantidade de registros buscados
+            var sqlCount = "";
+
             // Variável de condição da query
             var sqlCondition = ``;
 
@@ -494,22 +497,28 @@ module.exports = {
             }
             else{
                 sql = `SELECT id, purpose, address,
-                            number, complement, cep, 
-                            district, city, uf, 
-                            type, terrainArea, immobileArea, 
-                            parkNumber, bathNumber, bedNumber, 
-                            price, description, reference, 
-                            dateSubscript, status, id_user FROM tb_immobile
-                            WHERE 1 = 1 ${sqlCondition}`;
+                                number, complement, cep, 
+                                district, city, uf, 
+                                type, terrainArea, immobileArea, 
+                                parkNumber, bathNumber, bedNumber, 
+                                price, description, reference, 
+                                dateSubscript, status, id_user FROM tb_immobile
+                                WHERE 1 = 1 ${sqlCondition}`;
             }
 
-            (await conn).query(sql).then(result => 
-                {
-                    sql = null;
-                    sqlCondition = null;
-                    reqImmobile = null;
+            sqlCount = `SELECT count(id) FROM tb_immobile
+                                    WHERE 1 = 1 ${sqlCondition}`;
 
-                    return res.json(result);
+            (await conn).query(sql).then(async result => 
+                {
+                    (await conn).query(sqlCount).then(count => {
+                        sql = null;
+                        sqlCount = null;
+                        sqlCondition = null;
+                        reqImmobile = null;
+
+                        return res.json({immobiles: result, count: count[0]['count(id)']});
+                    });
                 }
             );
         }
