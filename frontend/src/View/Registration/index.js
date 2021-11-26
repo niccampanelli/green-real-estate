@@ -120,10 +120,11 @@ export default function Registration() {
                     })
                     .then(response => {
                         if(response.data.id){
-                            console.log(response.data.id);
                             const formData = new FormData();
                             formData.append("idField", response.data.id);
-                            formData.append("images", immoImages);
+                            Array.from(immoImages).forEach(elem => {
+                                formData.append("images", elem);
+                            });
                             API.post('/image', formData);
                         }
                     });

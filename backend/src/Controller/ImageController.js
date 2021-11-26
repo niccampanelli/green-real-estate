@@ -7,20 +7,21 @@ module.exports = {
 
         try{
             conn = connection.getPool().getConnection();
-            
-            console.log(req.files[0]);
 
-            const filepath = req.files[0].path;
+            req.files.forEach(async (element, i) => {
+                var filepath = element.path;
+                var immoID = req.body.idField;
 
-            const immoID = req.body.idField;
-
-            if(filepath && typeof filepath === "string"){
-                (await conn).query("INSERT INTO tb_images (link, id_immobile) values (?, ?)", [filepath, immoID]).then(() => {
-                    return res.status(200);
-                }).catch(err => {
-                    throw err;
-                })
-            }
+                if(filepath && typeof filepath === "string"){
+                    (await conn).query("INSERT INTO tb_image (link, id_immobile) values (?, ?)", [filepath, immoID]).then(() => {
+                        if(i === req.files.length - 1){
+                            return res.status(200);
+                        }
+                    }).catch(err => {
+                        throw err;
+                    })
+                }
+            });
         }
         catch(err){
             console.error(err);
