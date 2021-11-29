@@ -158,22 +158,30 @@ export default function Search(){
                         
                         <section className="searchResultSection">
                             { immobileList ? 
-                                <ul className="searchResultList">
-                                {
-                                    immobileList.map((immo, i) => (
-                                        <ImmobileCard key={i} immo={immo}/>
-                                    ))
-                                }
-                                </ul>
+                                (immobileList.length > 0 ? 
+                                    <ul className="searchResultList">
+                                    {
+                                        immobileList.map((immo, i) => (
+                                            <ImmobileCard key={i} immo={immo}/>
+                                        ))
+                                    }
+                                    </ul>
+                                : 
+                                    // Se não for encontrado nenhum imóvel na base
+                                    ""
+                                )
                             :
                             <div className="defaultLoader">
                                 <img src={loader}/>
                             </div>
                             }
                             { 
-                                Array(pageCount).fill(0).map((el, i) => (
-                                    <button onClick={e => makeSearch(e)} value={i}>{i+1}</button>
-                                ))
+                                pageCount ? 
+                                    Array(pageCount).fill(0).map((el, i) => (
+                                        <button onClick={e => makeSearch(e)} value={i}>{i+1}</button>
+                                    ))
+                                :
+                                    ""
                             }
                         </section>
                     </article>
