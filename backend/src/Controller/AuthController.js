@@ -37,9 +37,9 @@ module.exports = {
                         if(result[0]['COUNT(*)'] === 1){
                             if(result[0].credential){
                                 if(result[0].credential === credential){
-                                    jwt.sign(user, "greenreal", { expiresIn: "24h" }, (err, token) => {
+                                    jwt.sign(user, "greenreal", { expiresIn: '1h' }, (err, token) => {
                                         return res.status(200).cookie("session", token, {
-                                            maxAge: 86400,
+                                            maxAge: 86499,
                                             httpOnly: true
                                         }).json(user);
                                     })
