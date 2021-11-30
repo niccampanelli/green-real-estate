@@ -9,11 +9,12 @@ module.exports = {
             conn = connection.getPool().getConnection();
 
             req.files.forEach(async (element, i) => {
-                var filepath = element.path;
+                var filepath = path.resolve(element.path);
+                var rmPortion = path.resolve("public/");
                 var immoID = req.body.idField;
 
                 if(filepath && typeof filepath === "string"){
-                    (await conn).query("INSERT INTO tb_image (link, id_immobile) values (?, ?)", [filepath, immoID]).then(() => {
+                    (await conn).query("INSERT INTO tb_image (link, id_immobile) values (?, ?)", [filepath.replace(rmPortion, ''), immoID]).then(() => {
                         if(i === req.files.length - 1){
                             return res.status(200);
                         }
@@ -38,7 +39,7 @@ module.exports = {
 
             if(id){
                 (await conn).query("SELECT link FROM tb_image WHERE tb_image.id_immobile = (?)", [id]).then(result => {
-                    console.log(result);
+                    return res.status(200).json(result);
                 })
             }
         }

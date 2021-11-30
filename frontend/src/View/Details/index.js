@@ -1,13 +1,16 @@
-import React, { Fragment } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import Footer from '../Components/Footer';
 import Header from '../Components/Header';
 import "./style.css";
 import PictureCarousel from "../Components/PictureCarousel";
 import { FaBath, FaBed, FaCarSide, FaExpand, FaTag } from "react-icons/fa";
 import { useLocation } from "react-router-dom";
+import API from "../../Services/API";
 
 export default function Details() {
     window.scrollTo(0, 0);
+
+    const [imageList, setImageList] = useState();
 
     const location = useLocation();
     const {
@@ -33,11 +36,17 @@ export default function Details() {
         status
     } = location.state;
 
+    useEffect(async () => {
+        await API.get('/image', { params: { id: id } }).then(result => {
+            setImageList(result.data);
+        })
+    }, [])
+
     return(
         <Fragment>
             <Header/>
             <main className="detailsMain">
-                <PictureCarousel items={["1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1"]}/>
+                <PictureCarousel items={imageList}/>
                 <section className="detailsMainInfo">
                     <div className="detailsMainInfoLeft">
                         <h1 className="detailsMainInfoLeftTitle">{type} em {district}</h1>

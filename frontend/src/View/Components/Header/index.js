@@ -17,8 +17,8 @@ export default function Header(){
                     </div>
 
                     <ul className="navList">
-                        <li className="listItem" onClick={() => history.push({pathname:"/redirect"}, {path: '/pesquisa', object: {purpose: "alugar"}})}>Alugar um imóvel</li>
-                        <li className="listItem" onClick={() => history.push({pathname:"/redirect"}, {path: '/pesquisa', object: {purpose: "comprar"}})}>Comprar um imóvel</li>
+                        <li className="listItem" onClick={() => history.push('/pesquisa', { object: {purpose: "alugar"} })}>Alugar um imóvel</li>
+                        <li className="listItem" onClick={() => history.push('/pesquisa', { object: {purpose: "comprar"} })}>Comprar um imóvel</li>
                         <li className="listItem" onClick={() => history.push('/registro')}>Cadastrar um imóvel</li>
                         <li className="listItem" onClick={() => history.push('/sobre')}>Sobre nós</li>
                         <li className="listItem" onClick={() => history.push('/autenticar', { authState: false })}>Cadastro</li>

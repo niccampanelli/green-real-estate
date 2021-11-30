@@ -9,11 +9,10 @@ import './style.css';
 
 export default function Search(){
 
-    const history = useHistory();
     const location = useLocation();
 
-    const search = location.search;
-    const objSearch = location.state.object;
+    const [searchText, setSearchText] = useState(location.search);
+    const [objSearch, setObjSearch] = useState(location.state.object);
 
     const [title, setTitle] = useState("");
     const [resultQuant, setResultQuant] = useState(0);
@@ -24,8 +23,8 @@ export default function Search(){
     useEffect(() => {
         if(objSearch === "" || objSearch === undefined || objSearch === null){
             
-            if(search !== undefined && search !== "" && search !== null){
-                var arrSearch = search.split("?");
+            if(searchText !== undefined && searchText !== "" && searchText !== null){
+                var arrSearch = searchText.split("?");
 
                 setTitle(arrSearch[1]);
             }
@@ -38,13 +37,21 @@ export default function Search(){
         }
     }, []);
 
+    useEffect(() => {
+        setSearchText(location.search);
+    }, [location.search])
+
+    useEffect(() => {
+        setObjSearch(location.state.object);
+    }, [location.state.object])
+
     useEffect(async () => {
         const lastData = JSON.parse(sessionStorage.getItem("lastData"));
         var cleanObjSearch = objSearch;
         Object.keys(cleanObjSearch).forEach(key => cleanObjSearch[key] === undefined && delete cleanObjSearch[key]);
 
         if(lastData){            
-            if((search && search === lastData.search) || (JSON.stringify(cleanObjSearch) && JSON.stringify(cleanObjSearch) === JSON.stringify(lastData.query))){
+            if((searchText && searchText === lastData.searchText) || (JSON.stringify(cleanObjSearch) && JSON.stringify(cleanObjSearch) === JSON.stringify(lastData.query))){
                 setImmobileList(lastData.data);
                 setResultQuant(lastData.data.length);
             }
@@ -58,19 +65,23 @@ export default function Search(){
 
         async function getData(){
             await API.get("/immobile", {params: objSearch}).then(result => {
+                if(result.data.immobiles && result.data.immobiles.length > 0){
+                    console.log(result.data.immobiles.length > 0);
+
+                    sessionStorage.setItem("lastData", JSON.stringify({
+                        searchText: searchText,
+                        query: objSearch,
+                        data: result.data.immobiles,
+                    }));
+                }
+
                 setImmobileList(result.data.immobiles);
                 setResultQuant(result.data.immobiles.length);
                 setResultTotal(result.data.count);
                 setPageCount(Math.ceil(result.data.count/objSearch.limit));
-
-                sessionStorage.setItem("lastData", JSON.stringify({
-                    search: search,
-                    query: objSearch,
-                    data: result.data.immobiles,
-                }));
             });
         }
-    }, [])
+    }, [searchText, objSearch])
 
     async function makeSearch(e){
         e.preventDefault();
@@ -97,7 +108,7 @@ export default function Search(){
             setPageCount(Math.ceil(result.data.count/objSearch.limit));
 
             sessionStorage.setItem("lastData", JSON.stringify({
-                search: search,
+                searchText: searchText,
                 query: objSearch,
                 data: result.data.immobiles,
             }));
@@ -157,7 +168,7 @@ export default function Search(){
                         </section>
                         
                         <section className="searchResultSection">
-                            { immobileList ? 
+                            { immobileList ?
                                 <ul className="searchResultList">
                                 {
                                     immobileList.map((immo, i) => (
@@ -171,9 +182,9 @@ export default function Search(){
                             </div>
                             }
                             { 
-                                Array(pageCount).fill(0).map((el, i) => (
+                                /*Array(pageCount).fill(0).map((el, i) => (
                                     <button onClick={e => makeSearch(e)} value={i}>{i+1}</button>
-                                ))
+                                ))*/
                             }
                         </section>
                     </article>

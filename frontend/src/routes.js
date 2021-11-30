@@ -21,7 +21,8 @@ export default function Routes(){
                     setAuthState(props.component);
             })
             .catch(err => {
-                setAuthState(<Redirect to={{ pathname: "/autenticar", state: { origin: props.origin } }}/>);
+                console.info("Página restrita à usuários logados. Faça login para continuar. \n", err.message)
+                setAuthState(<Redirect to={{ pathname: "/autenticar", state: { origin: props.origin, authState: true } }}/>);
             });
         }, []);
 

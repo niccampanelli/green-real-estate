@@ -1,13 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { FaChevronLeft, FaChevronRight, FaTimes } from "react-icons/fa";
 import NoImageDefault from "../../../Assets/NoImageDefault.svg";
+import path from "path";
 import "./style.css";
 
 export default function PictureCarousel(props) {
 
     const [isFullscreenEnabled, setFullscreenEnabled] = useState(false);
 
-    const elementsToDisplay = props.items;
+    const elementsToDisplay = (props.items !== undefined) ? props.items : [];
 
     const pictureCarouselViewport = useRef();
     const pictureCarouselElements = useRef([]);
@@ -22,7 +23,11 @@ export default function PictureCarousel(props) {
     const fsPictureCarouselCounter = useRef();
 
     useEffect(() => {
-        setPictureCarouselMaxScroll(pictureCarouselViewport.current.scrollWidth - pictureCarouselViewport.current.clientWidth);
+        console.log(elementsToDisplay);
+    }, [elementsToDisplay])
+
+    useEffect(() => {
+        setPictureCarouselMaxScroll(pictureCarouselViewport.current.scrollWidth);
     }, [])
 
     useEffect(() => {
@@ -32,8 +37,10 @@ export default function PictureCarousel(props) {
     }, [fsPictureCarouselElements.current.length])
 
     function slidePictureCarousel(direction){
+        console.log(direction);
         if(direction){
             if(direction === "right"){
+                console.log(pictureCarouselPosition);
                 if(pictureCarouselPosition < elementsToDisplay.length -1 && pictureCarouselViewport.current.scrollLeft < pictureCarouselMaxScroll){
 
                     pictureCarouselPosition ++;
@@ -122,7 +129,7 @@ export default function PictureCarousel(props) {
                             { elementsToDisplay ? 
                                 ( elementsToDisplay.map((elem, i) => (
                                     <li key={i} ref={thisElem => fsPictureCarouselElements.current[i] = thisElem} onClick={() => {}} className="fsPictureCarouselItem">
-                                        <img className="fsPictureCarouselItemImage" alt="Sem Foto" src={NoImageDefault}/>
+                                        <img className="fsPictureCarouselItemImage" alt="Imagem do Imovel" src={elem}/>
                                     </li>
                                 ))) 
                                 :
@@ -147,7 +154,7 @@ export default function PictureCarousel(props) {
                     { elementsToDisplay ? 
                         ( elementsToDisplay.map((elem, i) => (
                             <li key={i} ref={thisElem => pictureCarouselElements.current[i] = thisElem} onClick={() => setFullscreenEnabled(true)} className="pictureCarouselItem">
-                                <img className="pictureCarouselItemImage" alt="Sem Foto" src={NoImageDefault}/>
+                                <img className="pictureCarouselItemImage" alt="Sem Foto" src={'http://' + path.normalize('localhost:3333/' + elem.link.replace(/\\/g, '/'))}/>
                             </li>
                         ))) 
                         :

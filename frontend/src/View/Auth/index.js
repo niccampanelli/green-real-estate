@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import { useLocation, useHistory } from "react-router-dom";
 import Footer from "../Components/Footer";
 import Header from "../Components/Header";
@@ -12,13 +12,19 @@ export default function Auth() {
 
     const origin = location.state.origin;
 
-    const [authState, setAuthState] = useState( location.state.authState ? location.state.authState : false );
+    const [authState, setAuthState] = useState( (location.state.authState !== undefined) ? location.state.authState : false );
     
     const [nameValue, setNameValue] = useState("");
     const [emailValue, setEmailValue] = useState("");
     const [passwordValue, setPasswordValue] = useState("");
     const [telValue, setTelValue] = useState("");
     const [tel2Value, setTel2Value] = useState("");
+
+    useEffect(() => {
+        if(location.state.authState !== undefined){
+            setAuthState(location.state.authState);
+        }
+    }, [location.state.authState])
 
     async function authenticate(e){
         e.preventDefault();
