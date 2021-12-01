@@ -12,13 +12,16 @@ export default function PictureCarousel(props) {
 
     const pictureCarouselViewport = useRef();
     const pictureCarouselElements = useRef([]);
-    const [pictureCarouselMaxScroll, setPictureCarouselMaxScroll] = useState();
+    const [pictureCarouselMaxScroll, setPictureCarouselMaxScroll] = useState(0);
     var pictureCarouselPosition = 0;
+
+    const fsPictureCarouselMainImg = useRef();
 
     const fsPictureCarouselViewport = useRef();
     const fsPictureCarouselElements = useRef([]);
-    var fsPictureCarouselPosition = 0;
+    const [fsPictureCarouselPosition, setFsPictureCarouselPosition] = useState(0);
     var fsPictureCarouselMaxScroll = 0;
+    const [fsPictureCarouselDirection, setFsPictureCarouselDirection] = useState();
 
     const fsPictureCarouselCounter = useRef();
 
@@ -37,10 +40,9 @@ export default function PictureCarousel(props) {
     }, [fsPictureCarouselElements.current.length])
 
     function slidePictureCarousel(direction){
-        console.log(direction);
+
         if(direction){
             if(direction === "right"){
-                console.log(pictureCarouselPosition);
                 if(pictureCarouselPosition < elementsToDisplay.length -1 && pictureCarouselViewport.current.scrollLeft < pictureCarouselMaxScroll){
 
                     pictureCarouselPosition ++;
@@ -64,16 +66,13 @@ export default function PictureCarousel(props) {
         }
     }
 
-    function slideFSPictureCarousel(direction){
-        if(direction){
-            if(direction === "right"){
-                if(fsPictureCarouselPosition < elementsToDisplay.length -1){
-                    
-                    fsPictureCarouselPosition ++;
-
+    useEffect(() => {
+        if(fsPictureCarouselElements.current && fsPictureCarouselElements.current.length > 0 && fsPictureCarouselPosition !== undefined){
+            if(fsPictureCarouselDirection){
+                if(fsPictureCarouselDirection === "right"){
                     fsPictureCarouselElements.current[fsPictureCarouselPosition - 1].style.filter = "brightness(100%)";
                     fsPictureCarouselElements.current[fsPictureCarouselPosition].style.filter = "brightness(120%)";
-
+            
                     if(fsPictureCarouselViewport.current.scrollLeft < fsPictureCarouselMaxScroll){
                         fsPictureCarouselViewport.current.scrollTo({
                             top: 0, 
@@ -82,21 +81,38 @@ export default function PictureCarousel(props) {
                         });
                     }
                 }
-            } else if(direction === "left" && fsPictureCarouselPosition > 0){
-
-                fsPictureCarouselPosition --;
-
-                fsPictureCarouselViewport.current.scrollTo({
-                    top: 0, 
-                    left: (fsPictureCarouselElements.current[fsPictureCarouselPosition].offsetLeft), 
-                    behavior: "smooth"
-                })
-
-                fsPictureCarouselElements.current[fsPictureCarouselPosition + 1].style.filter = "brightness(100%)";
-                fsPictureCarouselElements.current[fsPictureCarouselPosition].style.filter = "brightness(120%)";
+                else if(fsPictureCarouselDirection === "left"){
+                    fsPictureCarouselElements.current[fsPictureCarouselPosition + 1].style.filter = "brightness(100%)";
+                    fsPictureCarouselElements.current[fsPictureCarouselPosition].style.filter = "brightness(120%)";
+    
+                    fsPictureCarouselViewport.current.scrollTo({
+                        top: 0, 
+                        left: (fsPictureCarouselElements.current[fsPictureCarouselPosition].offsetLeft), 
+                        behavior: "smooth"
+                    })
+                }
             }
 
+            console.log(fsPictureCarouselPosition);
+
+            fsPictureCarouselMainImg.current.src = 'http://' + path.normalize(process.env.REACT_APP_API_URI + elementsToDisplay[fsPictureCarouselPosition].link.replace(/\\/g, '/'));
+
             fsPictureCarouselCounter.current.innerText = fsPictureCarouselPosition + " de " + (fsPictureCarouselElements.current.length -1);
+        }
+
+    }, [fsPictureCarouselPosition])
+
+    function slideFSPictureCarousel(direction){
+        setFsPictureCarouselDirection(direction);
+
+        if(direction){
+            if(direction === "right"){
+                if(fsPictureCarouselPosition < elementsToDisplay.length - 1){
+                    setFsPictureCarouselPosition(fsPictureCarouselPosition + 1);
+                }
+            } else if(direction === "left" && fsPictureCarouselPosition > 0){
+                setFsPictureCarouselPosition(fsPictureCarouselPosition - 1);
+            }
         }
     }
 
@@ -115,7 +131,7 @@ export default function PictureCarousel(props) {
                             <FaChevronLeft size="50%"/>
                         </button>
                     </div>
-                    <img className="fsPicturePreviewImage" alt="Imagem do imovel" src={NoImageDefault}/>
+                    <img className="fsPicturePreviewImage" ref={fsPictureCarouselMainImg} alt="Imagem do imovel" src={NoImageDefault}/>
                     <div className="fsPictureCarouselDirection" id="rightfsPictureCarouselDirection">
                         <button onClick={() => slideFSPictureCarousel("right")} className="fsPictureCarouselDirectionButton">
                             <FaChevronRight size="50%"/>
@@ -129,7 +145,7 @@ export default function PictureCarousel(props) {
                             { elementsToDisplay ? 
                                 ( elementsToDisplay.map((elem, i) => (
                                     <li key={i} ref={thisElem => fsPictureCarouselElements.current[i] = thisElem} onClick={() => {}} className="fsPictureCarouselItem">
-                                        <img className="fsPictureCarouselItemImage" alt="Imagem do Imovel" src={elem}/>
+                                        <img className="fsPictureCarouselItemImage" alt="Imagem do Imovel" src={'http://' + path.normalize(process.env.REACT_APP_API_URI + elem.link.replace(/\\/g, '/'))}/>
                                     </li>
                                 ))) 
                                 :
@@ -153,8 +169,8 @@ export default function PictureCarousel(props) {
                 <ul className="pictureCarouselContent">
                     { elementsToDisplay ? 
                         ( elementsToDisplay.map((elem, i) => (
-                            <li key={i} ref={thisElem => pictureCarouselElements.current[i] = thisElem} onClick={() => setFullscreenEnabled(true)} className="pictureCarouselItem">
-                                <img className="pictureCarouselItemImage" alt="Sem Foto" src={'http://' + path.normalize('localhost:3333/' + elem.link.replace(/\\/g, '/'))}/>
+                            <li key={i} ref={thisElem => pictureCarouselElements.current[i] = thisElem} onClick={() => {setFullscreenEnabled(true); setFsPictureCarouselPosition(i)}} className="pictureCarouselItem">
+                                <img className="pictureCarouselItemImage" alt="Imagem do Imóvel" src={'http://' + path.normalize(process.env.REACT_APP_API_URI + elem.link.replace(/\\/g, '/'))}/>
                             </li>
                         ))) 
                         :
