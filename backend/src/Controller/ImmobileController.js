@@ -1,5 +1,6 @@
 const connection = require('../Database/Connection');
 const Immobile = require('../Model/Immobile');
+const sharp = require('sharp');
 
 module.exports = {
     async create(req, res){
@@ -18,6 +19,10 @@ module.exports = {
 
             // Variável que armazenará o id do objeto criado no banco
             var insertedId = 0;
+
+            if(newImmobile.purpose === "comprar"){
+                newImmobile.price = newImmobile.price * 100;
+            }
             
             if(newImmobile.complement){
                 // Verificando o tipo do imóvel que será cadastrado
@@ -462,6 +467,9 @@ module.exports = {
             // Variável que armazenará a query da quantidade de registros buscados
             var sqlCount = "";
 
+            // Variável que armazenará a query das miniaturas dos imóveis
+            var sqlThumb = "";
+
             // Variável de condição da query
             var sqlCondition = ``;
 
@@ -485,15 +493,17 @@ module.exports = {
 
             if(reqImmobile.limit > 0){
                 sql = `SELECT id, purpose, address,
-                          number, complement, cep, 
-                          district, city, uf, 
-                          type, terrainArea, immobileArea, 
-                          parkNumber, bathNumber, bedNumber, 
-                          price, description, reference, 
-                          dateSubscript, status, id_user FROM tb_immobile
-                          WHERE 1 = 1 ${sqlCondition}
-                          LIMIT ${reqImmobile.limit} 
-                          OFFSET ${reqImmobile.limit * reqImmobile.offset}`;
+                                number, complement, cep, 
+                                district, city, uf, 
+                                type, terrainArea, immobileArea, 
+                                parkNumber, bathNumber, bedNumber, 
+                                price, description, reference, 
+                                dateSubscript, status, id_user
+                                FROM tb_immobile
+
+                                WHERE 1 = 1 ${sqlCondition}
+                                LIMIT ${reqImmobile.limit} 
+                                OFFSET ${reqImmobile.limit * reqImmobile.offset}`;
             }
             else{
                 sql = `SELECT id, purpose, address,
@@ -502,28 +512,71 @@ module.exports = {
                                 type, terrainArea, immobileArea, 
                                 parkNumber, bathNumber, bedNumber, 
                                 price, description, reference, 
-                                dateSubscript, status, id_user FROM tb_immobile
+                                dateSubscript, status, id_user 
+                                FROM tb_immobile
+
                                 WHERE 1 = 1 ${sqlCondition}`;
             }
 
             sqlCount = `SELECT count(id) FROM tb_immobile
                                     WHERE 1 = 1 ${sqlCondition}`;
 
+
+            sqlThumb = `SELECT immo.id, image.link 
+                        FROM tb_immobile immo 
+                        JOIN tb_image image 
+                        ON immo.id = image.id_immobile 
+                        GROUP BY (immo.id)`;
+
             (await conn).query(sql).then(async result => 
                 {
-                    (await conn).query(sqlCount).then(count => {
-                        sql = null;
-                        sqlCount = null;
-                        sqlCondition = null;
-                        reqImmobile = null;
+                    (await conn).query(sqlCount).then(async count => {
 
-                        return res.json({immobiles: result, count: count[0]['count(id)']});
+                        (await conn).query(sqlThumb).then(thumb => {
+                            sql = null;
+                            sqlCount = null;
+                            sqlCondition = null;
+                            reqImmobile = null;
+
+                            if(result.length > 0){
+                                result.forEach(async(element, i) => {
+                                    var currentThumb = thumb.find(x => x.id === element.id);
+
+                                    if(currentThumb && currentThumb.link && currentThumb.id){
+
+                                        await sharp('public'+currentThumb.link)
+                                                                    .resize({
+                                                                        width: 250,
+                                                                        height: 188,
+                                                                        fit: sharp.fit.inside,
+                                                                        withoutEnlargement: false
+                                                                    })
+                                                                    .toBuffer()
+                                                                    .then(buffer => {
+                                                                        element.thumbnail = buffer;
+                                                                    })
+                                                                    .catch(err => {
+                                                                        if(err)
+                                                                            throw "CANNOT_GET_BUFFER";
+                                                                    });
+                                    }
+        
+                                    if(i === result.length - 1){
+                                        return res.json({immobiles: result, count: count[0]['count(id)']});
+                                    }
+                                });
+                            }
+                            else{
+                                return res.json({immobiles: result, count: count[0]['count(id)']});
+                            }
+                        })
+
                     });
                 }
             );
         }
         catch(err){
-            return res.json(err);
+            return res.status(500).send(err);
         }
     },
 
