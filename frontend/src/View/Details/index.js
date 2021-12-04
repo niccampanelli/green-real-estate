@@ -64,7 +64,7 @@ export default function Details() {
                             : "" }
                         </ul>
                         <h2 className="detailsMainInfoLeftTitle">Detalhes sobre o imóvel</h2>
-                        <p>{description}</p>
+                        <p className="detailsMainInfoLeftDesc">{description}</p>
                     </div>
                     <div className="detailsMainInfoRight">
                         <div className="detailsMainInfoRightCard">
