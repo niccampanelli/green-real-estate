@@ -11,7 +11,7 @@ export default function ImmobileCard(props) {
 
     return(
         <li className="immobileCard" onClick={() => history.push("/imovel", immo)}>
-            <img className="immobileCardImage" alt="Sem Foto" src={NoImageDefault}/>
+            <img className="immobileCardImage" alt="Imagem do imóvel" src={`data:image/webp;base64,${new Buffer.from(immo.thumbnail.data).toString('base64')}`}/>
             <h3 className="immobileCardTitle">{immo.district}</h3>
             <span className="immobileCardSubtitle">{immo.type} - {immo.purpose}</span>
             <h4 className="immobileCardPrice">R$ {immo.price/100}</h4>
