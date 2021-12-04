@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { useLocation, useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import API from "../../Services/API";
 import Footer from '../Components/Footer';
 import Header from '../Components/Header';

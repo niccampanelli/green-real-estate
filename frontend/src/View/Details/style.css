@@ -53,6 +53,11 @@
     margin-right: 10px;
 }
 
+.detailsMainInfoLeftDesc{
+    white-space: pre-line;
+    word-break: break-word;
+}
+
 .detailsMainInfoRight{
     width: 400px;
     height: fit-content;

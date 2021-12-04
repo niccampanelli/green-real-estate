@@ -162,13 +162,43 @@
     }
     
     .formAddress{
-        display: block;
-        margin-bottom: 50px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: 60% 16% 20%;
+        gap: 0 2%;
+    }
+    
+    .formDistrict{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 60% 38%;
+        gap: 0 2%;
+    }
+
+    .formCity{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 60% 38%;
+        gap: 0 2%;
     }
 
     .formArea{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 49% 49%;
+        gap: 0 2%;
+    }
+
+    .formInfos{
+        width: 100%;
+        display: grid;
+        grid-template-columns: 32% 32% 32%;
+        gap: 0 2%;
+    }
+
+    .formInputDiv{
         display: block;
-        margin-bottom: 170px;
+        margin-bottom: 20px;
         width: 100%;
     }
 
@@ -183,26 +213,6 @@
         margin-left: 3px;
     }
 
-    .formAreaLeft{
-        width: 50%;
-        float: left;
-    }
-
-    .formAreaRight{
-        width: 50%;
-        float: right;
-    }
-
-    .formType{
-        display: block;
-        margin-bottom: 50px;
-    }
-
-    .formValue{
-        display: block;
-        margin-bottom: 50px;
-    }
-
     .formValueInputContainer{
         display: flex;
         flex-direction: row;
@@ -214,21 +224,25 @@
         margin-left: 3px;
     }
 
-    .formInfos{
-        display: block;
-        margin-bottom: 50px;
-    }
-
     .formObservation{
         display: block;
     }
 
+    .registrationTextArea{
+        white-space: pre-line;
+        width: 100%;
+        min-height: 300px;
+        height: fit-content;
+        overflow-y: visible;
+    }
+
     .registrationFormBtn{
-        width: 500px;
+        width: 100%;
         background-color: var(--terciary-color);
         color: var(--primary-color);
         height: 40px;
         font-size: var(--paragraph-size);
+        font-weight: 700;
         border-radius: 10px;
         margin-top: 30px;
         cursor: pointer;

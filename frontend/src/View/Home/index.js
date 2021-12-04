@@ -25,7 +25,6 @@ export default function Home() {
     const [immoBath, setImmoBath] = useState();
     const [immoBed, setImmoBed] = useState();
     const [immoReference, setImmoReference] = useState();
-    const [offsetSearch, setOffsetSearch] = useState(0);
 
     const searchInput = useRef();
     var typewriterIndex = 0;
@@ -108,10 +107,10 @@ export default function Home() {
 
     useEffect(() => {
         typewriter();
-    }, [searchInput]);
+    }, [searchInput.current]);
 
     function typewriter(){
-        if(searchInput){
+        if(searchInput.current){
             if(typewriterIndex === textList[textListIndex].length){
                 typewriterIndex = 0;
                 searchInput.current.placeholder = "";
@@ -147,7 +146,7 @@ export default function Home() {
             bedNumber: immoBed,
             reference: immoReference,
             limit: 28,
-            offset: offsetSearch
+            offset: 0
         }});
     }
 
@@ -176,7 +175,7 @@ export default function Home() {
                                 <div className="landingSearchDetailDiv">
                                     <label className="landingSearchDetailLabel">Tipo</label>
                                     <select className="defaultDropdown" value={immoType} onChange={e => setImmoType(e.target.value)}>
-                                        <option className="defaultDropdownOption" selected value="">Todos</option>
+                                        <option className="defaultDropdownOption" value="">Todos</option>
                                         <option className="defaultDropdownOption" value="casa">Casa</option>
                                         <option className="defaultDropdownOption" value="apartamento">Apartamento</option>
                                         <option className="defaultDropdownOption" value="terreno">Terreno</option>

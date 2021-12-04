@@ -18,7 +18,9 @@ export default function Auth() {
     const [emailValue, setEmailValue] = useState("");
     const [passwordValue, setPasswordValue] = useState("");
     const [telValue, setTelValue] = useState("");
+    const [maskTelValue, setMaskTelValue] = useState("");
     const [tel2Value, setTel2Value] = useState("");
+    const [maskTel2Value, setMaskTel2Value] = useState("");
 
     useEffect(() => {
         if(location.state.authState !== undefined){
@@ -97,6 +99,23 @@ export default function Auth() {
         }
     }
 
+    function maskInput(type, val, setMask, setDefault){
+        if(type && type === "tel"){
+            if(val.length > 15)
+                val = val.substring(0, val.length-1);
+
+            let masked = val;
+            masked = masked.replace(/\D/g, "");
+            masked = masked.replace(/^(\d{2})(\d)/g, "($1) $2");
+            masked = masked.replace(/(\d{5})(\d)/g, "$1-$2");
+
+            setMask(masked);
+            setDefault(
+                val.replace(/\D/g, "")
+            );
+        }
+    }
+
     return(
         <Fragment>
             <Header/>
@@ -132,11 +151,11 @@ export default function Auth() {
                                 </div>
                                 <div className="authFormContainer">
                                     <label htmlFor="authFormTelInput" className="authFormLabel">Telefone de Contato*</label>
-                                    <input id="authFormTelInput" className="defaultInput" value={telValue} onChange={e => setTelValue(e.target.value)} type="tel" placeholder="(DDD) 00000-0000"/>
+                                    <input id="authFormTelInput" className="defaultInput" value={maskTelValue} onChange={e => maskInput("tel", e.target.value, p => setMaskTelValue(p), p2 => setTelValue(p2))} type="tel" placeholder="(DDD) 00000-0000" maxLength="15"/>
                                 </div>
                                 <div className="authFormContainer">
                                     <label htmlFor="authFormTel2Input" className="authFormLabel">Telefone de Contato Secundário</label>
-                                    <input id="authFormTel2Input" className="defaultInput" value={tel2Value} onChange={e => setTel2Value(e.target.value)} type="tel" placeholder="(DDD) 00000-0000."/>
+                                    <input id="authFormTel2Input" className="defaultInput" value={maskTel2Value} onChange={e => maskInput("tel", e.target.value, p => setMaskTel2Value(p), p2 => setTel2Value(p2))} type="tel" placeholder="(DDD) 00000-0000" maxLength="15"/>
                                 </div>
                                 <div className="authFormContainer">
                                     <label htmlFor="authFormPasswordInput" className="authFormLabel">Senha*</label>

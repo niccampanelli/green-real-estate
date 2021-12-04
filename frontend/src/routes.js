@@ -5,7 +5,6 @@ import Contact from './View/Contact';
 import Registration from './View/Registration';
 import Details from './View/Details';
 import Search from './View/Search';
-import RedirectTo from './View/Redirect';
 import Auth from './View/Auth';
 import API from './Services/API';
 
@@ -40,7 +39,6 @@ export default function Routes(){
                 <Route path='/sobre' component={Contact}/>
                 <Route path='/registro' render={(props) => ( <VerifyAuth {...props} component={<Registration/>} origin="/registro" /> )}/>
                 <Route path='/pesquisa' component={Search}/>
-                <Route path='/redirect' component={RedirectTo}/>
             </Switch>
         </BrowserRouter>
     );

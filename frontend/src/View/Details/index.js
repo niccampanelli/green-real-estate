@@ -53,12 +53,18 @@ export default function Details() {
                         <h2 className="detailsMainInfoLeftSubtitle">{address}, {number} - {city}, {uf}</h2>
                         <ul className="detailsMainInfoSpecList">
                             <li className="detailsMainInfoSpec"><FaExpand size="18px"/> {immobileArea} m²</li>
-                            <li className="detailsMainInfoSpec"><FaBed size="18px"/> {bedNumber} Dormitórios</li>
-                            <li className="detailsMainInfoSpec"><FaBath size="18px"/> {bathNumber} Banheiro</li>
-                            <li className="detailsMainInfoSpec"><FaCarSide size="18px"/> {parkNumber} Vaga</li>
+                            { typeof bedNumber === "number" ? 
+                                <li className="detailsMainInfoSpec"><FaBed size="18px"/> {bedNumber} {(bedNumber === 0 || bedNumber === 1) ? "Dormitório" : "Dormitórios" }</li>
+                            : "" }
+                            { typeof bathNumber === "number" ? 
+                                <li className="detailsMainInfoSpec"><FaBath size="18px"/> {bathNumber} {(bathNumber === 0 || bathNumber === 1) ? "Banheiro" : "Banheiros" }</li>
+                            : "" }
+                            { typeof parkNumber === "number" ?
+                                <li className="detailsMainInfoSpec"><FaCarSide size="18px"/>{(parkNumber === 0) ? "Sem vaga" : ((parkNumber === 1) ? "1 Vaga" : parkNumber + " Vagas")}</li>
+                            : "" }
                         </ul>
                         <h2 className="detailsMainInfoLeftTitle">Detalhes sobre o imóvel</h2>
-                        <p>{description}</p>
+                        <p className="detailsMainInfoLeftDesc">{description}</p>
                     </div>
                     <div className="detailsMainInfoRight">
                         <div className="detailsMainInfoRightCard">
