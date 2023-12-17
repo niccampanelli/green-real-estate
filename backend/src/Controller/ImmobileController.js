@@ -554,10 +554,6 @@ module.exports = {
                                                                     .toBuffer()
                                                                     .then(buffer => {
                                                                         element.thumbnail = buffer;
-                                                                    })
-                                                                    .catch(err => {
-                                                                        if(err)
-                                                                            throw "CANNOT_GET_BUFFER";
                                                                     });
                                     }
         
@@ -569,7 +565,7 @@ module.exports = {
                             else{
                                 return res.json({immobiles: result, count: count[0]['count(id)']});
                             }
-                        })
+                        });
 
                     });
                 }
